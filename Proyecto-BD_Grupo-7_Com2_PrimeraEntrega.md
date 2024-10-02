@@ -1,22 +1,29 @@
-"# Proyecto-BD---Grupo-7---Com2" Primera Entrega.
+## Proyecto-BD---Grupo-7---Com2 Primera Entrega.
 
-Alumnos: 
-        Diaz, Isaac
-        Pérez, Bruno Ezequiel
-	      Pérez, Santiago Ezequiel 
-	      Pérez Ruiz, Federico
-Profesores: 
-        Villegas, Darío
-	      Cuzziol, Juan José
-	      Vallejos, Walter
-        Badaracco, Numa 
-Institución Educativa: Universidad Nacional del Nordeste – Facultad de Ciencias Exactas y Naturales y Agrimensura 
-Carrera: Licenciatura en Sistemas de Información
-Fecha de Entrega: 02/10/2024
+**Alumnos:** 
 
-Año: 2024 
+        - Diaz, Isaac
+        - Pérez, Bruno Ezequiel
+	- Pérez, Santiago Ezequiel 
+	- Pérez Ruiz, Federico
+ 
+**Profesores:**
 
-INDICE
+        - Villegas, Darío
+	- Cuzziol, Juan José
+	- Vallejos, Walter
+        - Badaracco, Numa 
+	
+**Institución Educativa:** Universidad Nacional del Nordeste – Facultad de Ciencias Exactas y Naturales y Agrimensura 
+
+**Carrera:** Licenciatura en Sistemas de Información
+
+**Fecha de Entrega:** 02/10/2024
+
+**Año:** 2024 
+
+
+## INDICE
 Capitulo I: INTRODUCCIÓN	39
         Tema 43
         Planteamiento del Problema 47
@@ -36,27 +43,27 @@ Capítulo V: CONCLUSIONES	674
 Capítulo VI: BIBLIOGRAFÍA	676
 
 
-Capítulo I: INTRODUCCIÓN 
+## Capítulo I: INTRODUCCIÓN 
 
 Este capítulo introduce el Trabajo Práctico que consiste en el desarrollo de una base de datos para la página web NutriFood, la cual gestionará las operaciones de venta de productos saludables y suplementos. A continuación, se describen el tema, el problema a investigar y los objetivos de la tarea.
 
-Tema 
+### Tema 
 
 El tema de este Trabajo Práctico se enfoca en el diseño e implementación de una base de datos para NutriFood, una página web destinada a la gestión de ventas y productos en una tienda de alimentos saludables. La base de datos debe ser robusta y estar optimizada para manejar múltiples transacciones de manera simultánea. Este sistema debe registrar, almacenar y gestionar datos relacionados con productos, usuarios, ventas, inventarios y quejas, asegurando la integridad y seguridad de la información. 
 
-Planteamiento del Problema 
+### Planteamiento del Problema 
 
 El principal problema que este Trabajo Práctico aborda es la ausencia de una base de datos centralizada y estructurada que permita la gestión eficiente de grandes volúmenes de información en NutriFood. Actualmente, la tienda opera sin un sistema unificado para almacenar y manejar datos críticos, lo que puede resultar en inconsistencias, pérdidas de información, y dificultades en la gestión del inventario y las ventas. Este trabajo plantea las siguientes preguntas: ¿Cómo puede una base de datos relacional optimizar la administración de productos, usuarios y ventas en NutriFood? y ¿Qué estructuras de datos y relaciones son más adecuadas para asegurar la integridad y seguridad de la información en este contexto?
 
-Objetivo del Trabajo 
+### Objetivo del Trabajo 
 
 El objetivo principal del Trabajo Práctico es desarrollar una base de datos que permita a NutriFood gestionar sus productos, usuarios, ventas e inventario de manera eficiente y segura, mejorando así los procesos operativos de la tienda.
 
-Objetivo Generales
+#### Objetivo Generales
 
 Diseñar e implementar una base de datos relacional que soporte la aplicación NutriFood, optimizando el almacenamiento y la gestión de la información relacionada con ventas, productos, usuarios y quejas.
 
-Objetivos Específicos 
+#### Objetivos Específicos 
  
 - Definir las entidades clave del sistema, como productos, usuarios, ventas, inventario y quejas, y sus respectivas relaciones.
 - Implementar tablas que permitan realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) de manera eficiente, garantizando la consistencia de los datos.
@@ -64,20 +71,21 @@ Objetivos Específicos
 - Optimizar la base de datos para soportar múltiples usuarios y transacciones simultáneas sin degradar el rendimiento del sistema.
 - Implementar validaciones y triggers que aseguren la integridad referencial entre las distintas tablas (productos, ventas, usuarios).
 
-Capítulo II: MARCO CONCEPTUAL
+## Capítulo II: MARCO CONCEPTUAL
 
-Capítulo III: METODOLOGÍA SEGUIDA
+## Capítulo III: METODOLOGÍA SEGUIDA
 
-Descripción de la elaboración del trabajo
+### Descripción de la elaboración del trabajo
 
-Herramientas 
+### Herramientas 
 
-Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
+## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
-Modelo Relacional 
+### Modelo Relacional 
+
 https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png
 	
-Diccionario de Datos
+### Diccionario de Datos
 
 Características de la Tabla
 Nombre	Factura
@@ -357,7 +365,8 @@ Campo	          Entidad asociada
 Codigo_MP	      Medios_de_Pago
 Número_Factura	Detalle_Factura
 
-Modelo Fisico
+### Modelo Fisico
+
 CREATE DATABASE proyecto_BDD;
 
 USE proyecto_BDD;
@@ -518,7 +527,7 @@ CREATE TABLE Detalle_Domicilio
   Direccion(Codigo_Direccion)
 );
 
-Lote de datos
+### Lote de datos
 
 USE proyecto_BDD;
 
@@ -668,9 +677,6 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (12345678, 3),
 (45678901, 4);
 
+## Capítulo V: CONCLUSIONES 
 
-
-
-Capítulo V: CONCLUSIONES 
-
-Capítulo VI: BIBLIOGRAFÍA 
+## Capítulo VI: BIBLIOGRAFÍA 
