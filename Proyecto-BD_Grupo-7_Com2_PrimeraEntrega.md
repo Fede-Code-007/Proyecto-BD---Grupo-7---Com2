@@ -17,23 +17,23 @@ Fecha de Entrega: 02/10/2024
 Año: 2024 
 
 INDICE
-Capitulo I: INTRODUCCIÓN	37
-        Tema 41
-        Planteamiento del Problema 45
-        Objetivo del Trabajo	49
-        Objetivo Generales	53
-        Objetivos Específicos	57
-Capítulo II: MARCO CONCEPTUAL	65
-Capítulo III: METODOLOGÍA SEGUIDA	67
-        Descripción de la elaboración del trabajo	69
-        Herramientas	71
-Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS	73
-        Modelo Relacional	75
-        Diccionario de Datos	77
-	Modelo Fisico		359
- 	Lote de datos		520
-Capítulo V: CONCLUSIONES	673
-Capítulo VI: BIBLIOGRAFÍA	675
+Capitulo I: INTRODUCCIÓN	39
+        Tema 43
+        Planteamiento del Problema 47
+        Objetivo del Trabajo	51
+        Objetivo Generales	55
+        Objetivos Específicos	59
+Capítulo II: MARCO CONCEPTUAL	67
+Capítulo III: METODOLOGÍA SEGUIDA	69
+        Descripción de la elaboración del trabajo	71
+        Herramientas	73
+Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS	75
+        Modelo Relacional	77
+        Diccionario de Datos	80
+	Modelo Fisico		360
+ 	Lote de datos		521
+Capítulo V: CONCLUSIONES	674
+Capítulo VI: BIBLIOGRAFÍA	676
 
 
 Capítulo I: INTRODUCCIÓN 
@@ -75,6 +75,7 @@ Herramientas
 Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
 Modelo Relacional 
+https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png
 	
 Diccionario de Datos
 
