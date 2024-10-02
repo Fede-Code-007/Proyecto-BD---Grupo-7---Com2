@@ -57,21 +57,21 @@
 ## INDICE
 >>>>>>> fad70830a499876d9bffe8bf4fe84a7cf942b197
 
-1. [Capítulo I: Introducción](#capítulo-i-introducción)
-    - Tema
-    - Planteamiento del Problema
-    - Objetivo del Trabajo
-    - Objetivo Generales
-    - Objetivos Específicos
-2. [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
-3. [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
-4. [Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema-presentación-de-resultados)
-    - Modelo Relacional
-    - Diccionario de Datos
-    - Modelo Físico
-    - Lote de datos
-5. [Capítulo V: Conclusiones](#capítulo-v-conclusiones)
-6. [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)
+[Capítulo I: Introducción](#capítulo-i-introducción)
+    - [Tema](#tema)
+    - [Planteamiento del Problema](#planteamiento-del-problema)
+    - [Objetivos del Trabajo](#objetivos-del-trabajo)
+    - [Objetivos Generales](#objetivos-generales)
+    - [Objetivos Específicos](#objetivos-específicos)
+[Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
+[Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
+[Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema-presentación-de-resultados)
+    - [Modelo Relacional](#modelo-relacional)
+    - [Diccionario de Datos](#diccionario-de-datos)
+    - [Modelo Físico](#modelo-físico)
+    - [Lote de datos](#lote-de-datos)
+[Capítulo V: Conclusiones](#capítulo-v-conclusiones)
+[Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)
 
 ## Capítulo I: INTRODUCCIÓN 
 
@@ -85,11 +85,11 @@ El tema de este trabajo se enfoca en el diseño e implementación de una base de
 
 El principal problema que se abordará es la ausencia de una base de datos centralizada y estructurada que permita la gestión eficiente de grandes volúmenes de información en NutriFood. Actualmente, la tienda opera sin un sistema unificado para almacenar y manejar datos críticos, lo que puede resultar en inconsistencias, pérdidas de información, y dificultades en la gestión del inventario y las ventas. Este trabajo plantea las siguientes preguntas: ¿Cómo puede una base de datos relacional optimizar la administración de productos, usuarios y ventas en NutriFood? y ¿Qué estructuras de datos y relaciones son más adecuadas para asegurar la integridad y seguridad de la información en este contexto?
 
-### Objetivo del Trabajo 
+### Objetivos del Trabajo 
 
 El objetivo principal del Trabajo Práctico es desarrollar una base de datos que permita a NutriFood gestionar sus productos, usuarios, ventas e inventario de manera eficiente y segura, mejorando así los procesos operativos de la tienda.
 
-#### Objetivo Generales
+#### Objetivos Generales
 
 Diseñar e implementar una base de datos relacional que soporte la aplicación NutriFood, optimizando el almacenamiento y la gestión de la información relacionada con ventas, productos, usuarios y quejas.
 
