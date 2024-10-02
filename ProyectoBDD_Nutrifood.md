@@ -23,6 +23,7 @@
 **Año:** 2024 
 <div style="page-break-after: always;"></div> 
 
+##Indice
 
 [Capítulo I: Introducción](#capítulo-i-introducción)
 
@@ -87,7 +88,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ### Modelo Relacional 
 
-https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png
+![Modelo Relacional IMG](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png)
 	
 ### Diccionario de Datos
 
