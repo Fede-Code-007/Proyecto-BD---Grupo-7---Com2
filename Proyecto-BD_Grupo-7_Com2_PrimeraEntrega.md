@@ -85,7 +85,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 	
 ### Diccionario de Datos
 
-### Tabla: Factura
+### Características de la Tabla: Factura
+- **Nombre**: Factura
+- **Módulo**: Factura
+- **Descripción**: Tabla para almacenar la cabecera de las facturas de las ventas realizadas.
+
+### Características de los Datos
 | Campo           | Tipo   | Long | Significado                               |
 |-----------------|--------|------|-------------------------------------------|
 | Número Factura  | INT    |      | Indica el número de la factura             |
@@ -105,7 +110,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Producto
+### Características de la Tabla: Producto
+- **Nombre**: Producto
+- **Módulo**: Producto
+- **Descripción**: Tabla que almacena los productos que se comercializan.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                 |
 |-----------------|----------|------|-----------------------------|
 | Código_Producto | INT      |      | Código del producto          |
@@ -128,7 +138,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Detalle_Producto
+### Características de la Tabla: Detalle_Producto
+- **Nombre**: Detalle_Producto
+- **Módulo**: Detalle_Producto
+- **Descripción**: Tabla que almacena un detalle de los productos vendidos para cada factura.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                                         |
 |-----------------|----------|------|-----------------------------------------------------|
 | Número_Factura  | INT      |      | Número de la factura                                |
@@ -150,7 +165,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Proveedor
+### Características de la Tabla: Proveedor
+- **Nombre**: Proveedor
+- **Módulo**: Proveedor
+- **Descripción**: Tabla para almacenar proveedores.
+
+### Características de los Datos
 | Campo         | Tipo     | Long | Significado           |
 |---------------|----------|------|-----------------------|
 | CUIT          | BIGINT   |      | CUIT del proveedor     |
@@ -167,7 +187,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Usuario
+### Características de la Tabla: Usuario
+- **Nombre**: Usuario
+- **Módulo**: Usuario
+- **Descripción**: Tabla para almacenar los usuarios.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                       |
 |-----------------|----------|------|-----------------------------------|
 | DNI             | INT      |      | DNI del usuario                   |
@@ -190,7 +215,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Tipo_Perfil
+### Características de la Tabla: Tipo_Perfil
+- **Nombre**: Tipo_Perfil
+- **Módulo**: Tipo_Perfil
+- **Descripción**: Tabla para definir los perfiles que puede tener un usuario.
+
+### Características de los Datos
 | Campo         | Tipo     | Long | Significado                 |
 |---------------|----------|------|-----------------------------|
 | Código_Perfil | INT      |      | Identificador de perfil      |
@@ -203,7 +233,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Categorías
+### Características de la Tabla: Categorías
+- **Nombre**: Categorías
+- **Módulo**: Categorías
+- **Descripción**: Tabla con las distintas categorías.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                   |
 |-----------------|----------|------|-------------------------------|
 | Código_Categoria| INT      |      | Identificador de categorías    |
@@ -216,7 +251,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Detalle_Categorías
+### Características de la Tabla: Detalle_Categorías
+- **Nombre**: Detalle_Categorías
+- **Módulo**: Detalle_Categorías
+- **Descripción**: Tabla con los detalles de las categorías que posee cada producto.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                     |
 |-----------------|----------|------|---------------------------------|
 | Código_Producto | INT      |      | Código del producto             |
@@ -236,7 +276,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Mensajes
+### Características de la Tabla: Mensajes
+- **Nombre**: Mensajes
+- **Módulo**: Mensajes
+- **Descripción**: Tabla para almacenar consultas de los clientes.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                    |
 |-----------------|----------|------|--------------------------------|
 | Código_Mensaje  | INT      |      | Código del mensaje             |
@@ -257,7 +302,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: País
+### Características de la Tabla: País
+- **Nombre**: País
+- **Módulo**: País
+- **Descripción**: Tabla con el país de residencia de clientes.
+
+### Características de los Datos
 | Campo        | Tipo     | Long | Significado               |
 |--------------|----------|------|---------------------------|
 | Código_Pais  | INT      |      | Identificador único del país |
@@ -270,7 +320,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Provincia
+### Características de la Tabla: Provincia
+- **Nombre**: Provincia
+- **Módulo**: Provincia
+- **Descripción**: Tabla que almacena la provincia de residencia de los clientes.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                        |
 |-----------------|----------|------|------------------------------------|
 | Código_Provincia| INT      |      | Identificador único de la provincia|
@@ -289,7 +344,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Localidad
+### Características de la Tabla: Localidad
+- **Nombre**: Localidad
+- **Módulo**: Localidad
+- **Descripción**: Tabla para almacenar la localidad de los clientes.
+
+### Características de los Datos
 | Campo            | Tipo     | Long | Significado                      |
 |------------------|----------|------|----------------------------------|
 | Código_Localidad | INT      |      | Código de la localidad           |
@@ -308,7 +368,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Dirección
+### Características de la Tabla: Dirección
+- **Nombre**: Dirección
+- **Módulo**: Direcciones
+- **Descripción**: Tabla con las direcciones de clientes.
+
+### Características de los Datos
 | Campo            | Tipo     | Long | Significado                       |
 |------------------|----------|------|-----------------------------------|
 | Código_Direccion | INT      |      | Código de la dirección            |
@@ -330,7 +395,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Detalle_Domicilio
+### Características de la Tabla: Detalle_Domicilio
+- **Nombre**: Detalle_Domicilio
+- **Módulo**: Detalle_Domicilio
+- **Descripción**: Tabla que almacena a qué usuario pertenece cada domicilio.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                        |
 |-----------------|----------|------|------------------------------------|
 | DNI             | INT      |      | DNI del usuario                    |
@@ -350,7 +420,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Medios_de_Pago
+### Características de la Tabla: Medios_de_Pago
+- **Nombre**: Medios_de_Pago
+- **Módulo**: Medios_de_Pago
+- **Descripción**: Tabla con los medios de pago utilizados.
+
+### Características de los Datos
 | Campo       | Tipo     | Long | Significado                    |
 |-------------|----------|------|--------------------------------|
 | Código_MP   | INT      |      | Identificador del medio de pago |
@@ -363,7 +438,12 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ---
 
-### Tabla: Detalle_Pago
+### Características de la Tabla: Detalle_Pago
+- **Nombre**: Detalle_Pago
+- **Módulo**: Detalle_Pago
+- **Descripción**: Tabla con los detalles del pago de cada venta.
+
+### Características de los Datos
 | Campo           | Tipo     | Long | Significado                         |
 |-----------------|----------|------|-------------------------------------|
 | Código_MP       | INT      |      | Indica el medio de pago             |
@@ -382,7 +462,6 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 |----------------|------------------|
 | Código_MP      | Medios_de_Pago    |
 | Número_Factura | Factura           |
-
 
 ### Modelo Fisico
 
