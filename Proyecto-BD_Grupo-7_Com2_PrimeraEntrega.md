@@ -23,37 +23,34 @@
 **Año:** 2024 
 
 
-## INDICE
-Capitulo I: INTRODUCCIÓN	
+## ÍNDICE
 
+### Capítulo I: INTRODUCCIÓN  
+- Tema ................................................... 43  
+- Planteamiento del Problema ........................ 47  
+- Objetivo del Trabajo .................................. 51  
+- Objetivos Generales ................................. 55  
+- Objetivos Específicos ............................... 59  
 
-	Tema 43
+### Capítulo II: MARCO CONCEPTUAL  
+- .............................................................. 67  
 
-	Planteamiento del Problema 47
+### Capítulo III: METODOLOGÍA SEGUIDA  
+- Descripción de la elaboración del trabajo ..... 71  
+- Herramientas ............................................. 73  
 
-	Objetivo del Trabajo	51
+### Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS  
+- Modelo Relacional .................................... 77  
+- Diccionario de Datos ................................. 80  
+- Modelo Físico .......................................... 360  
+- Lote de datos ........................................... 521  
 
-	Objetivo Generales	55
+### Capítulo V: CONCLUSIONES  
+- .............................................................. 674  
 
-	Objetivos Específicos	59
+### Capítulo VI: BIBLIOGRAFÍA  
+- .............................................................. 676  
 
-Capítulo II: MARCO CONCEPTUAL	67
-
-Capítulo III: METODOLOGÍA SEGUIDA	69
-
-        Descripción de la elaboración del trabajo	71
-        Herramientas	73
-	
-Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS	75
-
-        Modelo Relacional	77
-        Diccionario de Datos	80
-	Modelo Fisico		360
- 	Lote de datos		521
-  
-Capítulo V: CONCLUSIONES	674
-
-Capítulo VI: BIBLIOGRAFÍA	676
 
 
 ## Capítulo I: INTRODUCCIÓN 
@@ -96,7 +93,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ### Modelo Relacional 
 
-![ModeloRelacionalIMG](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png)
+https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png
 	
 ### Diccionario de Datos
 
