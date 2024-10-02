@@ -44,7 +44,7 @@
         Descripción de la elaboración del trabajo	71
         Herramientas	73
 	
-[Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS]	(https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-iv-desarrollo-del-tema--presentaci%C3%B3n-de-resultados)
+[Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-iv-desarrollo-del-tema--presentaci%C3%B3n-de-resultados)
 
         Modelo Relacional	77
         Diccionario de Datos	80
