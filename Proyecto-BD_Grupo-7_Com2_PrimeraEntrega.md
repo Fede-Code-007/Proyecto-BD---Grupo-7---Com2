@@ -36,7 +36,7 @@
 
 [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
 
-[Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema-presentación-de-resultados)
+[Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema-/-presentación-de-resultados)
 
     - Modelo Relacional
     - Diccionario de Datos
