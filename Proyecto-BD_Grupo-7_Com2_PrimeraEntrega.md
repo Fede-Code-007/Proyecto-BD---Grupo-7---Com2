@@ -21,36 +21,7 @@
 **Fecha de Entrega:** 02/10/2024
 
 **Año:** 2024 
-<div style="page-break-after: always;"></div>
-
-
-## ÍNDICE
-
-### Capítulo I: INTRODUCCIÓN  
-- Tema ................................................... 43  
-- Planteamiento del Problema ........................ 47  
-- Objetivo del Trabajo .................................. 51  
-- Objetivos Generales ................................. 55  
-- Objetivos Específicos ............................... 59  
-
-### Capítulo II: MARCO CONCEPTUAL  
-- .............................................................. 67  
-
-### Capítulo III: METODOLOGÍA SEGUIDA  
-- Descripción de la elaboración del trabajo ..... 71  
-- Herramientas ............................................. 73  
-
-### Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS  
-- Modelo Relacional .................................... 77  
-- Diccionario de Datos ................................. 80  
-- Modelo Físico .......................................... 360  
-- Lote de datos ........................................... 521  
-
-### Capítulo V: CONCLUSIONES  
-- .............................................................. 674  
-
-### Capítulo VI: BIBLIOGRAFÍA  
-- .............................................................. 676  
+<div style="page-break-after: always;"></div> 
 
 
 [Capítulo I: Introducción](#capítulo-i-introducción)
