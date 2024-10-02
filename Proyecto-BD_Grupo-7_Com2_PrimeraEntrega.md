@@ -85,283 +85,304 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 	
 ### Diccionario de Datos
 
-Características de la Tabla
-Nombre	Factura
-Módulo	Factura
-Descripción	Tabla para almacenar la cabecera de las facturas de las ventas realizadas
-Características de los Datos
-Campo	          Tipo	Long	Significado
-Número Factura	INT	 	      Indica el número de la factura
-Fecha	          DATE		    Indica la fecha en que se realizó la venta
-Total	          FLOAT	 	    Indica el monto total de la factura
-DNI	            INT	 	      DNI de un usuario
-Restricciones 
-Campo	          Tipo restricción
-Número_Factura	PRIMARY KEY
-Claves Foráneas
-Campo	          Entidad asociada 
-DNI	            Usuario
+### Tabla: Factura
+| Campo           | Tipo   | Long | Significado                               |
+|-----------------|--------|------|-------------------------------------------|
+| Número Factura  | INT    |      | Indica el número de la factura             |
+| Fecha           | DATE   |      | Indica la fecha en que se realizó la venta |
+| Total           | FLOAT  |      | Indica el monto total de la factura        |
+| DNI             | INT    |      | DNI de un usuario                         |
 
-Características de la Tabla
-Nombre	Producto
-Módulo	Producto
-Descripción	Tabla que almacena los productos que se comercializan
-Características de los Datos
-Campo	          Tipo	    Long	Significado
-Código_Producto	INT	 	          Código del producto
-Descripción	    VARCHAR	  100 	Descripción del producto
-Stock	          INT	 	          Stock del producto
-Stock Min	      INT	 	          Stock mínimo del producto
-Costo	          FLOAT		        Costo del producto
-Precio	        FLOAT	 	        Precio del producto
-CUIT	          BIGINT	 	      CUIT del proveedor 
-Restricciones 
-Campo	          Tipo restricción
-Código_Producto	PRIMARY KEY
-Claves Foráneas
-Campo	          Entidad asociada 
-CUIT	          Proveedor
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Número_Factura  | PRIMARY KEY       |
 
-Características de la Tabla
-Nombre	Detalle_Producto
-Módulo	Detalle_Producto
-Descripción	Tabla que almacena un detalle de los productos vendidos para cada factura
-Características de los Datos
-Campo	          Tipo	Long	Significado
-Número_Factura	INT	 	      Número de la factura
-Código_Producto	INT	        Código del producto
-Cantidad	      INT	 	      Cantidad del producto 
-Precio	        FLOAT	 	    Precio del producto en el momento que se realizó la venta 
-Restricciones 
-Campo	          Tipo restricción
-Número_Factura	PRIMARY KEY
-Código_Producto	PRIMARY KEY
-Claves Foráneas
-Campo	          Entidad asociada 
-Número_Factura	Factura
-Código_Producto	Producto
+#### Claves Foráneas
+| Campo | Entidad asociada |
+|-------|------------------|
+| DNI   | Usuario           |
 
-Características de la Tabla
-Nombre	Proveedor
-Módulo	Proveedor
-Descripción	Tabla para almacenar proveedores
-Características de los Datos
-Campo	    Tipo	    Long	Significado
-CUIT	    BIGINT	 	      CUIT del proveedor
-Correo	  VARCHAR	  100	  Correo del proveedor
-Teléfono	BIGINT	 	      Teléfono del proveedor
-Nombre	  VARCHAR	  100 	Nombre del proveedor
-Restricciones 
-Campo	    Tipo restricción
-CUIT	    PRIMARY KEY
-Correo	  UNIQUE
-Teléfono	UNIQUE, OPTIONAL
-Claves Foráneas
-Campo	 Entidad asociada 
-  -	         -
+---
 
-Características de la Tabla
-Nombre	Usuario
-Módulo	Usuario
-Descripción	Tabla para almacenar los usuarios
-Características de los Datos
-Campo	            Tipo	  Long	  Significado
-DNI	              INT 	         	DNI del usuario
-Correo	          VARCHAR	 100	  Correo del usuario
-Nombre	          VARCHAR	 100	  Nombre del usuario
-Apellido	        VARCHAR	 100	  Apellido del usuario
-Fecha Nacimiento	DATE	 	        Fecha nacimiento del usuario
-Código_Perfil	    INT	 	          Código identificador del perfil
-Restricciones 
-Campo	  Tipo restricción
-DNI	    PRIMARY KEY
-Correo	UNIQUE
-Claves Foráneas
-Campo	          Entidad asociada 
-Código_Perfil	  Tipo_Perfil 
+### Tabla: Producto
+| Campo           | Tipo     | Long | Significado                 |
+|-----------------|----------|------|-----------------------------|
+| Código_Producto | INT      |      | Código del producto          |
+| Descripción     | VARCHAR  | 100  | Descripción del producto     |
+| Stock           | INT      |      | Stock del producto           |
+| Stock Min       | INT      |      | Stock mínimo del producto    |
+| Costo           | FLOAT    |      | Costo del producto           |
+| Precio          | FLOAT    |      | Precio del producto          |
+| CUIT            | BIGINT   |      | CUIT del proveedor           |
 
-Características de la Tabla
-Nombre	Tipo_Perfil
-Módulo	Tipo_Perfil
-Descripción	 Tabla para definir los perfiles que puede tener un usuario
-Características de los Datos
-Campo	          Tipo	    Long	Significado
-Código_Perfil	  INT	 	          Identificador de perfil 
-Descripción	    VARCHAR	  100  	Descripción del perfil
-Restricciones 
-Campo	        Tipo restricción
-Código_Perfil	PRIMARY KEY
-Claves Foráneas
-Campo	Entidad asociada 
-  -	        -
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Código_Producto | PRIMARY KEY       |
 
-Características de la Tabla
-Nombre	Categorías
-Módulo	Categorías
-Descripción	 Tabla con las distintas categorías
-Características de los Datos
-Campo	            Tipo	  Long	Significado
-Código_Categoria	INT	 	        identificador de categorías
-Descripción	      VARCHAR	100 	Descripción de la categoría
-Restricciones 
-Campo	            Tipo restricción
-Código_Categoria	PRIMARY KEY
-Claves Foráneas
-Campo	Entidad asociada 
-  -          	-
+#### Claves Foráneas
+| Campo | Entidad asociada |
+|-------|------------------|
+| CUIT  | Proveedor         |
 
-Características de la Tabla
-Nombre	Detalle_Categorías
-Módulo	Detalle_Categorías
-Descripción	Tabla con los detalles de las categorías que posee cada producto 
-Características de los Datos
-Campo	            Tipo	Long	Significado
-Código_Producto	  INT 	 	    Código del producto 
-Código_Categoría	INT	 	      Código de la categoría
-Restricciones 
-Campo	            Tipo restricción
-Código_Producto	  PRIMARY KEY
-Código_Categoria	PRIMARY KEY
-Claves Foráneas
-Campo	            Entidad asociada 
-Código_Producto	  Producto
-Código_Categoria  Categoría
+---
 
-Características de la Tabla
-Nombre	Mensajes
-Módulo	Mensajes
-Descripción	Tabla para almacenar consultas de los clientes
-Características de los Datos
-Campo	          Tipo	    Long	Significado
-Código_Mensaje	INT	 	          Código del mensaje
-Asunto	        VARCHAR	  100 	Asunto del mensaje
-Descripción	    VARCHAR	  300 	Descripción del mensaje
-Fecha	          DATE		        Fecha del mensaje
-DNI	            INT	 	          DNI del usuario que consulta
-Restricciones 
-Campo	          Tipo restricción
-Código_Mensaje	PRIMARY KEY
-Claves Foráneas
-Campo	          Entidad asociada 
-DNI	            Usuario
+### Tabla: Detalle_Producto
+| Campo           | Tipo     | Long | Significado                                         |
+|-----------------|----------|------|-----------------------------------------------------|
+| Número_Factura  | INT      |      | Número de la factura                                |
+| Código_Producto | INT      |      | Código del producto                                 |
+| Cantidad        | INT      |      | Cantidad del producto                               |
+| Precio          | FLOAT    |      | Precio del producto en el momento que se realizó la venta |
 
-Características de la Tabla
-Nombre	País
-Módulo	País
-Descripción	Tabla con el país de residencia de clientes
-Características de los Datos
-Campo	        Tipo	    Long	Significado
-Código_Pais	  INT	 	          Identificador único del país 
-Nombre	      VARCHAR 	100 	Nombre del país 
-Restricciones 
-Campo	      Tipo restricción
-Codigo_Pais	PRIMARY KEY
-Claves Foráneas
-Campo	      Entidad asociada 
-  -	              - 
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Número_Factura  | PRIMARY KEY       |
+| Código_Producto | PRIMARY KEY       |
 
-Características de la Tabla
-Nombre	Provincia 
-Módulo	Provincia 
-Descripción	Tabla que almacena la provincia de residencia de los clientes
-Características de los Datos
-Campo	              Tipo	    Long	Significado
-Codigo_Provincia	  INT	 	          Identificador único de la provincia 
-Nombre	            VARCHAR	  100	  Nombre de la provincia
-Codigo_Pais	        INT		          Identificador del país al que pertenece
-Restricciones 
-Campo	            Tipo restricción
-Codigo_Provincia	PRIMARY KEY
-Claves Foráneas
-Campo	            Entidad asociada 
-Codigo_Pais	      Pais
+#### Claves Foráneas
+| Campo           | Entidad asociada |
+|-----------------|------------------|
+| Número_Factura  | Factura           |
+| Código_Producto | Producto          |
 
-Características de la Tabla
-Nombre	Localidad
-Módulo	Localidad
-Descripción	Tabla para almacenar la localidad de los clientes
-Características de los Datos
-Campo	            Tipo	  Long	Significado
-Código_Localidad	INT	 	        Código de la localidad
-Nombre	          VARCHAR	100 	Nombre de la localidad
-Código_Provincia	INT	 	        Código de la provincia a la que pertenece la localidad
-Restricciones 
-Campo	            Tipo restricción
-Código_Localidad	PRIMARY KEY
-Claves Foráneas
-Campo	            Entidad asociada 
-Código_Provincia	Provincia 
+---
 
-Características de la Tabla
-Nombre	Dirección
-Módulo	Direcciones
-Descripción	Tabla con las direcciones de clientes
-Características de los Datos
-Campo	             Tipo	    Long	Significado
-Codigo_Direccion	 INT	 	        Indica la dirección del usuario 
-Calle	             VARCHAR	100	  Indica el nombre de la calle
-Altura	           INT		        La altura de la calle
-Dpto	             VARCHAR	15	  El departamento, si lo tuviese
-Codigo_Localidad	 INT	 	        Indica la localidad a la que pertenece la dirección.
-Restricciones 
-Campo	            Tipo restricción
-Codigo_Direccion	PRIMARY KEY
-Dpto	            OPTIONAL
-Claves Foráneas
-Campo	             Entidad asociada 
-Codigo_Localidad	 Localidad
+### Tabla: Proveedor
+| Campo         | Tipo     | Long | Significado           |
+|---------------|----------|------|-----------------------|
+| CUIT          | BIGINT   |      | CUIT del proveedor     |
+| Correo        | VARCHAR  | 100  | Correo del proveedor   |
+| Teléfono      | BIGINT   |      | Teléfono del proveedor |
+| Nombre        | VARCHAR  | 100  | Nombre del proveedor   |
 
-	
-Características de la Tabla
-Nombre	Detalle_Domicilio
-Módulo	Detalle_Domicilio
-Descripción	Tabla que almacena a que usuario pertenece cada domicilio
-Características de los Datos
-Campo	            Tipo	Long	Significado
-DNI	              INT 	 	    Indica el DNI del usuario
-Codigo_Direccion	INT	 	      Indica la dirección del usuario
-Restricciones 
-Campo	            Tipo restricción
-DNI	              PRIMARY KEY
-Codigo_Direccion	PRIMARY KEY
-Claves Foráneas
-Campo	            Entidad asociada 
-DNI	              Usuario
-Codigo_Direccion	Dirección
+#### Restricciones
+| Campo     | Tipo restricción |
+|-----------|------------------|
+| CUIT      | PRIMARY KEY       |
+| Correo    | UNIQUE            |
+| Teléfono  | UNIQUE, OPTIONAL  |
 
-Características de la Tabla
-Nombre	Medios_de_Pago
-Módulo	Medios_de_Pago
-Descripción	Tabla con los medios de pago utilizados
-Características de los Datos
-Campo	      Tipo	  Long	Significado
-Codigo_MP	  INT	 	        Identificador del medio de pago 
-Nombre	    VARCHAR	100	  Nombre del medio de pago
-Restricciones 
-Campo	      Tipo restricción
-Codigo_MP	  PRIMARY KEY
-Claves Foráneas
-Campo      	Entidad asociada 
-  -	                -
+---
 
-Características de la Tabla
-Nombre	Detalle_Pago
-Módulo	Detalle_Pago
-Descripción	Tabla con los detalles del pago de cada venta
-Características de los Datos
-Campo	          Tipo	Long	Significado
-Codigo_MP	      INT 	 	    Indica el medio de pago
-Número_Factura	INT	 	      Número de la factura 
-Monto_Pagado	  FLOAT	 	    Monto a pagar
-Nro_Cuotas	    INT	 	      Número de cuotas
-Restricciones 
-Campo	          Tipo restricción
-Codigo_MP	      PRIMARY KEY
-Numero_Factura	PRIMARY KEY
-Claves Foráneas
-Campo	          Entidad asociada 
-Codigo_MP	      Medios_de_Pago
-Número_Factura	Detalle_Factura
+### Tabla: Usuario
+| Campo           | Tipo     | Long | Significado                       |
+|-----------------|----------|------|-----------------------------------|
+| DNI             | INT      |      | DNI del usuario                   |
+| Correo          | VARCHAR  | 100  | Correo del usuario                |
+| Nombre          | VARCHAR  | 100  | Nombre del usuario                |
+| Apellido        | VARCHAR  | 100  | Apellido del usuario              |
+| Fecha Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
+| Código_Perfil   | INT      |      | Código identificador del perfil    |
+
+#### Restricciones
+| Campo  | Tipo restricción |
+|--------|------------------|
+| DNI    | PRIMARY KEY       |
+| Correo | UNIQUE            |
+
+#### Claves Foráneas
+| Campo          | Entidad asociada |
+|----------------|------------------|
+| Código_Perfil  | Tipo_Perfil       |
+
+---
+
+### Tabla: Tipo_Perfil
+| Campo         | Tipo     | Long | Significado                 |
+|---------------|----------|------|-----------------------------|
+| Código_Perfil | INT      |      | Identificador de perfil      |
+| Descripción   | VARCHAR  | 100  | Descripción del perfil       |
+
+#### Restricciones
+| Campo         | Tipo restricción |
+|---------------|------------------|
+| Código_Perfil | PRIMARY KEY       |
+
+---
+
+### Tabla: Categorías
+| Campo           | Tipo     | Long | Significado                   |
+|-----------------|----------|------|-------------------------------|
+| Código_Categoria| INT      |      | Identificador de categorías    |
+| Descripción     | VARCHAR  | 100  | Descripción de la categoría    |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Código_Categoria| PRIMARY KEY       |
+
+---
+
+### Tabla: Detalle_Categorías
+| Campo           | Tipo     | Long | Significado                     |
+|-----------------|----------|------|---------------------------------|
+| Código_Producto | INT      |      | Código del producto             |
+| Código_Categoría| INT      |      | Código de la categoría          |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Código_Producto | PRIMARY KEY       |
+| Código_Categoría| PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo           | Entidad asociada |
+|-----------------|------------------|
+| Código_Producto | Producto          |
+| Código_Categoría| Categoría         |
+
+---
+
+### Tabla: Mensajes
+| Campo           | Tipo     | Long | Significado                    |
+|-----------------|----------|------|--------------------------------|
+| Código_Mensaje  | INT      |      | Código del mensaje             |
+| Asunto          | VARCHAR  | 100  | Asunto del mensaje             |
+| Descripción     | VARCHAR  | 300  | Descripción del mensaje        |
+| Fecha           | DATE     |      | Fecha del mensaje              |
+| DNI             | INT      |      | DNI del usuario que consulta   |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Código_Mensaje  | PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo | Entidad asociada |
+|-------|------------------|
+| DNI   | Usuario           |
+
+---
+
+### Tabla: País
+| Campo        | Tipo     | Long | Significado               |
+|--------------|----------|------|---------------------------|
+| Código_Pais  | INT      |      | Identificador único del país |
+| Nombre       | VARCHAR  | 100  | Nombre del país            |
+
+#### Restricciones
+| Campo        | Tipo restricción |
+|--------------|------------------|
+| Código_Pais  | PRIMARY KEY       |
+
+---
+
+### Tabla: Provincia
+| Campo           | Tipo     | Long | Significado                        |
+|-----------------|----------|------|------------------------------------|
+| Código_Provincia| INT      |      | Identificador único de la provincia|
+| Nombre          | VARCHAR  | 100  | Nombre de la provincia             |
+| Código_Pais     | INT      |      | Identificador del país al que pertenece|
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| Código_Provincia| PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo        | Entidad asociada |
+|--------------|------------------|
+| Código_Pais  | País             |
+
+---
+
+### Tabla: Localidad
+| Campo            | Tipo     | Long | Significado                      |
+|------------------|----------|------|----------------------------------|
+| Código_Localidad | INT      |      | Código de la localidad           |
+| Nombre           | VARCHAR  | 100  | Nombre de la localidad           |
+| Código_Provincia | INT      |      | Código de la provincia a la que pertenece la localidad |
+
+#### Restricciones
+| Campo            | Tipo restricción |
+|------------------|------------------|
+| Código_Localidad | PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo            | Entidad asociada |
+|------------------|------------------|
+| Código_Provincia | Provincia         |
+
+---
+
+### Tabla: Dirección
+| Campo            | Tipo     | Long | Significado                       |
+|------------------|----------|------|-----------------------------------|
+| Código_Direccion | INT      |      | Código de la dirección            |
+| Calle            | VARCHAR  | 100  | Nombre de la calle                |
+| Altura           | INT      |      | Altura de la calle                |
+| Dpto             | VARCHAR  | 15   | Departamento, si lo hubiese       |
+| Código_Localidad | INT      |      | Código de la localidad a la que pertenece la dirección |
+
+#### Restricciones
+| Campo            | Tipo restricción |
+|------------------|------------------|
+| Código_Direccion | PRIMARY KEY       |
+| Dpto             | OPTIONAL          |
+
+#### Claves Foráneas
+| Campo            | Entidad asociada |
+|------------------|------------------|
+| Código_Localidad | Localidad         |
+
+---
+
+### Tabla: Detalle_Domicilio
+| Campo           | Tipo     | Long | Significado                        |
+|-----------------|----------|------|------------------------------------|
+| DNI             | INT      |      | DNI del usuario                    |
+| Código_Direccion| INT      |      | Código de la dirección             |
+
+#### Restricciones
+| Campo           | Tipo restricción |
+|-----------------|------------------|
+| DNI             | PRIMARY KEY       |
+| Código_Direccion| PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo           | Entidad asociada |
+|-----------------|------------------|
+| DNI             | Usuario           |
+| Código_Direccion| Dirección         |
+
+---
+
+### Tabla: Medios_de_Pago
+| Campo       | Tipo     | Long | Significado                    |
+|-------------|----------|------|--------------------------------|
+| Código_MP   | INT      |      | Identificador del medio de pago |
+| Nombre      | VARCHAR  | 100  | Nombre del medio de pago        |
+
+#### Restricciones
+| Campo     | Tipo restricción |
+|-----------|------------------|
+| Código_MP | PRIMARY KEY       |
+
+---
+
+### Tabla: Detalle_Pago
+| Campo           | Tipo     | Long | Significado                         |
+|-----------------|----------|------|-------------------------------------|
+| Código_MP       | INT      |      | Indica el medio de pago             |
+| Número_Factura  | INT      |      | Número de la factura                |
+| Monto_Pagado    | FLOAT    |      | Monto pagado                        |
+| Nro_Cuotas      | INT      |      | Número de cuotas                    |
+
+#### Restricciones
+| Campo          | Tipo restricción |
+|----------------|------------------|
+| Código_MP      | PRIMARY KEY       |
+| Número_Factura | PRIMARY KEY       |
+
+#### Claves Foráneas
+| Campo          | Entidad asociada |
+|----------------|------------------|
+| Código_MP      | Medios_de_Pago    |
+| Número_Factura | Factura           |
+
 
 ### Modelo Fisico
 
