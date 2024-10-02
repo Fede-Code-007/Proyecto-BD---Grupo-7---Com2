@@ -2,17 +2,17 @@
 
 **Alumnos:** 
 
-        - Diaz, Isaac
-        - Pérez, Bruno Ezequiel
-	- Pérez, Santiago Ezequiel 
-	- Pérez Ruiz, Federico
+- Diaz, Isaac
+- Pérez, Bruno Ezequiel
+- Pérez, Santiago Ezequiel 
+- Pérez Ruiz, Federico
  
 **Profesores:**
 
-        - Villegas, Darío
-	- Cuzziol, Juan José
-	- Vallejos, Walter
-        - Badaracco, Numa 
+- Villegas, Darío
+- Cuzziol, Juan José
+- Vallejos, Walter
+- Badaracco, Numa 
 	
 **Institución Educativa:** Universidad Nacional del Nordeste – Facultad de Ciencias Exactas y Naturales y Agrimensura 
 
@@ -24,22 +24,35 @@
 
 
 ## INDICE
-Capitulo I: INTRODUCCIÓN	39
-        Tema 43
-        Planteamiento del Problema 47
-        Objetivo del Trabajo	51
-        Objetivo Generales	55
-        Objetivos Específicos	59
+Capitulo I: INTRODUCCIÓN	
+
+
+	Tema 43
+
+	Planteamiento del Problema 47
+
+	Objetivo del Trabajo	51
+
+	Objetivo Generales	55
+
+	Objetivos Específicos	59
+
 Capítulo II: MARCO CONCEPTUAL	67
+
 Capítulo III: METODOLOGÍA SEGUIDA	69
+
         Descripción de la elaboración del trabajo	71
         Herramientas	73
+	
 Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS	75
+
         Modelo Relacional	77
         Diccionario de Datos	80
 	Modelo Fisico		360
  	Lote de datos		521
+  
 Capítulo V: CONCLUSIONES	674
+
 Capítulo VI: BIBLIOGRAFÍA	676
 
 
@@ -83,7 +96,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ### Modelo Relacional 
 
-https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png
+![ModeloRelacionalIMG](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png)
 	
 ### Diccionario de Datos
 
