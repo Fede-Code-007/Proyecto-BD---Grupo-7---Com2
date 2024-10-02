@@ -24,7 +24,6 @@
 <div style="page-break-after: always;"></div>
 
 
-<<<<<<< HEAD
 ## ÍNDICE
 
 ### Capítulo I: INTRODUCCIÓN  
@@ -53,9 +52,6 @@
 ### Capítulo VI: BIBLIOGRAFÍA  
 - .............................................................. 676  
 
-=======
-## INDICE
->>>>>>> fad70830a499876d9bffe8bf4fe84a7cf942b197
 
 [Capítulo I: Introducción](#capítulo-i-introducción)
     - [Tema](#tema)
