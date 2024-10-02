@@ -265,8 +265,8 @@ https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%2
 
 ---
 
-### Características de la Tabla: Categorías
-- **Nombre**: Categorías
+### Características de la Tabla: Categoria
+- **Nombre**: Categoria
 - **Módulo**: Categorías
 - **Descripción**: Tabla con las distintas categorías.
 
@@ -283,8 +283,8 @@ https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%2
 
 ---
 
-### Características de la Tabla: Detalle_Categorías
-- **Nombre**: Detalle_Categorías
+### Características de la Tabla: Detalle_Categorias
+- **Nombre**: Detalle_Categorias
 - **Módulo**: Detalle_Categorías
 - **Descripción**: Tabla con los detalles de las categorías que posee cada producto.
 
