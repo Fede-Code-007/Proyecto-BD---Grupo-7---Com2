@@ -1,4 +1,4 @@
-## Proyecto-BD---Grupo-7---Com2 Primera Entrega.
+## NutriFood: Base de Datos para un Ecommerce
 
 **Alumnos:** 
 
