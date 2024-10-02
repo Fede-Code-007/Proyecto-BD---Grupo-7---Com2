@@ -27,19 +27,26 @@
 ## INDICE
 
 [Capítulo I: Introducción](#capítulo-i-introducción)
-    - [Tema](#tema)
-    - [Planteamiento del Problema](#planteamiento-del-problema)
-    - [Objetivos del Trabajo](#objetivos-del-trabajo)
-    - [Objetivos Generales](#objetivos-generales)
-    - [Objetivos Específicos](#objetivos-específicos)
+
+    - Tema
+    - Planteamiento del Problema
+    - Objetivos del Trabajo
+    - Objetivos Generales
+    - Objetivos Específicos
+    
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
+
 [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
-[Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv-desarrollo-del-tema-presentación-de-resultados)
-    - [Modelo Relacional](#modelo-relacional)
-    - [Diccionario de Datos](#diccionario-de-datos)
-    - [Modelo Físico](#modelo-físico)
-    - [Lote de datos](#lote-de-datos)
+
+[Capítulo IV: Desarrollo del Tema / Presentación de Resultados](#capítulo-iv:-desarrollo-del-tema-/-presentación-de-resultados)
+
+    - Modelo Relacional
+    - Diccionario de Datos
+    - Modelo Físico
+    - Lote de datos
+    
 [Capítulo V: Conclusiones](#capítulo-v-conclusiones)
+
 [Capítulo VI: Bibliografía](#capítulo-vi-bibliografía)
 
 ## Capítulo I: INTRODUCCIÓN 
