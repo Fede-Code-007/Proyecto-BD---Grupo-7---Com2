@@ -24,10 +24,10 @@
 
 
 ## INDICE
-Capitulo I: INTRODUCCIÓN	
+[Capitulo I: INTRODUCCIÓN](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-i-introducci%C3%B3n)	
 
 
-	Tema 43
+	Tema 
 
 	Planteamiento del Problema 47
 
@@ -37,23 +37,23 @@ Capitulo I: INTRODUCCIÓN
 
 	Objetivos Específicos	59
 
-Capítulo II: MARCO CONCEPTUAL	67
+[Capítulo II: MARCO CONCEPTUAL](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-ii-marco-conceptual)
 
-Capítulo III: METODOLOGÍA SEGUIDA	69
+[Capítulo III: METODOLOGÍA SEGUIDA](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-iii-metodolog%C3%ADa-seguida)
 
         Descripción de la elaboración del trabajo	71
         Herramientas	73
 	
-Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS	75
+[Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS]	(https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-iv-desarrollo-del-tema--presentaci%C3%B3n-de-resultados)
 
         Modelo Relacional	77
         Diccionario de Datos	80
 	Modelo Fisico		360
  	Lote de datos		521
   
-Capítulo V: CONCLUSIONES	674
+[Capítulo V: CONCLUSIONES](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-v-conclusiones)
 
-Capítulo VI: BIBLIOGRAFÍA	676
+[Capítulo VI: BIBLIOGRAFÍA](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/edit/main/Proyecto-BD_Grupo-7_Com2_PrimeraEntrega.md#cap%C3%ADtulo-vi-bibliograf%C3%ADa)
 
 
 ## Capítulo I: INTRODUCCIÓN 
