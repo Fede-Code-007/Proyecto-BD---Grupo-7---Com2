@@ -94,7 +94,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo   | Long | Significado                               |
 |-----------------|--------|------|-------------------------------------------|
-| Número Factura  | INT    |      | Indica el número de la factura             |
+| Numero_Factura  | INT    |      | Indica el número de la factura             |
 | Fecha           | DATE   |      | Indica la fecha en que se realizó la venta |
 | Total           | FLOAT  |      | Indica el monto total de la factura        |
 | DNI             | INT    |      | DNI de un usuario                         |
@@ -102,7 +102,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Número_Factura  | PRIMARY KEY       |
+| Numero_Factura  | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo | Entidad asociada |
@@ -119,10 +119,10 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                 |
 |-----------------|----------|------|-----------------------------|
-| Código_Producto | INT      |      | Código del producto          |
-| Descripción     | VARCHAR  | 100  | Descripción del producto     |
+| Codigo_Producto | INT      |      | Código del producto          |
+| Descripcion     | VARCHAR  | 100  | Descripción del producto     |
 | Stock           | INT      |      | Stock del producto           |
-| Stock Min       | INT      |      | Stock mínimo del producto    |
+| Stock_Min       | INT      |      | Stock mínimo del producto    |
 | Costo           | FLOAT    |      | Costo del producto           |
 | Precio          | FLOAT    |      | Precio del producto          |
 | CUIT            | BIGINT   |      | CUIT del proveedor           |
@@ -130,7 +130,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Código_Producto | PRIMARY KEY       |
+| Codigo_Producto | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo | Entidad asociada |
@@ -147,22 +147,22 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                                         |
 |-----------------|----------|------|-----------------------------------------------------|
-| Número_Factura  | INT      |      | Número de la factura                                |
-| Código_Producto | INT      |      | Código del producto                                 |
+| Numero_Factura  | INT      |      | Numero de la factura                                |
+| Codigo_Producto | INT      |      | Código del producto                                 |
 | Cantidad        | INT      |      | Cantidad del producto                               |
 | Precio          | FLOAT    |      | Precio del producto en el momento que se realizó la venta |
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Número_Factura  | PRIMARY KEY       |
-| Código_Producto | PRIMARY KEY       |
+| Numero_Factura  | PRIMARY KEY       |
+| Codigo_Producto | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo           | Entidad asociada |
 |-----------------|------------------|
-| Número_Factura  | Factura           |
-| Código_Producto | Producto          |
+| Numero_Factura  | Factura           |
+| Codigo_Producto | Producto          |
 
 ---
 
@@ -176,7 +176,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 |---------------|----------|------|-----------------------|
 | CUIT          | BIGINT   |      | CUIT del proveedor     |
 | Correo        | VARCHAR  | 100  | Correo del proveedor   |
-| Teléfono      | BIGINT   |      | Teléfono del proveedor |
+| Telefono      | BIGINT   |      | Teléfono del proveedor |
 | Nombre        | VARCHAR  | 100  | Nombre del proveedor   |
 
 #### Restricciones
@@ -184,7 +184,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 |-----------|------------------|
 | CUIT      | PRIMARY KEY       |
 | Correo    | UNIQUE            |
-| Teléfono  | UNIQUE, OPTIONAL  |
+| Telefono  | UNIQUE, OPTIONAL  |
 
 ---
 
@@ -200,8 +200,8 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 | Correo          | VARCHAR  | 100  | Correo del usuario                |
 | Nombre          | VARCHAR  | 100  | Nombre del usuario                |
 | Apellido        | VARCHAR  | 100  | Apellido del usuario              |
-| Fecha Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
-| Código_Perfil   | INT      |      | Código identificador del perfil    |
+| Fecha_Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
+| Codigo_Perfil   | INT      |      | Código identificador del perfil    |
 
 #### Restricciones
 | Campo  | Tipo restricción |
@@ -212,7 +212,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 #### Claves Foráneas
 | Campo          | Entidad asociada |
 |----------------|------------------|
-| Código_Perfil  | Tipo_Perfil       |
+| Codigo_Perfil  | Tipo_Perfil       |
 
 ---
 
@@ -224,13 +224,13 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo         | Tipo     | Long | Significado                 |
 |---------------|----------|------|-----------------------------|
-| Código_Perfil | INT      |      | Identificador de perfil      |
-| Descripción   | VARCHAR  | 100  | Descripción del perfil       |
+| Codigo_Perfil | INT      |      | Identificador de perfil      |
+| Descripcion   | VARCHAR  | 100  | Descripción del perfil       |
 
 #### Restricciones
 | Campo         | Tipo restricción |
 |---------------|------------------|
-| Código_Perfil | PRIMARY KEY       |
+| Codigo_Perfil | PRIMARY KEY       |
 
 ---
 
@@ -242,13 +242,13 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                   |
 |-----------------|----------|------|-------------------------------|
-| Código_Categoria| INT      |      | Identificador de categorías    |
-| Descripción     | VARCHAR  | 100  | Descripción de la categoría    |
+| Codigo_Categoria| INT      |      | Identificador de categorías    |
+| Descripcion     | VARCHAR  | 100  | Descripción de la categoría    |
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Código_Categoria| PRIMARY KEY       |
+| Codigo_Categoria| PRIMARY KEY       |
 
 ---
 
@@ -260,20 +260,20 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                     |
 |-----------------|----------|------|---------------------------------|
-| Código_Producto | INT      |      | Código del producto             |
-| Código_Categoría| INT      |      | Código de la categoría          |
+| Codigo_Producto | INT      |      | Código del producto             |
+| Codigo_Categoria| INT      |      | Código de la categoría          |
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Código_Producto | PRIMARY KEY       |
-| Código_Categoría| PRIMARY KEY       |
+| Codigo_Producto | PRIMARY KEY       |
+| Codigo_Categoria| PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo           | Entidad asociada |
 |-----------------|------------------|
-| Código_Producto | Producto          |
-| Código_Categoría| Categoría         |
+| Codigo_Producto | Producto          |
+| Codigo_Categoría| Categoria         |
 
 ---
 
@@ -285,16 +285,16 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                    |
 |-----------------|----------|------|--------------------------------|
-| Código_Mensaje  | INT      |      | Código del mensaje             |
+| Codigo_Mensaje  | INT      |      | Código del mensaje             |
 | Asunto          | VARCHAR  | 100  | Asunto del mensaje             |
-| Descripción     | VARCHAR  | 300  | Descripción del mensaje        |
+| Descripcion     | VARCHAR  | 300  | Descripción del mensaje        |
 | Fecha           | DATE     |      | Fecha del mensaje              |
 | DNI             | INT      |      | DNI del usuario que consulta   |
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Código_Mensaje  | PRIMARY KEY       |
+| Codigo_Mensaje  | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo | Entidad asociada |
@@ -311,13 +311,13 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo        | Tipo     | Long | Significado               |
 |--------------|----------|------|---------------------------|
-| Código_Pais  | INT      |      | Identificador único del país |
+| Codigo_Pais  | INT      |      | Identificador único del país |
 | Nombre       | VARCHAR  | 100  | Nombre del país            |
 
 #### Restricciones
 | Campo        | Tipo restricción |
 |--------------|------------------|
-| Código_Pais  | PRIMARY KEY       |
+| Codigo_Pais  | PRIMARY KEY       |
 
 ---
 
@@ -329,19 +329,19 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                        |
 |-----------------|----------|------|------------------------------------|
-| Código_Provincia| INT      |      | Identificador único de la provincia|
+| Codigo_Provincia| INT      |      | Identificador único de la provincia|
 | Nombre          | VARCHAR  | 100  | Nombre de la provincia             |
-| Código_Pais     | INT      |      | Identificador del país al que pertenece|
+| Codigo_Pais     | INT      |      | Identificador del país al que pertenece|
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Código_Provincia| PRIMARY KEY       |
+| Codigo_Provincia| PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo        | Entidad asociada |
 |--------------|------------------|
-| Código_Pais  | País             |
+| Codigo_Pais  | País             |
 
 ---
 
@@ -353,19 +353,19 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo            | Tipo     | Long | Significado                      |
 |------------------|----------|------|----------------------------------|
-| Código_Localidad | INT      |      | Código de la localidad           |
+| Codigo_Localidad | INT      |      | Código de la localidad           |
 | Nombre           | VARCHAR  | 100  | Nombre de la localidad           |
-| Código_Provincia | INT      |      | Código de la provincia a la que pertenece la localidad |
+| Codigo_Provincia | INT      |      | Código de la provincia a la que pertenece la localidad |
 
 #### Restricciones
 | Campo            | Tipo restricción |
 |------------------|------------------|
-| Código_Localidad | PRIMARY KEY       |
+| Codigo_Localidad | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo            | Entidad asociada |
 |------------------|------------------|
-| Código_Provincia | Provincia         |
+| Codigo_Provincia | Provincia         |
 
 ---
 
@@ -377,22 +377,22 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo            | Tipo     | Long | Significado                       |
 |------------------|----------|------|-----------------------------------|
-| Código_Direccion | INT      |      | Código de la dirección            |
+| Codigo_Direccion | INT      |      | Código de la dirección            |
 | Calle            | VARCHAR  | 100  | Nombre de la calle                |
 | Altura           | INT      |      | Altura de la calle                |
 | Dpto             | VARCHAR  | 15   | Departamento, si lo hubiese       |
-| Código_Localidad | INT      |      | Código de la localidad a la que pertenece la dirección |
+| Codigo_Localidad | INT      |      | Código de la localidad a la que pertenece la dirección |
 
 #### Restricciones
 | Campo            | Tipo restricción |
 |------------------|------------------|
-| Código_Direccion | PRIMARY KEY       |
+| Codigo_Direccion | PRIMARY KEY       |
 | Dpto             | OPTIONAL          |
 
 #### Claves Foráneas
 | Campo            | Entidad asociada |
 |------------------|------------------|
-| Código_Localidad | Localidad         |
+| Codigo_Localidad | Localidad         |
 
 ---
 
@@ -405,19 +405,19 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 | Campo           | Tipo     | Long | Significado                        |
 |-----------------|----------|------|------------------------------------|
 | DNI             | INT      |      | DNI del usuario                    |
-| Código_Direccion| INT      |      | Código de la dirección             |
+| Codigo_Direccion| INT      |      | Codigo de la dirección             |
 
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
 | DNI             | PRIMARY KEY       |
-| Código_Direccion| PRIMARY KEY       |
+| Codigo_Direccion| PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo           | Entidad asociada |
 |-----------------|------------------|
 | DNI             | Usuario           |
-| Código_Direccion| Dirección         |
+| Codigo_Direccion| Direccion         |
 
 ---
 
@@ -429,13 +429,13 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo       | Tipo     | Long | Significado                    |
 |-------------|----------|------|--------------------------------|
-| Código_MP   | INT      |      | Identificador del medio de pago |
+| Codigo_MP   | INT      |      | Identificador del medio de pago |
 | Nombre      | VARCHAR  | 100  | Nombre del medio de pago        |
 
 #### Restricciones
 | Campo     | Tipo restricción |
 |-----------|------------------|
-| Código_MP | PRIMARY KEY       |
+| Codigo_MP | PRIMARY KEY       |
 
 ---
 
@@ -447,24 +447,24 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 ### Características de los Datos
 | Campo           | Tipo     | Long | Significado                         |
 |-----------------|----------|------|-------------------------------------|
-| Código_MP       | INT      |      | Indica el medio de pago             |
-| Número_Factura  | INT      |      | Número de la factura                |
+| Codigo_MP       | INT      |      | Indica el medio de pago             |
+| Numero_Factura  | INT      |      | Número de la factura                |
 | Monto_Pagado    | FLOAT    |      | Monto pagado                        |
 | Nro_Cuotas      | INT      |      | Número de cuotas                    |
 
 #### Restricciones
 | Campo          | Tipo restricción |
 |----------------|------------------|
-| Código_MP      | PRIMARY KEY       |
-| Número_Factura | PRIMARY KEY       |
+| Codigo_MP      | PRIMARY KEY       |
+| Numero_Factura | PRIMARY KEY       |
 
 #### Claves Foráneas
 | Campo          | Entidad asociada |
 |----------------|------------------|
-| Código_MP      | Medios_de_Pago    |
-| Número_Factura | Factura           |
+| Codigo_MP      | Medios_de_Pago    |
+| Numero_Factura | Factura           |
 
-### Modelo Fisico
+### Modelo Físico
 
 CREATE DATABASE proyecto_BDD;
 
