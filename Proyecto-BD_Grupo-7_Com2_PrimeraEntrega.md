@@ -615,7 +615,10 @@ CREATE TABLE Detalle_Domicilio (
     CONSTRAINT FK_detalle_domicilios_direccion FOREIGN KEY (Codigo_Direccion) REFERENCES Direccion(Codigo_Direccion)
 );
 
+```markdown
+### Lote de datos:
 
+```sql
 USE proyecto_BDD;
 
 -- LOTE DE DATOS
@@ -763,6 +766,7 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
     (12345678, 3), 
     (45678901, 4);
 
+```markdown
 
 ## Capítulo V: CONCLUSIONES 
 
