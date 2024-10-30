@@ -789,3 +789,6 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 ## Capítulo V: CONCLUSIONES 
 
 ## Capítulo VI: BIBLIOGRAFÍA 
+Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
+Grant Fritchey. SQL Server 2022 Query - Performance Tuning, 6ta ed. Apress Media, EEUU, 2022.
+
