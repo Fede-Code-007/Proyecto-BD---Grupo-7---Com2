@@ -80,6 +80,22 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ## Capítulo II: MARCO CONCEPTUAL
 
+### Optimización de consultas a través de índices
+Para optimizar el rendimiento de las consultas en bases de datos, los índices son fundamentales. Sin un índice, buscar un valor en una columna implica recorrer la tabla completa, lo cual es ineficiente en tablas con millones de filas. Los índices funcionan como punteros que agilizan la localización de filas que cumplen condiciones de la cláusula WHERE, mejorando así el tiempo de respuesta.
+
+Es importante ser estratégico al crear índices, ya que un exceso de ellos puede aumentar el uso de almacenamiento y ralentizar las operaciones de inserción, actualización y borrado, al requerir la actualización de cada índice afectado. Por tanto, el objetivo es encontrar un equilibrio entre el número de índices y la eficiencia de la consulta.
+Algunos tipos de índices comunes son:
+
+- Índices de clave primaria (PRIMARY KEY): Identifican de forma única cada fila y no permiten valores nulos.
+- Índices de clave ajena (FOREIGN KEY): Referencian claves primarias en otras tablas.
+- Índices únicos (UNIQUE): Garantizan la unicidad de los valores de una columna y pueden permitir valores nulos.
+- Índices con valores repetidos (REGULAR INDEX): Ideales para búsquedas en columnas con datos duplicados.
+- Índices de múltiples columnas (COMPOSITIVE INDEX): Consideran más de una columna para optimizar la búsqueda.
+- Índices de texto completo (FULL TEXT INDEX): Usados para búsquedas en campos de texto.
+- Índices funcionales (FUNCTIONAL INDEX): A partir de MySQL 8.0.13, permiten indexar el resultado de expresiones o funciones.
+
+En resumen, los índices deben ser utilizados de manera selectiva para mejorar el rendimiento sin afectar negativamente otras operaciones en la base de datos.
+
 ### Vistas y vistas indexadas
 Una vista es una tabla virtual creada mediante una consulta que define sus filas y columnas. A diferencia de las tablas físicas, una vista no almacena datos, sino que genera dinámicamente los resultados de la consulta cada vez que se accede a ella. Puede utilizar datos de una o varias tablas e incluso de otras vistas en la misma o distintas bases de datos, permitiendo también consultas distribuidas para obtener datos de fuentes heterogéneas. Esto facilita la combinación de información, por ejemplo, consolidando datos similares de diferentes regiones.
 
@@ -96,22 +112,6 @@ Contras de las vistas indexadas:
 1.	Introducen un importante sobrecargo en la base de datos, ya que cualquier cambio en las tablas base debe reflejarse en la vista indexada, lo cual consume recursos.
 2.	Requieren mantenimiento adicional de los índices y estadísticas asociados, incrementando el costo en términos de espacio y recursos.
 3.	Restricciones de uso: deben tener un índice único, solo permiten índices no clusterizados después de crear el índice clusterizado, y deben ser determinísticas (una sola salida posible para cada consulta).
-
-### Optimización de consultas a través de índices
-Para optimizar el rendimiento de las consultas en bases de datos, los índices son fundamentales. Sin un índice, buscar un valor en una columna implica recorrer la tabla completa, lo cual es ineficiente en tablas con millones de filas. Los índices funcionan como punteros que agilizan la localización de filas que cumplen condiciones de la cláusula WHERE, mejorando así el tiempo de respuesta.
-
-Es importante ser estratégico al crear índices, ya que un exceso de ellos puede aumentar el uso de almacenamiento y ralentizar las operaciones de inserción, actualización y borrado, al requerir la actualización de cada índice afectado. Por tanto, el objetivo es encontrar un equilibrio entre el número de índices y la eficiencia de la consulta.
-Algunos tipos de índices comunes son:
-
-- Índices de clave primaria (PRIMARY KEY): Identifican de forma única cada fila y no permiten valores nulos.
-- Índices de clave ajena (FOREIGN KEY): Referencian claves primarias en otras tablas.
-- Índices únicos (UNIQUE): Garantizan la unicidad de los valores de una columna y pueden permitir valores nulos.
-- Índices con valores repetidos (REGULAR INDEX): Ideales para búsquedas en columnas con datos duplicados.
-- Índices de múltiples columnas (COMPOSITIVE INDEX): Consideran más de una columna para optimizar la búsqueda.
-- Índices de texto completo (FULL TEXT INDEX): Usados para búsquedas en campos de texto.
-- Índices funcionales (FUNCTIONAL INDEX): A partir de MySQL 8.0.13, permiten indexar el resultado de expresiones o funciones.
-
-En resumen, los índices deben ser utilizados de manera selectiva para mejorar el rendimiento sin afectar negativamente otras operaciones en la base de datos.
 
 
 ## Capítulo III: METODOLOGÍA SEGUIDA
@@ -809,6 +809,9 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 ## Capítulo V: CONCLUSIONES 
 
 ## Capítulo VI: BIBLIOGRAFÍA 
+Unidad 10. Optimización de consultas. Apuntes de BD para DAW, DAM y ASIR. José Juan Sánchez Hernández. Curso 2023/2024.
+
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
 Grant Fritchey. SQL Server 2022 Query - Performance Tuning, 6ta ed. Apress Media, EEUU, 2022.
+
 
