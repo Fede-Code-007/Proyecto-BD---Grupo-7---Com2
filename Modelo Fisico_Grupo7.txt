@@ -31,7 +31,7 @@ CREATE TABLE Proveedor
   Nombre VARCHAR(100) NOT NULL,
   CONSTRAINT PK_proveedores PRIMARY KEY (CUIT),
   CONSTRAINT UQ_proveedores_correo UNIQUE (Correo),
-  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telofono)
+  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono)
 );
 
 CREATE TABLE Medios_de_Pago
