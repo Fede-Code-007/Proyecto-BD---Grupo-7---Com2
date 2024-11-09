@@ -84,6 +84,7 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 Para optimizar el rendimiento de las consultas en bases de datos, los índices son fundamentales. Sin un índice, buscar un valor en una columna implica recorrer la tabla completa, lo cual es ineficiente en tablas con millones de filas. Los índices funcionan como punteros que agilizan la localización de filas que cumplen condiciones de la cláusula WHERE, mejorando así el tiempo de respuesta.
 
 Es importante ser estratégico al crear índices, ya que un exceso de ellos puede aumentar el uso de almacenamiento y ralentizar las operaciones de inserción, actualización y borrado, al requerir la actualización de cada índice afectado. Por tanto, el objetivo es encontrar un equilibrio entre el número de índices y la eficiencia de la consulta.
+
 Algunos tipos de índices comunes son:
 
 - Índices de clave primaria (PRIMARY KEY): Identifican de forma única cada fila y no permiten valores nulos.
