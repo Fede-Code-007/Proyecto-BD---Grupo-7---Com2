@@ -8,7 +8,6 @@ USE proyecto_BDD;
 INSERT INTO Tipo_Perfil (Descripcion) VALUES
 ('Administrador'),
 ('Cliente'),
-('Vendedor'),
 ('Gerente');
 
 -- =======================
