@@ -51,6 +51,7 @@ CREATE TABLE Producto
   Costo FLOAT NOT NULL,
   CUIT BIGINT NOT NULL,
   Eliminado VARCHAR(2) NOT NULL,
+  Imagen VARCHAR(100),
   CONSTRAINT PK_producto PRIMARY KEY (Codigo_Producto),
   CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT)
 );
