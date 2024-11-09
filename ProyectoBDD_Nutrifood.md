@@ -35,7 +35,9 @@
     
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
 
+    - Optimización de consultas a través de índices
     - Vistas y vistas indexadas
+    - Procedimientos y funciones almacenadas
 
 [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
 
