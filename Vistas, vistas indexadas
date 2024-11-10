@@ -1,6 +1,6 @@
 Creación de una Vista para Datos de Ventas
 Aqui creamos una vista que agrupa los datos de ventas, como productos vendidos, cantidad y fecha, para facilitar el análisis de las transacciones sin 
-acceder directamente a las tablas subyacentes.
+acceder directamente a las tablas subyacentes a través de uniones o subconsultas.
 
 CREATE VIEW Vista_Ventas AS
 SELECT f.Numero_Factura, f.Fecha, u.Nombre AS Cliente, p.Descripcion AS Producto, dp.Cantidad, dp.Precio
