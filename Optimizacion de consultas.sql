@@ -188,7 +188,7 @@ Table 'Usuario'. Scan count 1, logical reads 4183, physical reads 0, page server
 
 ------------------------------------------ 6. Conclusiones ----------------------------------------------------
 /*
-En base a los resultados obtenidos podemos concluir que la creación de un índice agrupado en la columna 
+En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna 
 `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, 
 lo que sugiere que la consulta fue más eficiente y aprovechó mejor la estructura de los datos.
 Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente 
@@ -200,10 +200,9 @@ la primera prueba con el índice agrupado simple.
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms y un tiempo de ejecución de 3673 ms, 
 lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
 
-En base a lo anterior podemos concluir que:
-El uso de índices agrupados puede reducir de manera significativa la cantidad de lecturas necesarias y 
-optimizar el tiempo de respuesta de las consultas, especialmente en columnas que se utilizan frecuentemente 
-en las cláusulas `WHERE`.
+Finalmente en base a lo anterior podemos concluir que el uso de índices agrupados puede reducir de manera 
+significativa la cantidad de lecturas necesarias y optimizar el tiempo de respuesta de las consultas, 
+especialmente en columnas que se utilizan frecuentemente  en las cláusulas `WHERE`.
 Sin embargo, la elección de las columnas para un índice debe ser cuidadosa, ya que la inclusión de 
 múltiples columnas puede no siempre traducirse en mejoras adicionales sustanciales.
 
