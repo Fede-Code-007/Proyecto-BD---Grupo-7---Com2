@@ -92,14 +92,14 @@ Algunos tipos de índices comunes son:
 - Índices de clave primaria (PRIMARY KEY): Identifican de forma única cada fila y no permiten valores nulos.
 - Índices de clave ajena (FOREIGN KEY): Referencian claves primarias en otras tablas.
 - Índices únicos (UNIQUE): Garantizan la unicidad de los valores de una columna y pueden permitir valores nulos.
-- Índices con valores repetidos: Ideales para búsquedas en columnas con datos duplicados.
+- Índices con valores repetidos (INDEX): Ideales para búsquedas en columnas con datos duplicados.
 - Índices de múltiples columnas: Consideran más de una columna para optimizar la búsqueda.
 - Índices de texto completo (FULLTEXT INDEX): Usados para búsquedas en campos de texto.
 - Índices funcionales : A partir de MySQL 8.0.13, permiten indexar el resultado de expresiones o funciones.
 - Índices agrupados (CLUSTERED INDEX): Organizan físicamente las filas de la tabla en el orden del índice. Solo puede haber un índice agrupado por tabla, y es ideal para columnas que se buscan o filtran de manera secuencial, como fechas o IDs.
 - Índices no agrupados (NON-CLUSTERED INDEX): Contienen una estructura separada que apunta a las ubicaciones de los datos en la tabla. Una tabla puede tener múltiples índices no agrupados.
 - Índices filtrados: Se aplican a subconjuntos específicos de filas en una tabla, mejorando las consultas que buscan condiciones específicas.
-- Índices espaciales: Utilizados en bases de datos geoespaciales para manejar datos geográficos y realizar consultas espaciales.
+- Índices espaciales (SPATIAL INDEX): Utilizados en bases de datos geoespaciales para manejar datos geográficos y realizar consultas espaciales.
 
 En resumen, los índices deben ser utilizados de manera selectiva para mejorar el rendimiento sin afectar negativamente otras operaciones en la base de datos.
 
@@ -824,6 +824,9 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 ## Capítulo V: CONCLUSIONES 
 
 ## Capítulo VI: BIBLIOGRAFÍA 
+
+https://www.sqlshack.com/es/cual-es-la-diferencia-entre-indices-agrupados-y-no-agrupados-en-sql-server/
+
 Unidad 10. Optimización de consultas. Apuntes de BD para DAW, DAM y ASIR. José Juan Sánchez Hernández. Curso 2023/2024.
 
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
