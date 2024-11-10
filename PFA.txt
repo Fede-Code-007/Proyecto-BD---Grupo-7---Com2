@@ -1,0 +1,178 @@
+Procedimientos y funciones almacenadas
+
+Objetivos de Aprendizaje:
+
+* Comprender la diferencia entre procedimientos y funciones almacenadas.
+* Aplicar procedimientos y funciones en la implementación de operaciones CRUD.
+* Criterios de Evaluación:
+
+Correcta implementación y funcionamiento de los procedimientos y funciones.
+Documentación clara y precisa de cada paso y concepto.
+Efectividad en la manipulación de datos usando las funciones y procedimientos.
+Tareas: 
+
+- Realizar al menos tres procedimientos almacenados que permitan: Insertar, Modificar y borrar registros de alguna de las tablas del proyecto.
+- Insertar un lote de datos en las tablas mencionadas (guardar el script) con sentencias insert y otro lote invocando a los procedimientos creados. 
+- Realizar  update y delete sobre  algunos de los registros insertados  en esas tablas invocando a los procedimientos. 
+- Desarrollar al menos tres funciones almacenadas. Por ej: calcular la edad, 
+Comparar la eficiencia de las operaciones directas versus el uso de procedimientos y funciones.
+
+Para estructurar la información según las indicaciones para el desarrollo del capítulo de presentación de resultados, podemos organizar el contenido en secciones que conecten directamente con los objetivos del proyecto NutriFood, como el manejo eficiente de la base de datos y el aseguramiento de la integridad de los datos. A continuación, te comparto cómo organizar los hallazgos en el formato solicitado:
+
+---
+
+# Capítulo IV: Presentación de Resultados
+
+Este capítulo detalla los hallazgos obtenidos durante el desarrollo de la base de datos para la plataforma NutriFood, enfocados en los objetivos planteados inicialmente: optimización en la gestión de productos, usuarios y transacciones, y garantía de integridad y seguridad de la información. A continuación, se presenta la implementación de procedimientos y funciones almacenadas en SQL Server, así como las pruebas de inserción y manipulación de datos realizadas para validar la eficacia de estos componentes.
+
+## 4.1 Estructura de Procedimientos y Funciones
+
+Para facilitar la manipulación y mantenimiento de datos en la base de datos de NutriFood, se diseñaron y ejecutaron varios procedimientos y funciones almacenadas, cumpliendo los requerimientos de las operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en las principales tablas.
+
+### 4.1.1 Procedimientos Almacenados para la Gestión de Datos
+
+A continuación, se presentan los procedimientos almacenados que permiten la inserción, modificación y eliminación de registros en la tabla `Producto`, relacionando estos procesos con los objetivos de optimización y mantenimiento de la información en NutriFood.
+
+**Procedimientos Implementados:**
+
+1. **Procedimiento de Inserción**: Permite añadir un nuevo producto en la base de datos, capturando todos los detalles necesarios para su administración, como descripción, stock y precio.
+
+    ```sql
+    CREATE PROCEDURE InsertarProducto
+        @Descripcion VARCHAR(100),
+        @Stock INT,
+        @Stock_Min INT,
+        @Precio FLOAT,
+        @Costo FLOAT,
+        @CUIT BIGINT
+    AS
+    BEGIN
+        INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT)
+        VALUES (@Descripcion, @Stock, @Stock_Min, @Precio, @Costo, @CUIT);
+    END;
+    ```
+
+2. **Procedimiento de Modificación**: Permite modificar los detalles de un producto existente, asegurando la flexibilidad en la actualización de datos y manteniendo la coherencia de la información.
+
+    ```sql
+    CREATE PROCEDURE ModificarProducto
+        @Codigo_Producto INT,
+        @Descripcion VARCHAR(100),
+        @Stock INT,
+        @Stock_Min INT,
+        @Precio FLOAT,
+        @Costo FLOAT
+    AS
+    BEGIN
+        UPDATE Producto
+        SET Descripcion = @Descripcion,
+            Stock = @Stock,
+            Stock_Min = @Stock_Min,
+            Precio = @Precio,
+            Costo = @Costo
+        WHERE Codigo_Producto = @Codigo_Producto;
+    END;
+    ```
+
+3. **Procedimiento de Eliminación**: Este procedimiento se encarga de la eliminación de un producto, eliminando registros de manera segura cuando ya no son necesarios.
+
+    ```sql
+    CREATE PROCEDURE EliminarProducto
+        @Codigo_Producto INT
+    AS
+    BEGIN
+        DELETE FROM Producto
+        WHERE Codigo_Producto = @Codigo_Producto;
+    END;
+    ```
+
+### 4.1.2 Funciones Almacenadas para Cálculos y Reportes
+
+Las funciones almacenadas se implementaron para cálculos específicos, proporcionando soporte en la generación de reportes y estadísticas relevantes para la toma de decisiones en NutriFood.
+
+**Funciones Implementadas:**
+
+1. **Calcular Edad de Usuarios**: Esta función permite calcular la edad de un usuario en función de su fecha de nacimiento, facilitando la categorización y análisis demográfico.
+
+    ```sql
+    CREATE FUNCTION CalcularEdad (@FechaNacimiento DATE)
+    RETURNS INT
+    AS
+    BEGIN
+        RETURN DATEDIFF(YEAR, @FechaNacimiento, GETDATE()) -
+               CASE WHEN MONTH(@FechaNacimiento) > MONTH(GETDATE()) OR 
+                         (MONTH(@FechaNacimiento) = MONTH(GETDATE()) AND DAY(@FechaNacimiento) > DAY(GETDATE()))
+                    THEN 1 ELSE 0 END;
+    END;
+    ```
+
+2. **Total de Facturas por Usuario**: Proporciona el total de ventas acumuladas por usuario, apoyando el análisis de clientes y el rendimiento de ventas.
+
+    ```sql
+    CREATE FUNCTION TotalFacturasPorUsuario (@DNI INT)
+    RETURNS FLOAT
+    AS
+    BEGIN
+        DECLARE @Total FLOAT;
+        SELECT @Total = SUM(Total) FROM Factura WHERE DNI = @DNI;
+        RETURN ISNULL(@Total, 0);
+    END;
+    ```
+
+3. **Precio Promedio de Productos**: Calcula el precio promedio de todos los productos registrados en la base de datos, útil para el análisis de precios y comparación con proveedores.
+
+    ```sql
+    CREATE FUNCTION PrecioPromedioProductos ()
+    RETURNS FLOAT
+    AS
+    BEGIN
+        DECLARE @Promedio FLOAT;
+        SELECT @Promedio = AVG(Precio) FROM Producto;
+        RETURN ISNULL(@Promedio, 0);
+    END;
+    ```
+
+## 4.2 Pruebas de Inserción y Manipulación de Datos
+
+Para validar los procedimientos y funciones implementados, se realizaron pruebas de inserción de datos tanto mediante sentencias `INSERT INTO` directas como a través de la ejecución de procedimientos almacenados.
+
+### 4.2.1 Inserción Directa de Lote de Datos
+
+El siguiente bloque de código muestra la inserción directa de varios productos en la tabla `Producto`, probando la capacidad de la base de datos para manejar múltiples registros simultáneamente.
+
+```sql
+INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT)
+VALUES 
+('Producto A', 100, 10, 200.00, 150.00, 20123456789),
+('Producto B', 50, 5, 100.00, 75.00, 20345678901);
+```
+
+### 4.2.2 Inserción a través de Procedimientos Almacenados
+
+Para comparar la eficiencia en el uso de procedimientos, se realizó la inserción de datos mediante llamadas a `InsertarProducto`, verificando la facilidad de uso y la estructura controlada de datos.
+
+```sql
+EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
+EXEC InsertarProducto 'Producto D', 60, 8, 180.00, 130.00, 20567890123;
+```
+
+### 4.2.3 Actualización y Eliminación de Datos
+
+Se realizaron actualizaciones y eliminaciones para comprobar la consistencia y la seguridad en la manipulación de registros.
+
+```sql
+-- Actualizar un producto
+EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
+
+-- Eliminar un producto
+EXEC EliminarProducto 2;
+```
+
+## 4.3 Tablas y Gráficos de Resultados
+
+Para visualizar y analizar los resultados de los procedimientos y funciones almacenadas, se presentan tablas resumen que muestran:
+
+- **Productos** insertados directamente y mediante procedimientos.
+- **Total de Ventas por Usuario**, calculado mediante la función `TotalFacturasPorUsuario`.
+- **Edad de Usuarios**, calculada utilizando la función `CalcularEdad`.
+

@@ -1,0 +1,16 @@
+Creación de una Vista para Datos de Ventas
+Aqui creamos una vista que agrupa los datos de ventas, como productos vendidos, cantidad y fecha, para facilitar el análisis de las transacciones sin 
+acceder directamente a las tablas subyacentes.
+
+CREATE VIEW Vista_Ventas AS
+SELECT f.Numero_Factura, f.Fecha, u.Nombre AS Cliente, p.Descripcion AS Producto, dp.Cantidad, dp.Precio
+FROM Factura f
+JOIN Usuario u ON f.DNI = u.DNI
+JOIN Detalle_Producto dp ON f.Numero_Factura = dp.Numero_Factura
+JOIN Producto p ON dp.Codigo_Producto = p.Codigo_Producto;
+
+Creación de una Vista Indexada para Consultas Rápidas en Ventas
+Para mejorar el rendimiento, podemos materializar la vista anterior en una vista indexada, lo cual almacenará los resultados y permitirá consultas rápidas
+en grandes volúmenes de datos.
+
+--pendiente

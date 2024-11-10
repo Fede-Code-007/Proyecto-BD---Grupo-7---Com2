@@ -8,7 +8,6 @@ USE proyecto_BDD;
 INSERT INTO Tipo_Perfil (Descripcion) VALUES
 ('Administrador'),
 ('Cliente'),
-('Vendedor'),
 ('Gerente');
 
 -- =======================
@@ -51,21 +50,20 @@ INSERT INTO Medios_de_Pago (Nombre) VALUES
 -- =======================
 -- DATOS PARA Producto
 -- =======================
-INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES
-('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789),
-('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901),
-('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012),
-('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123),
-('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
+INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Eliminado) VALUES
+('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789, 'NO'),
+('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901, 'NO'),
+('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012, 'NO'),
+('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123, 'NO'),
+('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901, 'NO');
 
 -- =======================
 -- DATOS PARA Usuario
 -- =======================
-INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil) VALUES
-(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1),
-(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2),
-(34567890, 'vendedor@nutrifood.com', 'Carlos', 'López', '1985-09-10', 3),
-(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 4);
+INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
+(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
+(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
+(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
 
 -- =======================
 -- DATOS PARA Factura
@@ -142,6 +140,8 @@ INSERT INTO Direccion (Calle, Altura, Dpto, Codigo_Localidad) VALUES
 -- =======================
 INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (23456789, 1),
-(34567890, 2),
-(12345678, 3),
-(45678901, 4);
+(45678901, 2),
+(12345678, 3);
+
+
+
