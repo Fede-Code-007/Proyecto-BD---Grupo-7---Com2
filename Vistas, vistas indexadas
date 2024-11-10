@@ -1,6 +1,57 @@
-Creación de una Vista para Datos de Ventas
-Aqui creamos una vista que agrupa los datos de ventas, como productos vendidos, cantidad y fecha, para facilitar el análisis de las transacciones sin 
-acceder directamente a las tablas subyacentes a través de uniones o subconsultas.
+--Desarrollo de las tareas para el tema:
+
+CREATE VIEW Vista_Producto AS
+SELECT Codigo_Producto, Descripcion, Precio
+FROM Producto;
+
+--DROP VIEW Vista_Producto;
+
+INSERT INTO Vista_Producto (Codigo_Producto, Descripcion, Precio)
+VALUES (101, 'Arándanos', 1000.00), (102, 'Barrita protéica', 2000.00), (103, 'Cacao', 3000.00);
+
+--Error 1: Codigo_Producto
+SET IDENTITY_INSERT Producto ON;
+
+--Error 2: not null
+ALTER TABLE Producto
+ALTER COLUMN Stock INT NULL;
+
+ALTER TABLE Producto
+ALTER COLUMN Stock_Min INT NULL;
+
+ALTER TABLE Producto
+ALTER COLUMN Precio FLOAT NULL;
+
+ALTER TABLE Producto
+ALTER COLUMN Costo FLOAT NULL;
+
+ALTER TABLE Producto
+ALTER COLUMN CUIT BIGINT NULL;
+
+ALTER TABLE Producto
+ALTER COLUMN Eliminado VARCHAR(2) NULL;
+
+SELECT * FROM Producto WHERE Codigo_Producto IN (101, 102, 103);
+
+UPDATE Vista_Producto
+SET Descripcion = 'Producto Modificado'
+WHERE Codigo_Producto = 101;
+
+SELECT * FROM Producto WHERE Codigo_Producto = 101;
+
+DELETE FROM Vista_Producto
+WHERE Codigo_Producto IN (101, 102, 103);
+
+SELECT * FROM Producto WHERE Codigo_Producto IN (101, 102, 103);
+
+CREATE INDEX Indice_Vista
+ON Vista_Producto
+(Codigo_Producto);
+--Error: Vista_Producto no es una vista indexada.
+
+--Creación de una Vista para Datos de Ventas
+--Aqui creamos una vista que agrupa los datos de ventas, como productos vendidos, cantidad y fecha, para facilitar el análisis de las transacciones sin 
+--acceder directamente a las tablas subyacentes a través de uniones o subconsultas.
 
 CREATE VIEW Vista_Ventas AS
 SELECT f.Numero_Factura, f.Fecha, u.Nombre AS Cliente, p.Descripcion AS Producto, dp.Cantidad, dp.Precio
@@ -9,8 +60,8 @@ JOIN Usuario u ON f.DNI = u.DNI
 JOIN Detalle_Producto dp ON f.Numero_Factura = dp.Numero_Factura
 JOIN Producto p ON dp.Codigo_Producto = p.Codigo_Producto;
 
-Creación de una Vista Indexada para Consultas Rápidas en Ventas
-Para mejorar el rendimiento, podemos materializar la vista anterior en una vista indexada, lo cual almacenará los resultados y permitirá consultas rápidas
-en grandes volúmenes de datos.
+--Creación de una Vista Indexada para Consultas Rápidas en Ventas
+--Para mejorar el rendimiento, podemos materializar la vista anterior en una vista indexada, lo cual almacenará los resultados y permitirá consultas rápidas
+--en grandes volúmenes de datos.
 
 --pendiente
