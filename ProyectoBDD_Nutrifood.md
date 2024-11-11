@@ -918,6 +918,8 @@ Para verificar la eficiencia de los procedimientos y funciones implementadas, se
 - **Reducción en la carga de trabajo del cliente**: Al realizar los cálculos y validaciones en el servidor, se minimizan las interacciones cliente-servidor.
 - **Eficiencia en consultas de reportes**: La creación de funciones almacenadas permitió que las consultas de cálculo, como el promedio de precios y la totalización de facturas, se ejecutaran de forma más rápida y precisa, optimizando la generación de reportes.
 
+### Uso de indices
+
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
 
