@@ -257,7 +257,7 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 | Nombre          | VARCHAR  | 100  | Nombre del usuario                |
 | Apellido        | VARCHAR  | 100  | Apellido del usuario              |
 | Fecha_Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
-| Contraseña	  | VARCHAR  | 300  | Contraseña del usutario		|
+| Contraseña	  | VARCHAR  | 300  | Contraseña del usuario		|
 | Codigo_Perfil   | INT      |      | Código identificador del perfil   |
 
 #### Restricciones
