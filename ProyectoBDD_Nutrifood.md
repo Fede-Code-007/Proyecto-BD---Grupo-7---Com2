@@ -126,7 +126,7 @@ Los procedimientos almacenados y las funciones almacenadas son metodologías ese
 
 Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
-## Manejo de permisos a nivel de usuarios de base de datos
+### Manejo de permisos a nivel de usuarios de base de datos
 
 En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
 
@@ -980,12 +980,81 @@ En base a los resultados obtenidos nos dimos cuenta que la creación de un índi
 Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
 
+### Creación y gestión de Permisos:
+
+- ####Permisos a nivel de usuarios:
+
+  1. Crear un usuario en la base de datos: 
+     
+	CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'UsuarioAdmin'; 
+	CREATE LOGIN UsuarioLectura WITH PASSWORD = 'UsuarioLectura';
+	USE proyecto_BDD;
+	CREATE USER UsuarioAdmin FOR LOGIN UsuarioAdmin;
+	CREATE USER UsuarioLectura FOR LOGIN UsuarioLectura;
+
+  2. Asignación de permisos:
+     
+	ALTER ROLE db_owner ADD MEMBER UsuarioAdmin; -- concede permiso como administrador
+
+	ALTER ROLE db_datareader ADD MEMBER UsuarioLectura; -- concede permiso únicamente de lectura a un usuario
+	
+  3. Asignar permiso para el uso de procedimientos almacenados (usuario de solo lectura):
+
+GRANT EXECUTE ON InsertarProducto TO UsuarioLectura;
+
+  4. Realizar carga de datos por parte de los usuarios:
+
+	USE proeyecto_BDD;
+	INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES 
+	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789), 
+	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901), 
+	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012), 
+	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123), 
+	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
+
+	/*
+	Cuando el usuario con permiso de solo lectura quiere realizar un insert este no podrá hacerlo ya que no cuenta con los permisos 	necesarios para hacerlo. Sin embargo, el usuario al cual le fue asignado el permiso como Administrador no debería contar con 		problemas para hacerlo.
+  	*/
+
+  5. Realizar un insert a través del procedimiento almacenado con el usuario con permiso de solo lectura:
+
+USE proyecto_BDD;
+	EXEC InsertarProducto @Descripcion = Jugo Detox, @Stock = 100, @Stock_Min = 15, @Precio = 250.00, @Costo = 180.00, @CUIT = 		20345678901; -- Si el permiso fue otorgado correctamente el usuario podría insertar un producto con éxito.
+
+- ####Permisos a nivel de roles del DBMS:
+
+  1. Creación de usuarios:
+
+   	CREATE LOGIN UsuarioRolLectura WITH PASSWORD = 'ContraseñaLectura';
+	CREATE LOGIN UsuarioSinRol WITH PASSWORD = 'ContraseñaSinRol';
+	USE proyecto_BDD;
+	CREATE USER UsuarioRolLectura FOR LOGIN UsuarioRolLectura;
+	CREATE USER UsuarioSinPermiso FOR LOGIN UsuarioSinRol;
+
+  2. Crear rol, otorgar permisos y asignar rol a un usuario:
+
+	CREATE ROLE RolSoloLectura;
+	GRANT SELECT ON Producto TO RolSoloLectura;
+	ALTER ROLE RolSoloLectura ADD MEMBER UsuarioRolLectura;
+
+  3. Verificacón del comportamiento de abmos usuarios:
+
+	-- Para realizar la verificación podemos hacerlo a través de una consulta.
+	USE proyecto_BDD;
+	SELECT * FROM Producto;
+
+   /*
+  	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
+	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
+  */
+
 
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
 
 - En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
 - En lo que compete al uso de indices para optimizar las consultas, podemos concluir que el uso de índices agrupados puede reducir de manera significativa la cantidad de lecturas necesarias y optimizar el tiempo de respuesta de las consultas, especialmente en columnas que se utilizan frecuentemente  en las cláusulas `WHERE`. Sin embargo, la elección de las columnas para un índice debe ser cuidadosa, ya que la inclusión de múltiples columnas puede no siempre traducirse en mejoras adicionales sustanciales.
+- En cuanto al manejo de permisos a nivel de usuarios de base de datos podemos concluir que, la gestión de permisos y roles en bases de datos es fundamental para garantizar la seguridad y el control de acceso. A través de la asignación roles y permisos de forma adecuada, los administradores pueden definir quién accede a qué datos y que hace con ellos, asegurandose así de no alterar la integridad y confidencialidad de la información. La utilización de roles predefinidos y personalizados facilita la administración de permisos, permitiendo asignar autorizaciones comunes a grupos de usuarios y simplificando el mantenimiento en entornos complejos.
 
 En resumen:
 
@@ -1000,4 +1069,4 @@ José Juan Sánchez Hernández. (2023/ 2024) Optimización de consultas. Apuntes
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
 Grant Fritchey. SQL Server 2022 Query - Performance Tuning, 6ta ed. Apress Media, EEUU, 2022.
 
-
+https://learn.microsoft.com/es-es/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16
