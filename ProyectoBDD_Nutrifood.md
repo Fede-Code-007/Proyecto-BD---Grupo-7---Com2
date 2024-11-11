@@ -787,7 +787,12 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
   ```
-- **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 2 ms.
+
+Table 'Proveedor'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times: CPU time = 16 ms,  elapsed time = 294 ms.
 
 ##### Procedimiento 2: `ModificarProducto`
 
@@ -797,7 +802,11 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00,'SI';
   ```
-- **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 2 ms.
+
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 1 ms.
 
 ##### Procedimiento 3: `EliminarProducto`
 
@@ -807,7 +816,11 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC EliminarProducto 2;
   ```
-- **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 16 ms.
+
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 #### 2. Funciones Almacenadas
 
@@ -821,7 +834,11 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.CalcularEdad('1980-05-15');
   ```
-- **Resultado Esperado**: Proporciona la edad actual del usuario.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 0 ms.
+
+(1 row affected)
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 ##### Función 2: `TotalFacturasPorUsuario`
 
@@ -831,7 +848,12 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.TotalFacturasPorUsuario(12345678);
   ```
-- **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 13 ms, elapsed time = 13 ms.
+
+(1 row affected)
+Table 'Factura'. Scan count 1, logical reads 2, physical reads 1, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 54 ms.
 
 ##### Función 3: `PrecioPromedioProductos`
 
@@ -841,7 +863,12 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.PrecioPromedioProductos();
   ```
-- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 3 ms.
+
+(1 row affected)
+Table 'Producto'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 #### 3. Resultados de las Pruebas de Rendimiento
 
