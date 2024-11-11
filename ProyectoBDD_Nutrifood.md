@@ -862,7 +862,7 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
 - **Descripción**: Este procedimiento permite modificar los atributos principales de un producto identificado por su código.
 - **Ejemplo de Uso**:
   ```sql
-  EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
+  EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00,'SI';
   ```
 - **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
 
@@ -908,7 +908,7 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.PrecioPromedioProductos();
   ```
-- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado y ajustar las políticas de precios.
+- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado.
 
 ### 3. Resultados de las Pruebas de Rendimiento
 
