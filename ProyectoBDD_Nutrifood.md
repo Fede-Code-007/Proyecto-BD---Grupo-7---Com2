@@ -926,6 +926,7 @@ Posteriormente se realizo una consulta para obtener los usuarios nacidos en la d
 Los resultados fueron  los siguientes:
 
 - Consulta sin índice.
+  
 	/* Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
@@ -935,7 +936,9 @@ Los resultados fueron  los siguientes:
 	   CPU time = 281 ms,  elapsed time = 4006 ms.
 	
 	*/
+
 - Consulta con el índice solo sobre la columna fecha.
+  
 	/* Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
@@ -944,7 +947,9 @@ Los resultados fueron  los siguientes:
 	 SQL Server Execution Times:
 	   CPU time = 93 ms,  elapsed time = 3901 ms.
 	*/
+  
 - Consulta sobre el índice incluyendo varias columnas.
+  
 	/* Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
@@ -955,8 +960,7 @@ Los resultados fueron  los siguientes:
 	
 	*/
   
-En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 33334 lecturas a 4190.
-Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente el tiempo de ejecución comparado con el primer índice, optimizó el acceso a los datos que se estaban buscando, reduciendo un poco las lecturas lógicas adicionales a 4183.
+En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 33334 lecturas a 4190. Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente el tiempo de ejecución comparado con el primer índice, optimizó el acceso a los datos que se estaban buscando, reduciendo un poco las lecturas lógicas adicionales a 4183.
 
 Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
