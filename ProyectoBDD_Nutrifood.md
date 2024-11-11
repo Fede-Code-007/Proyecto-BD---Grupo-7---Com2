@@ -919,8 +919,9 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 ```
 
 ## Capítulo V: CONCLUSIONES 
+Referente al trabajo se pueden obtener múltiples conclusiones:
 
-En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
+- En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
 
 ## Capítulo VI: BIBLIOGRAFÍA 
 
