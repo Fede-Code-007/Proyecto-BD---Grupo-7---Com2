@@ -976,6 +976,8 @@ En resumen:
 
 Richardson, B. (2018, May 28). ¿Cuál es la diferencia entre índices agrupados y no agrupados en SQL Server? SQLShack. https://www.sqlshack.com/es/cual-es-la-diferencia-entre-indices-agrupados-y-no-agrupados-en-sql-server/
 
+Camuña Rodríguez, J. F. (2015). Lenguajes de definición y modificación de datos SQL (UF1472): ( ed.). Antequera, Málaga, Spain: IC Editorial. Recuperado de https://elibro.net/es/ereader/unne/44141?page=59.
+
 José Juan Sánchez Hernández. (2023/ 2024) Optimización de consultas. Apuntes de BD para DAW, DAM y ASIR. Curso 2023/2024.Unidad 10.
 
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
