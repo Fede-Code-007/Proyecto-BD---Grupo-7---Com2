@@ -924,6 +924,8 @@ Referente al trabajo se pueden obtener múltiples conclusiones:
 - En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
 - En lo que compete al uso de indices para optimizar las consultas, podemos concluir que el uso de índices agrupados puede reducir de manera significativa la cantidad de lecturas necesarias y optimizar el tiempo de respuesta de las consultas, especialmente en columnas que se utilizan frecuentemente  en las cláusulas `WHERE`. Sin embargo, la elección de las columnas para un índice debe ser cuidadosa, ya que la inclusión de múltiples columnas puede no siempre traducirse en mejoras adicionales sustanciales.
 
+En resumen:
+
 ## Capítulo VI: BIBLIOGRAFÍA 
 
 https://www.sqlshack.com/es/cual-es-la-diferencia-entre-indices-agrupados-y-no-agrupados-en-sql-server/
