@@ -1048,6 +1048,36 @@ USE proyecto_BDD;
 	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
   */
 
+###Vistas y Vistas Indexadas
+En esta sección se desarrolla el impacto de las vistas y vistas indexadas en el rendimiento de las consultas, comparando operaciones CRUD y consultas de agregación sobre grandes volúmenes de datos.
+Primeramente, se trabajó con operaciones CRUD, buscando cumplir con las tareas asignadas al tema, comparando con operaciones usando una vista y directamente trabajando sobre la tabla Producto. Usando statistics se obtuvo que no hubo una diferencia notable entre trabajar con una vista y usar directamente la tabla Producto. Además usar una vista con solo algunos de los campos de la tabla obligó a modificar la estructura para que aceptara valores null.
+Luego para saber el id, nombre, unidades vendidas y monto acumulado de un producto por su descripción se trabajó con un vista indexada, que contenía el id, nombre, unidades vendidas y monto acumulado de un producto. Se trabajó con 100.000 registros en Factura y 951.720 en Detalle_Producto, estos son los resultados usando statistics:
+  Usando la vista:
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Producto'. Scan count 1, logical reads 3
+•	CPU time = 110 ms,  elapsed time = 110 ms
+  Usando combinaciones: 
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Producto'. Scan count 1, logical reads 3
+•	CPU time = 94 ms,  elapsed time = 86 ms.
+  Para obtener un listado con la información anterior y el cociente entre el monto acumulado y las unidades vendidas:
+  Usando la vista:
+•	Table 'Worktable'. Scan count 0, logical reads 0
+•	Table 'Producto'. Scan count 0, logical reads 200
+•	Table 'Workfile'. Scan count 0, logical reads 0
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	CPU time = 484 ms,  elapsed time = 577 ms.
+  Usando combinaciones: 
+•	Table 'Worktable'. Scan count 0, logical reads 0
+•	Table 'Producto'. Scan count 0, logical reads 200
+•	Table 'Workfile'. Scan count 0, logical reads 0
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	CPU time = 453 ms,  elapsed time = 492 ms.
+
 
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
