@@ -60,10 +60,25 @@ INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Elimin
 -- =======================
 -- DATOS PARA Usuario
 -- =======================
+DECLARE @Contrasena NVARCHAR(50) = 'cliente';
+DECLARE @ContrasenaHashSP VARBINARY(64);
+
+SET @ContrasenaHashCL = HASHBYTES('SHA2_256', @Contrasena);
+
+DECLARE @Contrasena2 NVARCHAR(50) = 'supervisor';
+DECLARE @ContrasenaHashSP VARBINARY(64);
+
+SET @ContrasenaHashSP = HASHBYTES('SHA2_256', @Contrasena2);
+
+DECLARE @Contrasena3 NVARCHAR(50) = 'cajero';
+DECLARE @ContrasenaHashCJ VARBINARY(64);
+
+SET @ContrasenaHashCJ = HASHBYTES('SHA2_256', @Contrasena3);
+
 INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
-(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
-(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
-(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
+(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, @ContrasenaHashCL, 'NO'),
+(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, @ContrasenaHashSP, 'NO'),
+(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, @ContrasenaHashCJ, 'NO');
 
 -- =======================
 -- DATOS PARA Factura
