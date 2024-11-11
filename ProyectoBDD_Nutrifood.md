@@ -946,6 +946,7 @@ Los resultados fueron  los siguientes:
 	
 	 SQL Server Execution Times:
 	   CPU time = 93 ms,  elapsed time = 3901 ms.
+  
 	*/
   
 - Consulta sobre el índice incluyendo varias columnas.
