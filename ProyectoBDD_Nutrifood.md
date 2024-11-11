@@ -183,6 +183,8 @@ Ambas metodologías se aplican en diferentes contextos dentro de la administraci
 | Costo           | FLOAT    |      | Costo del producto           |
 | Precio          | FLOAT    |      | Precio del producto          |
 | CUIT            | BIGINT   |      | CUIT del proveedor           |
+| Eliminado       | VARCHAR  |   2  | Estado del producto          |
+| Imagen          | VARCHAR  |  100 | Imagen del producto          |
 
 #### Restricciones
 | Campo           | Tipo restricción |
@@ -258,7 +260,8 @@ Ambas metodologías se aplican en diferentes contextos dentro de la administraci
 | Nombre          | VARCHAR  | 100  | Nombre del usuario                |
 | Apellido        | VARCHAR  | 100  | Apellido del usuario              |
 | Fecha_Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
-| Codigo_Perfil   | INT      |      | Código identificador del perfil    |
+| Contraseña	  | VARCHAR  | 300  | Contraseña del usutario		|
+| Codigo_Perfil   | INT      |      | Código identificador del perfil   |
 
 #### Restricciones
 | Campo  | Tipo restricción |
