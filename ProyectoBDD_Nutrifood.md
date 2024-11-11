@@ -87,14 +87,14 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
 
-- Usuarios de base de datos
-Los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
+- Usuarios de base de datos:
+los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
 
-- Roles fijos en bases de datos
-Es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
+- Roles fijos en bases de datos:
+es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
 
-- Roles de base de datos definidos por el usuario
-Los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
+- Roles de base de datos definidos por el usuario:
+los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
 
 ### Procedimientos y funciones almacenadas
 
@@ -145,7 +145,25 @@ Contras de las vistas indexadas:
 
 ### Descripción de la elaboración del trabajo
 
+Para iniciar el desarrollo del proyecto, en primer lugar, se organizó una reunión entre los integrantes del grupo para definir el caso de estudio que abordaríamos a lo largo del trabajo. Una vez establecida la idea central para la primera parte de la entrega, se creó un repositorio en GitHub, donde cada miembro del equipo podría ir subiendo sus aportes conforme desarrollara las actividades asignadas.
+
+Con la idea definida, comenzamos por elaborar el diagrama entidad-relación y su diccionario de datos para, posteriormente, avanzar con el modelo físico y el lote de datos con los que trabajaríamos.
+
+En la segunda parte del proyecto, distribuimos los temas de investigación entre los miembros del equipo a través de un sorteo, quedando asignados de la siguiente manera:
+
+- Díaz, Isaac: Vistas y vistas indexadas.
+- Pérez, Bruno: Manejo de permisos a nivel de usuarios de bases de datos.
+- Pérez, Santiago: Procedimientos y funciones almacenados.
+- Pérez Ruiz, Federico: Optimización de consultas mediante índices.
+Cada integrante desarrolló su tema asignado siguiendo las pautas acordadas, manteniendo además un seguimiento constante de los temas de los demás miembros, realizando correcciones y aportando ideas para mejorar el contenido a presentar.
+
 ### Herramientas 
+
+Las herramientas empleadas para el desarrollo del proyecto fueron:
+
+GitHub: Utilizado como repositorio para almacenar y gestionar los avances del trabajo.
+SQL Server Management Studio 20: Herramienta empleada para el desarrollo del script y las pruebas correspondientes.
+ERDPlus: Utilizado para la elaboración del diagrama entidad-relación.
 
 ## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
