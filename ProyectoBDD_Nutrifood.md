@@ -919,6 +919,48 @@ Para verificar la eficiencia de los procedimientos y funciones implementadas, se
 - **Eficiencia en consultas de reportes**: La creación de funciones almacenadas permitió que las consultas de cálculo, como el promedio de precios y la totalización de facturas, se ejecutaran de forma más rápida y precisa, optimizando la generación de reportes.
 
 ### Uso de indices
+A fines prácticos, para lograr obtener una mejor comprensión sobre el uso de índices y su impacto en las consulta, se insertó un millón de datos sobre la tabla usuarios. 
+
+Posteriormente se realizo una consulta para obtener los usuarios nacidos en la década del 90 y se comparó los resultados cuando la tabla no posee un índice agrupado sobre campo de la fecha de nacimiento, cuando si lo posee y cuando lo posee pero además ese índice agrupado incluye otras columnas de la tabla.
+
+Los resultados fueron  los siguientes:
+
+- Consulta sin índice.
+	/* Plan de ejecucion y tiempos de respuesta:
+	
+	(121549 rows affected)
+	Table 'Usuario'. Scan count 1, logical reads 33334, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+	
+	 SQL Server Execution Times:
+	   CPU time = 281 ms,  elapsed time = 4006 ms.
+	
+	*/
+- Consulta con el índice solo sobre la columna fecha.
+	/* Plan de ejecucion y tiempos de respuesta:
+	
+	(121549 rows affected)
+	Table 'Usuario'. Scan count 1, logical reads 4190, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+	
+	 SQL Server Execution Times:
+	   CPU time = 93 ms,  elapsed time = 3901 ms.
+	*/
+- Consulta sobre el índice incluyendo varias columnas.
+	/* Plan de ejecucion y tiempos de respuesta:
+	
+	(121549 rows affected)
+	Table 'Usuario'. Scan count 1, logical reads 4183, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+	
+	 SQL Server Execution Times:
+	   CPU time = 203 ms,  elapsed time = 3673 ms.
+	
+	*/
+  
+En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 33334 lecturas a 4190.
+Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente el tiempo de ejecución comparado con el primer índice, optimizó el acceso a los datos que se estaban buscando, reduciendo un poco las lecturas lógicas adicionales a 4183.
+
+Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
+El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
+
 
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
