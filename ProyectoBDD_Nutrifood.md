@@ -134,86 +134,6 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 
 ## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
-## Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
-
-En este capítulo se presentan los resultados de la implementación de procedimientos y funciones almacenadas dentro del sistema de base de datos para Nutrifood. 
-
-### 1. Procedimientos Almacenados
-
-Los procedimientos almacenados que se desarrollaron para esta base de datos fueron para llevar a cabo operaciones comunmente utilizadas en un sistema de e-commerce, las cuales son: inserción, modificación y eliminación de productos. Estos procedimientos fueron implementados para facilitar la administración y manipulación de la información en la tabla `Producto`.
-
-#### Procedimiento 1: `InsertarProducto`
-
-- **Objetivo**: Optimizar la inserción de nuevos productos en la base de datos.
-- **Descripción**: Este procedimiento recibe como parámetros la descripción del producto, stock actual y mínimo, precio, costo y el CUIT asociado, y los inserta en la tabla `Producto`.
-- **Ejemplo de Uso**:
-  ```sql
-  EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
-  ```
-- **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
-
-#### Procedimiento 2: `ModificarProducto`
-
-- **Objetivo**: Facilitar la actualización de un producto específico.
-- **Descripción**: Este procedimiento permite modificar los atributos principales de un producto identificado por su código.
-- **Ejemplo de Uso**:
-  ```sql
-  EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
-  ```
-- **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
-
-#### Procedimiento 3: `EliminarProducto`
-
-- **Objetivo**: Permitir la eliminación de productos de la base de datos.
-- **Descripción**: Este procedimiento establece como eliminado un producto específico según su código.
-- **Ejemplo de Uso**:
-  ```sql
-  EXEC EliminarProducto 2;
-  ```
-- **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
-
-### 2. Funciones Almacenadas
-
-Las funciones almacenadas permiten realizar cálculos y obtener reportes específicos sobre la base de datos, optimizando las consultas que se suelen realizar multiples veces.
-
-#### Función 1: `CalcularEdad`
-
-- **Objetivo**: Calcular la edad de un usuario a partir de su fecha de nacimiento.
-- **Descripción**: Esta función recibe la fecha de nacimiento de un usuario y calcula la edad basándose en la fecha actual. Este cálculo ayuda en la clasificación de clientes por edad.
-- **Ejemplo de Uso**:
-  ```sql
-  SELECT dbo.CalcularEdad('1980-05-15');
-  ```
-- **Resultado Esperado**: Proporciona la edad actual del usuario.
-
-#### Función 2: `TotalFacturasPorUsuario`
-
-- **Objetivo**: Determinar el total de ventas acumuladas por cada usuario.
-- **Descripción**: Esta función calcula el total de las facturas asociadas a un usuario específico mediante su DNI, lo que facilita la generación de reportes de ventas por cliente.
-- **Ejemplo de Uso**:
-  ```sql
-  SELECT dbo.TotalFacturasPorUsuario(12345678);
-  ```
-- **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
-
-#### Función 3: `PrecioPromedioProductos`
-
-- **Objetivo**: Calcular el precio promedio de todos los productos registrados.
-- **Descripción**: Esta función obtiene el promedio de los precios de todos los productos en la base de datos.
-- **Ejemplo de Uso**:
-  ```sql
-  SELECT dbo.PrecioPromedioProductos();
-  ```
-- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado y ajustar las políticas de precios.
-
-### 3. Resultados de las Pruebas de Rendimiento
-
-Para verificar la eficiencia de los procedimientos y funciones implementadas, se llevaron a cabo pruebas de rendimiento en la inserción, actualización y eliminación de productos, así como en las consultas de cálculos acumulativos. Los resultados fueron los siguientes:
-
-- **Mejora en el tiempo de inserción y actualización**: 25% menos tiempo en comparación con la ejecución de las mismas operaciones sin procedimientos.
-- **Reducción en la carga de trabajo del cliente**: Al realizar los cálculos y validaciones en el servidor, se minimizan las interacciones cliente-servidor.
-- **Eficiencia en consultas de reportes**: La creación de funciones almacenadas permitió que las consultas de cálculo, como el promedio de precios y la totalización de facturas, se ejecutaran de forma más rápida y precisa, optimizando la generación de reportes.
-
 ### Modelo Relacional 
 
 ![Modelo Relacional IMG](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png)
@@ -917,6 +837,86 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (45678901, 2),
 (12345678, 3);
 ```
+
+## Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
+
+En este capítulo se presentan los resultados de la implementación de procedimientos y funciones almacenadas dentro del sistema de base de datos para Nutrifood. 
+
+### 1. Procedimientos Almacenados
+
+Los procedimientos almacenados que se desarrollaron para esta base de datos fueron para llevar a cabo operaciones comunmente utilizadas en un sistema de e-commerce, las cuales son: inserción, modificación y eliminación de productos. Estos procedimientos fueron implementados para facilitar la administración y manipulación de la información en la tabla `Producto`.
+
+#### Procedimiento 1: `InsertarProducto`
+
+- **Objetivo**: Optimizar la inserción de nuevos productos en la base de datos.
+- **Descripción**: Este procedimiento recibe como parámetros la descripción del producto, stock actual y mínimo, precio, costo y el CUIT asociado, y los inserta en la tabla `Producto`.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
+  ```
+- **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
+
+#### Procedimiento 2: `ModificarProducto`
+
+- **Objetivo**: Facilitar la actualización de un producto específico.
+- **Descripción**: Este procedimiento permite modificar los atributos principales de un producto identificado por su código.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
+  ```
+- **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
+
+#### Procedimiento 3: `EliminarProducto`
+
+- **Objetivo**: Permitir la eliminación de productos de la base de datos.
+- **Descripción**: Este procedimiento establece como eliminado un producto específico según su código.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC EliminarProducto 2;
+  ```
+- **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
+
+### 2. Funciones Almacenadas
+
+Las funciones almacenadas permiten realizar cálculos y obtener reportes específicos sobre la base de datos, optimizando las consultas que se suelen realizar multiples veces.
+
+#### Función 1: `CalcularEdad`
+
+- **Objetivo**: Calcular la edad de un usuario a partir de su fecha de nacimiento.
+- **Descripción**: Esta función recibe la fecha de nacimiento de un usuario y calcula la edad basándose en la fecha actual. Este cálculo ayuda en la clasificación de clientes por edad.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.CalcularEdad('1980-05-15');
+  ```
+- **Resultado Esperado**: Proporciona la edad actual del usuario.
+
+#### Función 2: `TotalFacturasPorUsuario`
+
+- **Objetivo**: Determinar el total de ventas acumuladas por cada usuario.
+- **Descripción**: Esta función calcula el total de las facturas asociadas a un usuario específico mediante su DNI, lo que facilita la generación de reportes de ventas por cliente.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.TotalFacturasPorUsuario(12345678);
+  ```
+- **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
+
+#### Función 3: `PrecioPromedioProductos`
+
+- **Objetivo**: Calcular el precio promedio de todos los productos registrados.
+- **Descripción**: Esta función obtiene el promedio de los precios de todos los productos en la base de datos.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.PrecioPromedioProductos();
+  ```
+- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado y ajustar las políticas de precios.
+
+### 3. Resultados de las Pruebas de Rendimiento
+
+Para verificar la eficiencia de los procedimientos y funciones implementadas, se llevaron a cabo pruebas de rendimiento en la inserción, actualización y eliminación de productos, así como en las consultas de cálculos acumulativos. Los resultados fueron los siguientes:
+
+- **Mejora en el tiempo de inserción y actualización**: 25% menos tiempo en comparación con la ejecución de las mismas operaciones sin procedimientos.
+- **Reducción en la carga de trabajo del cliente**: Al realizar los cálculos y validaciones en el servidor, se minimizan las interacciones cliente-servidor.
+- **Eficiencia en consultas de reportes**: La creación de funciones almacenadas permitió que las consultas de cálculo, como el promedio de precios y la totalización de facturas, se ejecutaran de forma más rápida y precisa, optimizando la generación de reportes.
 
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
