@@ -186,7 +186,8 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 #### Restricciones
 | Campo           | Tipo restricción |
 |-----------------|------------------|
-| Codigo_Producto | PRIMARY KEY       |
+| Codigo_Producto | PRIMARY KEY      |
+| Eliminado	  |   	CHECK	     |
 
 #### Claves Foráneas
 | Campo | Entidad asociada |
@@ -265,6 +266,7 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 |--------|------------------|
 | DNI    | PRIMARY KEY       |
 | Correo | UNIQUE            |
+| Eliminado|   	CHECK	     |
 
 #### Claves Foráneas
 | Campo          | Entidad asociada |
@@ -579,7 +581,8 @@ CREATE TABLE Producto
   Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   Imagen VARCHAR(100),
   CONSTRAINT PK_producto PRIMARY KEY (Codigo_Producto),
-  CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT)
+  CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT),
+  CONSTRAINT CK_producto_eliminado CHECK (Eliminado = 'SI' OR Eliminado = 'NO')
 );
 
 CREATE TABLE Usuario
@@ -591,10 +594,11 @@ CREATE TABLE Usuario
   Fecha_nacimiento DATE NOT NULL,
   Codigo_Perfil INT NOT NULL,
   Contraseña VARCHAR(300) NOT NULL,
-  Eliminado VARCHAR(2) NOT NULL,
+  Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   CONSTRAINT PK_usuario PRIMARY KEY (DNI),
   CONSTRAINT FK_usuario_perfil FOREIGN KEY (Codigo_Perfil) REFERENCES Tipo_Perfil(Codigo_Perfil),
-  CONSTRAINT UQ_usuario_correo UNIQUE (Correo)
+  CONSTRAINT UQ_usuario_correo UNIQUE (Correo),
+  CONSTRAINT CK_usuario_eliminado CHECK (Eliminado = 'SI' OR Eliminado = 'NO')
 );
 
 CREATE TABLE Factura
