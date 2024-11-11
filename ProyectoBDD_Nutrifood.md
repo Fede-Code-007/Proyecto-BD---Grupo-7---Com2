@@ -920,7 +920,6 @@ Para verificar la eficiencia de los procedimientos y funciones implementadas, se
 
 ### Uso de indices
 A fines prácticos, para lograr obtener una mejor comprensión sobre el uso de índices y su impacto en las consultas, se insertó un millón de datos sobre la tabla usuarios. 
-
 Posteriormente se realizo una consulta para obtener los usuarios nacidos en la década del 90 y se comparó los resultados cuando la tabla no posee un índice agrupado sobre campo de la fecha de nacimiento, cuando si lo posee y cuando lo posee pero además ese índice agrupado incluye otras columnas de la tabla.
 
 Los resultados fueron  los siguientes:
