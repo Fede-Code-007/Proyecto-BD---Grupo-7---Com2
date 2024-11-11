@@ -838,15 +838,15 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (12345678, 3);
 ```
 
-## Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
+### Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
 
 En este capítulo se presentan los resultados de la implementación de procedimientos y funciones almacenadas dentro del sistema de base de datos para Nutrifood. 
 
-### 1. Procedimientos Almacenados
+#### 1. Procedimientos Almacenados
 
 Los procedimientos almacenados que se desarrollaron para esta base de datos fueron para llevar a cabo operaciones comunmente utilizadas en un sistema de e-commerce, las cuales son: inserción, modificación y eliminación de productos. Estos procedimientos fueron implementados para facilitar la administración y manipulación de la información en la tabla `Producto`.
 
-#### Procedimiento 1: `InsertarProducto`
+##### Procedimiento 1: `InsertarProducto`
 
 - **Objetivo**: Optimizar la inserción de nuevos productos en la base de datos.
 - **Descripción**: Este procedimiento recibe como parámetros la descripción del producto, stock actual y mínimo, precio, costo y el CUIT asociado, y los inserta en la tabla `Producto`.
@@ -856,7 +856,7 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```
 - **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
 
-#### Procedimiento 2: `ModificarProducto`
+##### Procedimiento 2: `ModificarProducto`
 
 - **Objetivo**: Facilitar la actualización de un producto específico.
 - **Descripción**: Este procedimiento permite modificar los atributos principales de un producto identificado por su código.
@@ -866,7 +866,7 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```
 - **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
 
-#### Procedimiento 3: `EliminarProducto`
+##### Procedimiento 3: `EliminarProducto`
 
 - **Objetivo**: Permitir la eliminación de productos de la base de datos.
 - **Descripción**: Este procedimiento establece como eliminado un producto específico según su código.
@@ -876,11 +876,11 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```
 - **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
 
-### 2. Funciones Almacenadas
+#### 2. Funciones Almacenadas
 
 Las funciones almacenadas permiten realizar cálculos y obtener reportes específicos sobre la base de datos, optimizando las consultas que se suelen realizar multiples veces.
 
-#### Función 1: `CalcularEdad`
+##### Función 1: `CalcularEdad`
 
 - **Objetivo**: Calcular la edad de un usuario a partir de su fecha de nacimiento.
 - **Descripción**: Esta función recibe la fecha de nacimiento de un usuario y calcula la edad basándose en la fecha actual. Este cálculo ayuda en la clasificación de clientes por edad.
@@ -890,7 +890,7 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```
 - **Resultado Esperado**: Proporciona la edad actual del usuario.
 
-#### Función 2: `TotalFacturasPorUsuario`
+##### Función 2: `TotalFacturasPorUsuario`
 
 - **Objetivo**: Determinar el total de ventas acumuladas por cada usuario.
 - **Descripción**: Esta función calcula el total de las facturas asociadas a un usuario específico mediante su DNI, lo que facilita la generación de reportes de ventas por cliente.
@@ -900,7 +900,7 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```
 - **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
 
-#### Función 3: `PrecioPromedioProductos`
+##### Función 3: `PrecioPromedioProductos`
 
 - **Objetivo**: Calcular el precio promedio de todos los productos registrados.
 - **Descripción**: Esta función obtiene el promedio de los precios de todos los productos en la base de datos.
@@ -910,7 +910,7 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```
 - **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado.
 
-### 3. Resultados de las Pruebas de Rendimiento
+#### 3. Resultados de las Pruebas de Rendimiento
 
 Para verificar la eficiencia de los procedimientos y funciones implementadas, se llevaron a cabo pruebas de rendimiento en la inserción, actualización y eliminación de productos, así como en las consultas de cálculos acumulativos. Los resultados fueron los siguientes:
 
