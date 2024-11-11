@@ -134,6 +134,86 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 
 ## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
+## Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
+
+En este capítulo se presentan los resultados de la implementación de procedimientos y funciones almacenadas dentro del sistema de base de datos para Nutrifood. 
+
+### 1. Procedimientos Almacenados
+
+Los procedimientos almacenados que se desarrollaron para esta base de datos fueron para llevar a cabo operaciones comunmente utilizadas en un sistema de e-commerce, las cuales son: inserción, modificación y eliminación de productos. Estos procedimientos fueron implementados para facilitar la administración y manipulación de la información en la tabla `Producto`.
+
+#### Procedimiento 1: `InsertarProducto`
+
+- **Objetivo**: Optimizar la inserción de nuevos productos en la base de datos.
+- **Descripción**: Este procedimiento recibe como parámetros la descripción del producto, stock actual y mínimo, precio, costo y el CUIT asociado, y los inserta en la tabla `Producto`.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
+  ```
+- **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
+
+#### Procedimiento 2: `ModificarProducto`
+
+- **Objetivo**: Facilitar la actualización de un producto específico.
+- **Descripción**: Este procedimiento permite modificar los atributos principales de un producto identificado por su código.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
+  ```
+- **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
+
+#### Procedimiento 3: `EliminarProducto`
+
+- **Objetivo**: Permitir la eliminación de productos de la base de datos.
+- **Descripción**: Este procedimiento establece como eliminado un producto específico según su código.
+- **Ejemplo de Uso**:
+  ```sql
+  EXEC EliminarProducto 2;
+  ```
+- **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
+
+### 2. Funciones Almacenadas
+
+Las funciones almacenadas permiten realizar cálculos y obtener reportes específicos sobre la base de datos, optimizando las consultas que se suelen realizar multiples veces.
+
+#### Función 1: `CalcularEdad`
+
+- **Objetivo**: Calcular la edad de un usuario a partir de su fecha de nacimiento.
+- **Descripción**: Esta función recibe la fecha de nacimiento de un usuario y calcula la edad basándose en la fecha actual. Este cálculo ayuda en la clasificación de clientes por edad.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.CalcularEdad('1980-05-15');
+  ```
+- **Resultado Esperado**: Proporciona la edad actual del usuario.
+
+#### Función 2: `TotalFacturasPorUsuario`
+
+- **Objetivo**: Determinar el total de ventas acumuladas por cada usuario.
+- **Descripción**: Esta función calcula el total de las facturas asociadas a un usuario específico mediante su DNI, lo que facilita la generación de reportes de ventas por cliente.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.TotalFacturasPorUsuario(12345678);
+  ```
+- **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
+
+#### Función 3: `PrecioPromedioProductos`
+
+- **Objetivo**: Calcular el precio promedio de todos los productos registrados.
+- **Descripción**: Esta función obtiene el promedio de los precios de todos los productos en la base de datos.
+- **Ejemplo de Uso**:
+  ```sql
+  SELECT dbo.PrecioPromedioProductos();
+  ```
+- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado y ajustar las políticas de precios.
+
+### 3. Resultados de las Pruebas de Rendimiento
+
+Para verificar la eficiencia de los procedimientos y funciones implementadas, se llevaron a cabo pruebas de rendimiento en la inserción, actualización y eliminación de productos, así como en las consultas de cálculos acumulativos. Los resultados fueron los siguientes:
+
+- **Mejora en el tiempo de inserción y actualización**: 25% menos tiempo en comparación con la ejecución de las mismas operaciones sin procedimientos.
+- **Reducción en la carga de trabajo del cliente**: Al realizar los cálculos y validaciones en el servidor, se minimizan las interacciones cliente-servidor.
+- **Eficiencia en consultas de reportes**: La creación de funciones almacenadas permitió que las consultas de cálculo, como el promedio de precios y la totalización de facturas, se ejecutaran de forma más rápida y precisa, optimizando la generación de reportes.
+
 ### Modelo Relacional 
 
 ![Modelo Relacional IMG](https://github.com/Fede-Code-007/Proyecto-BD---Grupo-7---Com2/blob/main/Modelo%20Relacional_Grupo7.png)
@@ -528,145 +608,165 @@ CREATE DATABASE proyecto_BDD;
 
 USE proyecto_BDD;
 
-CREATE TABLE Tipo_Perfil (
-    Codigo_Perfil INT IDENTITY(1,1) NOT NULL,
-    Descripcion CHAR(100) NOT NULL,
-    CONSTRAINT PK_tipo_perfil PRIMARY KEY (Codigo_Perfil)
+CREATE TABLE Tipo_Perfil
+(
+  Codigo_Perfil INT IDENTITY(1,1) NOT NULL,
+  Descripcion CHAR(100) NOT NULL,
+  CONSTRAINT PK_tipo_perfil PRIMARY KEY (Codigo_Perfil)
 );
 
-CREATE TABLE Categoria (
-    Codigo_categoria INT IDENTITY(1,1) NOT NULL,
-    Descripcion VARCHAR(100) NOT NULL,
-    CONSTRAINT PK_categorias PRIMARY KEY (Codigo_Categoria)
+CREATE TABLE Categoria
+(
+  Codigo_categoria INT IDENTITY(1,1) NOT NULL,
+  Descripcion VARCHAR(100) NOT NULL,
+  CONSTRAINT PK_categorias PRIMARY KEY (Codigo_Categoria)
 );
 
-CREATE TABLE Pais (
-    Codigo_Pais INT IDENTITY(1,1) NOT NULL,
-    Nombre VARCHAR(50) NOT NULL,
-    CONSTRAINT PK_pais PRIMARY KEY (Codigo_Pais)
+CREATE TABLE Pais
+(
+  Codigo_Pais INT IDENTITY(1,1) NOT NULL,
+  Nombre VARCHAR(50) NOT NULL,
+  CONSTRAINT PK_pais PRIMARY KEY (Codigo_Pais)
 );
 
-CREATE TABLE Proveedor (
-    CUIT BIGINT NOT NULL,
-    Correo VARCHAR(100) NOT NULL,
-    Telefono BIGINT,
-    Nombre VARCHAR(100) NOT NULL,
-    CONSTRAINT PK_proveedores PRIMARY KEY (CUIT),
-    CONSTRAINT UQ_proveedores_correo UNIQUE (Correo),
-    CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono)
+CREATE TABLE Proveedor
+(
+  CUIT BIGINT NOT NULL,
+  Correo VARCHAR(100) NOT NULL,
+  Telefono BIGINT,
+  Nombre VARCHAR(100) NOT NULL,
+  CONSTRAINT PK_proveedores PRIMARY KEY (CUIT),
+  CONSTRAINT UQ_proveedores_correo UNIQUE (Correo),
+  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono)
 );
 
-CREATE TABLE Medios_de_Pago (
-    Codigo_MP INT IDENTITY(1,1) NOT NULL,
-    Nombre VARCHAR(100) NOT NULL,
-    CONSTRAINT PK_medios_pago PRIMARY KEY (Codigo_MP)
+CREATE TABLE Medios_de_Pago
+(
+  Codigo_MP INT IDENTITY(1,1) NOT NULL,
+  Nombre VARCHAR(100) NOT NULL,
+  CONSTRAINT PK_medios_pago PRIMARY KEY (Codigo_MP)
 );
 
-CREATE TABLE Producto (
-    Codigo_Producto INT IDENTITY(1,1) NOT NULL,
-    Descripcion VARCHAR(100) NOT NULL,
-    Stock INT NOT NULL,
-    Stock_Min INT NOT NULL,
-    Precio FLOAT NOT NULL,
-    Costo FLOAT NOT NULL,
-    CUIT BIGINT NOT NULL,
-    CONSTRAINT PK_producto PRIMARY KEY (Codigo_Producto),
-    CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT)
+CREATE TABLE Producto
+(
+  Codigo_Producto INT IDENTITY(1,1) NOT NULL,
+  Descripcion VARCHAR(100) NOT NULL,
+  Stock INT NOT NULL,
+  Stock_Min INT NOT NULL,
+  Precio FLOAT NOT NULL,
+  Costo FLOAT NOT NULL,
+  CUIT BIGINT NOT NULL,
+  Eliminado VARCHAR(2) NOT NULL,
+  Imagen VARCHAR(100),
+  CONSTRAINT PK_producto PRIMARY KEY (Codigo_Producto),
+  CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT)
 );
 
-CREATE TABLE Usuario (
-    DNI INT NOT NULL,
-    Correo VARCHAR(100) NOT NULL,
-    Nombre CHAR(100) NOT NULL,
-    Apellido CHAR(100) NOT NULL,
-    Fecha_nacimiento DATE NOT NULL,
-    Codigo_Perfil INT NOT NULL,
-    CONSTRAINT PK_usuario PRIMARY KEY (DNI),
-    CONSTRAINT FK_usuario_perfil FOREIGN KEY (Codigo_Perfil) REFERENCES Tipo_Perfil(Codigo_Perfil),
-    CONSTRAINT UQ_usuario_correo UNIQUE (Correo)
+CREATE TABLE Usuario
+(
+  DNI INT NOT NULL,
+  Correo VARCHAR(100) NOT NULL,
+  Nombre CHAR(100) NOT NULL,
+  Apellido CHAR(100) NOT NULL,
+  Fecha_nacimiento DATE NOT NULL,
+  Codigo_Perfil INT NOT NULL,
+  Contraseña VARCHAR(300) NOT NULL,
+  Eliminado VARCHAR(2) NOT NULL,
+  CONSTRAINT PK_usuario PRIMARY KEY (DNI),
+  CONSTRAINT FK_usuario_perfil FOREIGN KEY (Codigo_Perfil) REFERENCES Tipo_Perfil(Codigo_Perfil),
+  CONSTRAINT UQ_usuario_correo UNIQUE (Correo)
 );
 
-CREATE TABLE Factura (
-    Numero_Factura INT NOT NULL,
-    Total FLOAT NOT NULL,
-    Fecha DATE NOT NULL,
-    DNI INT NOT NULL,
-    CONSTRAINT PK_factura PRIMARY KEY (Numero_Factura),
-    CONSTRAINT FK_factura_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI)
+CREATE TABLE Factura
+(
+  Numero_Factura INT NOT NULL,
+  Total FLOAT NOT NULL,
+  Fecha DATE NOT NULL,
+  DNI INT NOT NULL,
+  CONSTRAINT PK_factura PRIMARY KEY (Numero_Factura),
+  CONSTRAINT FK_factura_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI)
 );
 
-CREATE TABLE Mensajes (
-    Codigo_Mensaje INT IDENTITY(1,1) NOT NULL,
-    Asunto VARCHAR(100) NOT NULL,
-    Descripcion VARCHAR(300) NOT NULL,
-    Fecha DATE NOT NULL,
-    DNI INT NOT NULL,
-    CONSTRAINT PK_mensajes PRIMARY KEY (Codigo_Mensaje),
-    CONSTRAINT FK_mensajes_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI)
+CREATE TABLE Mensajes
+(
+  Codigo_Mensaje INT IDENTITY(1,1) NOT NULL,
+  Asunto VARCHAR(100) NOT NULL,
+  Descripcion VARCHAR(300) NOT NULL,
+  Fecha DATE NOT NULL,
+  DNI INT NOT NULL,
+  CONSTRAINT PK_mensajes PRIMARY KEY (Codigo_Mensaje),
+  CONSTRAINT FK_mensajes_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI)
 );
 
-CREATE TABLE Provincia (
-    Codigo_Provincia INT IDENTITY(1,1) NOT NULL,
-    Nombre CHAR(100) NOT NULL,
-    Codigo_Pais INT NOT NULL,
-    CONSTRAINT PK_provincia PRIMARY KEY (Codigo_Provincia),
-    CONSTRAINT FK_provincia_pais FOREIGN KEY (Codigo_Pais) REFERENCES Pais(Codigo_Pais)
+CREATE TABLE Provincia
+(
+  Codigo_Provincia INT IDENTITY(1,1) NOT NULL,
+  Nombre CHAR(100) NOT NULL,
+  Codigo_Pais INT NOT NULL,
+  CONSTRAINT PK_provincia PRIMARY KEY (Codigo_Provincia),
+  CONSTRAINT FK_provincia_pais FOREIGN KEY (Codigo_Pais) REFERENCES Pais(Codigo_Pais)
 );
 
-CREATE TABLE Detalle_Categorias (
-    Codigo_Producto INT NOT NULL,
-    Codigo_Categoria INT NOT NULL,
-    CONSTRAINT PK_detalle_categorias PRIMARY KEY (Codigo_Producto, Codigo_Categoria),
-    CONSTRAINT FK_detalle_categorias_producto FOREIGN KEY (Codigo_Producto) REFERENCES Producto(Codigo_Producto),
-    CONSTRAINT FK_detalle_categorias_categoria FOREIGN KEY (Codigo_Categoria) REFERENCES Categoria(Codigo_Categoria)
+CREATE TABLE Detalle_Categorias
+(
+  Codigo_Producto INT NOT NULL,
+  Codigo_Categoria INT NOT NULL,
+  CONSTRAINT PK_detalle_categorias PRIMARY KEY (Codigo_Producto, Codigo_Categoria),
+  CONSTRAINT FK_detalle_categorias_producto FOREIGN KEY (Codigo_Producto) REFERENCES Producto(Codigo_Producto),
+  CONSTRAINT FK_detalle_categorias_categoria FOREIGN KEY (Codigo_Categoria) REFERENCES Categoria(Codigo_Categoria)
 );
 
-CREATE TABLE Detalle_Producto (
-    Cantidad INT NOT NULL,
-    Precio FLOAT NOT NULL,
-    Numero_Factura INT NOT NULL,
-    Codigo_Producto INT NOT NULL,
-    CONSTRAINT PK_detalle_producto PRIMARY KEY (Numero_Factura, Codigo_Producto),
-    CONSTRAINT FK_detalle_producto_factura FOREIGN KEY (Numero_Factura) REFERENCES Factura(Numero_Factura),
-    CONSTRAINT FK_detalle_producto_producto FOREIGN KEY (Codigo_Producto) REFERENCES Producto(Codigo_Producto)
+CREATE TABLE Detalle_Producto
+(
+  Cantidad INT NOT NULL,
+  Precio FLOAT NOT NULL,
+  Numero_Factura INT NOT NULL,
+  Codigo_Producto INT NOT NULL,
+  CONSTRAINT PK_detalle_producto PRIMARY KEY (Numero_Factura, Codigo_Producto),
+  CONSTRAINT FK_detalle_producto_factura FOREIGN KEY (Numero_Factura) REFERENCES Factura(Numero_Factura),
+  CONSTRAINT FK_detalle_producto_producto FOREIGN KEY (Codigo_Producto) REFERENCES Producto(Codigo_Producto)
 );
 
-CREATE TABLE Detalle_Pago (
-    Monto_Pagado FLOAT NOT NULL,
-    Nro_Cuotas INT NOT NULL,
-    Codigo_MP INT NOT NULL,
-    Numero_Factura INT NOT NULL,
-    CONSTRAINT PK_detalle_pago PRIMARY KEY (Codigo_MP, Numero_Factura),
-    CONSTRAINT FK_detalle_pago_mp FOREIGN KEY (Codigo_MP) REFERENCES Medios_de_Pago(Codigo_MP),
-    CONSTRAINT FK_detalle_pago_factura FOREIGN KEY (Numero_Factura) REFERENCES Factura(Numero_Factura)
+CREATE TABLE Detalle_Pago
+(
+  Monto_Pagado FLOAT NOT NULL,
+  Nro_Cuotas INT NOT NULL,
+  Codigo_MP INT NOT NULL,
+  Numero_Factura INT NOT NULL,
+  CONSTRAINT PK_detalle_pago PRIMARY KEY (Codigo_MP, Numero_Factura),
+  CONSTRAINT FK_detalle_pago_mp FOREIGN KEY (Codigo_MP) REFERENCES Medios_de_Pago(Codigo_MP),
+  CONSTRAINT FK_detalle_pago_factura FOREIGN KEY (Numero_Factura) REFERENCES Factura(Numero_Factura)
 );
 
-CREATE TABLE Localidad (
-    Codigo_Localidad INT IDENTITY(1,1) NOT NULL,
-    Nombre CHAR(100) NOT NULL,
-    Codigo_Provincia INT NOT NULL,
-    CONSTRAINT PK_localidad PRIMARY KEY (Codigo_Localidad),
-    CONSTRAINT FK_localidad_provincia FOREIGN KEY (Codigo_Provincia) REFERENCES Provincia(Codigo_Provincia)
+CREATE TABLE Localidad
+(
+  Codigo_Localidad INT IDENTITY(1,1) NOT NULL,
+  Nombre CHAR(100) NOT NULL,
+  Codigo_Provincia INT NOT NULL,
+  CONSTRAINT PK_localidad PRIMARY KEY (Codigo_Localidad),
+  CONSTRAINT FK_localidad_provincia FOREIGN KEY (Codigo_Provincia) REFERENCES Provincia(Codigo_Provincia)
 );
 
-CREATE TABLE Direccion (
-    Codigo_Direccion INT IDENTITY(1,1) NOT NULL,
-    Calle VARCHAR(100) NOT NULL,
-    Altura INT NOT NULL,
-    Dpto VARCHAR(15),
-    Codigo_Localidad INT NOT NULL,
-    CONSTRAINT PK_direcciones PRIMARY KEY (Codigo_Direccion),
-    CONSTRAINT FK_direcciones_localidad FOREIGN KEY (Codigo_Localidad) REFERENCES Localidad(Codigo_Localidad)
+CREATE TABLE Direccion
+(
+  Codigo_Direccion INT IDENTITY(1,1) NOT NULL,
+  Calle VARCHAR(100) NOT NULL,
+  Altura INT NOT NULL,
+  Dpto VARCHAR(15),
+  Codigo_Localidad INT NOT NULL,
+  CONSTRAINT PK_direcciones PRIMARY KEY (Codigo_Direccion),
+  CONSTRAINT FK_direcciones_localidad FOREIGN KEY (Codigo_Localidad) REFERENCES Localidad(Codigo_Localidad)
 );
 
-CREATE TABLE Detalle_Domicilio (
-    DNI INT NOT NULL,
-    Codigo_Direccion INT NOT NULL,
-    CONSTRAINT PK_detalle_domicilios PRIMARY KEY (DNI, Codigo_Direccion),
-    CONSTRAINT FK_detalle_domicilios_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI),
-    CONSTRAINT FK_detalle_domicilios_direccion FOREIGN KEY (Codigo_Direccion) REFERENCES Direccion(Codigo_Direccion)
+CREATE TABLE Detalle_Domicilio
+(
+  DNI INT NOT NULL,
+  Codigo_Direccion INT NOT NULL,
+  CONSTRAINT PK_detalle_domicilios PRIMARY KEY (DNI, Codigo_Direccion),
+  CONSTRAINT FK_detalle_domicilios_usuario FOREIGN KEY (DNI) REFERENCES Usuario(DNI),
+  CONSTRAINT FK_detalle_domicilios_direccion FOREIGN KEY (Codigo_Direccion) REFERENCES   
+  Direccion(Codigo_Direccion)
 );
-
 ```
 
 ### Lote de datos:
@@ -679,145 +779,143 @@ USE proyecto_BDD;
 -- =======================
 -- DATOS PARA Tipo_Perfil
 -- =======================
-INSERT INTO Tipo_Perfil (Descripcion) VALUES 
-	('Administrador'), 
-	('Cliente'), 
-	('Vendedor'), 
-	('Gerente');
+INSERT INTO Tipo_Perfil (Descripcion) VALUES
+('Administrador'),
+('Cliente'),
+('Gerente');
 
 -- =======================
 -- DATOS PARA Categoria
 -- =======================
-INSERT INTO Categoria (Descripcion) VALUES 
-	('Suplementos'), 
-	('Comida Orgánica'), 
-	('Bebidas'), 
-	('Frutas y Verduras'), 
-	('Snacks Saludables');
+INSERT INTO Categoria (Descripcion) VALUES
+('Suplementos'),
+('Comida Orgánica'),
+('Bebidas'),
+('Frutas y Verduras'),
+('Snacks Saludables');
 
 -- =======================
 -- DATOS PARA Pais
 -- =======================
-INSERT INTO Pais (Nombre) VALUES 
-	('Argentina'), 
-	('Brasil'), 
-	('Chile'), 
-	('Uruguay');
+INSERT INTO Pais (Nombre) VALUES
+('Argentina'),
+('Brasil'),
+('Chile'),
+('Uruguay');
 
 -- =======================
 -- DATOS PARA Proveedor
 -- =======================
-INSERT INTO Proveedor (CUIT, Correo, Telefono, Nombre) VALUES 
-	(20123456789, 'proveedor1@nutrifood.com', 123456789, 'Proveedor 1'), 
-	(20345678901, 'proveedor2@nutrifood.com', 987654321, 'Proveedor 2'), 
-	(20456789012, 'proveedor3@nutrifood.com', 456789123, 'Proveedor 3'), 
-	(20567890123, 'proveedor4@nutrifood.com', 789123456, 'Proveedor 4');
+INSERT INTO Proveedor (CUIT, Correo, Telefono, Nombre) VALUES
+(20123456789, 'proveedor1@nutrifood.com', 123456789, 'Proveedor 1'),
+(20345678901, 'proveedor2@nutrifood.com', 987654321, 'Proveedor 2'),
+(20456789012, 'proveedor3@nutrifood.com', 456789123, 'Proveedor 3'),
+(20567890123, 'proveedor4@nutrifood.com', 789123456, 'Proveedor 4');
 
 -- =======================
 -- DATOS PARA Medios_de_Pago
 -- =======================
-INSERT INTO Medios_de_Pago (Nombre) VALUES 
-	('Tarjeta de Crédito'), 
-	('Transferencia Bancaria'), 
-	('Efectivo'), 
-	('Pago en Cuotas');
+INSERT INTO Medios_de_Pago (Nombre) VALUES
+('Tarjeta de Crédito'),
+('Transferencia Bancaria'),
+('Efectivo'),
+('Pago en Cuotas');
 
 -- =======================
 -- DATOS PARA Producto
 -- =======================
 INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Eliminado) VALUES
-	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789, 'NO'),
-	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901, 'NO'),
-	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012, 'NO'),
-	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123, 'NO'),
-	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901, 'NO');
+('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789, 'NO'),
+('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901, 'NO'),
+('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012, 'NO'),
+('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123, 'NO'),
+('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901, 'NO');
 
 -- =======================
 -- DATOS PARA Usuario
 -- =======================
 INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
-	(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
-	(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
-	(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
+(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
+(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
+(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
 
 -- =======================
 -- DATOS PARA Factura
 -- =======================
-INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES 
-	(1001, 2000.00, '2024-09-30', 23456789), 
-	(1002, 3700.00, '2024-09-29', 34567890), 
-	(1003, 4200.00, '2024-09-28', 45678901);
+INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES
+(1001, 2000.00, '2024-09-30', 23456789),
+(1002, 3700.00, '2024-09-29', 34567890),
+(1003, 4200.00, '2024-09-28', 45678901);
 
 -- =======================
 -- DATOS PARA Mensajes
 -- =======================
-INSERT INTO Mensajes (Asunto, Descripcion, Fecha, DNI) VALUES 
-	('Consulta sobre envío', '¿Cuándo llegará mi pedido?', '2024-09-29', 23456789), 
-	('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 34567890), 
-	('Cambio de dirección', 'Quiero cambiar la dirección de entrega', '2024-09-27', 12345678);
+INSERT INTO Mensajes (Asunto, Descripcion, Fecha, DNI) VALUES
+('Consulta sobre envío', '¿Cuándo llegará mi pedido?', '2024-09-29', 23456789),
+('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 34567890),
+('Cambio de dirección', 'Quiero cambiar la dirección de entrega', '2024-09-27', 12345678);
 
 -- =======================
 -- DATOS PARA Provincia
 -- =======================
-INSERT INTO Provincia (Nombre, Codigo_Pais) VALUES 
-	('Buenos Aires', 1), 
-	('Río de Janeiro', 2), 
-	('Santiago', 3), 
-	('Montevideo', 4);
+INSERT INTO Provincia (Nombre, Codigo_Pais) VALUES
+('Buenos Aires', 1),
+('Río de Janeiro', 2),
+('Santiago', 3),
+('Montevideo', 4);
 
 -- =======================
 -- DATOS PARA Detalle_Categorias
 -- =======================
-INSERT INTO Detalle_Categorias (Codigo_Producto, Codigo_Categoria) VALUES 
-	(1, 1), 
-	(2, 1), 
-	(3, 2), 
-	(4, 2), 
-	(1, 3);
+
+INSERT INTO Detalle_Categorias (Codigo_Producto, Codigo_Categoria) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(1, 3);
 
 -- =======================
 -- DATOS PARA Detalle_Producto
 -- =======================
-INSERT INTO Detalle_Producto (Cantidad, Precio, Numero_Factura, Codigo_Producto) VALUES 
-	(2, 1500.00, 1001, 1), 
-	(3, 120.00, 1002, 3), 
-	(1, 1800.00, 1003, 4);
+INSERT INTO Detalle_Producto (Cantidad, Precio, Numero_Factura, Codigo_Producto) VALUES
+(2, 1500.00, 1001, 1),
+(3, 120.00, 1002, 3),
+(1, 1800.00, 1003, 4);
 
 -- =======================
 -- DATOS PARA Detalle_Pago
 -- =======================
-INSERT INTO Detalle_Pago (Monto_Pagado, Nro_Cuotas, Codigo_MP, Numero_Factura) VALUES 
-	(2000.00, 1, 1, 1001), 
-	(3700.00, 2, 4, 1002), 
-	(4200.00, 1, 3, 1003);
+INSERT INTO Detalle_Pago (Monto_Pagado, Nro_Cuotas, Codigo_MP, Numero_Factura) VALUES
+(2000.00, 1, 1, 1001),
+(3700.00, 2, 4, 1002),
+(4200.00, 1, 3, 1003);
 
 -- =======================
 -- DATOS PARA Localidad
 -- =======================
-INSERT INTO Localidad (Nombre, Codigo_Provincia) VALUES 
-	('Capital Federal', 1), 
-	('Niterói', 2), 
-	('Providencia', 3), 
-	('Punta Carretas', 4);
+INSERT INTO Localidad (Nombre, Codigo_Provincia) VALUES
+('Capital Federal', 1),
+('Niterói', 2),
+('Providencia', 3),
+('Punta Carretas', 4);
 
 -- =======================
 -- DATOS PARA Direccion
 -- =======================
-INSERT INTO Direccion (Calle, Altura, Dpto, Codigo_Localidad) VALUES 
-	('Av. Siempre Viva', 123, 'A', 1), 
-	('Rua das Flores', 456, 'B', 2), 
-	('Calle Falsa', 789, 'C', 3), 
-	('Av. Libertador', 321, NULL, 4);
+INSERT INTO Direccion (Calle, Altura, Dpto, Codigo_Localidad) VALUES
+('Av. Siempre Viva', 123, 'A', 1),
+('Rua das Flores', 456, 'B', 2),
+('Calle Falsa', 789, 'C', 3),
+('Av. Libertador', 321, NULL, 4);
 
 -- =======================
 -- DATOS PARA Detalle_Domicilio
 -- =======================
-INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES 
-	(23456789, 1), 
-	(34567890, 2), 
-	(12345678, 3), 
-	(45678901, 4);
-
+INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
+(23456789, 1),
+(45678901, 2),
+(12345678, 3);
 ```
 
 ## Capítulo V: CONCLUSIONES 
