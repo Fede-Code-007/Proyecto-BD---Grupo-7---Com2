@@ -1,4 +1,4 @@
-Procedimiento de Inserción: Permite añadir un nuevo producto en la base de datos, capturando todos los detalles necesarios para su administración, como descripción, stock y precio.
+-- Procedimiento de Inserción: Permite añadir un nuevo producto en la base de datos, capturando todos los detalles necesarios para su ----- administración, como descripción, stock y precio.
 
     CREATE PROCEDURE InsertarProducto
         @Descripcion VARCHAR(100),
@@ -13,7 +13,7 @@ Procedimiento de Inserción: Permite añadir un nuevo producto en la base de dat
         VALUES (@Descripcion, @Stock, @Stock_Min, @Precio, @Costo, @CUIT);
     END;
 
-Procedimiento de Modificación: Permite modificar los detalles de un producto existente, permitiendo la facilidad en la actualización de datos y mantenimiento de la información.
+-- Procedimiento de Modificación: Permite modificar los detalles de un producto existente, permitiendo la facilidad en la actualización --- de datos y mantenimiento de la información.
 
     CREATE PROCEDURE ModificarProducto
         @Codigo_Producto INT,
@@ -33,7 +33,7 @@ Procedimiento de Modificación: Permite modificar los detalles de un producto ex
         WHERE Codigo_Producto = @Codigo_Producto;
     END;
 
-Procedimiento de Eliminación: Este procedimiento se encarga de la eliminación de un producto.
+-- Procedimiento de Eliminación: Este procedimiento se encarga de la eliminación de un producto.
 
     CREATE PROCEDURE EliminarProducto
         @Codigo_Producto INT
@@ -44,11 +44,11 @@ Procedimiento de Eliminación: Este procedimiento se encarga de la eliminación 
     END;
 
 
-### Funciones Almacenadas para Cálculos y Reportes
+-- ### Funciones Almacenadas para Cálculos y Reportes
 
-**Funciones Implementadas:**
+-- **Funciones Implementadas:**
 
-Calcular Edad de Usuarios: Esta función permite calcular la edad de un usuario en función de su fecha de nacimiento.
+-- Calcular Edad de Usuarios: Esta función permite calcular la edad de un usuario en función de su fecha de nacimiento.
 
     CREATE FUNCTION CalcularEdad (@FechaNacimiento DATE)
     RETURNS INT
@@ -60,7 +60,7 @@ Calcular Edad de Usuarios: Esta función permite calcular la edad de un usuario 
                     THEN 1 ELSE 0 END;
     END;
 
-Total de Facturas por Usuario: Proporciona el total de ventas acumuladas por usuario, ayudando al análisis de clientes y de ventas.
+-- Total de Facturas por Usuario: Proporciona el total de ventas acumuladas por usuario, ayudando al análisis de clientes y de ventas.
 
     CREATE FUNCTION TotalFacturasPorUsuario (@DNI INT)
     RETURNS FLOAT
@@ -71,7 +71,8 @@ Total de Facturas por Usuario: Proporciona el total de ventas acumuladas por usu
         RETURN ISNULL(@Total, 0);
     END;
 
-Precio Promedio de Productos: Calcula el precio promedio de todos los productos registrados en la base de datos, sirve para el análisis de precios y comparación con proveedores.
+-- Precio Promedio de Productos: Calcula el precio promedio de todos los productos registrados en la base de datos, sirve para el 
+-- análisis de precios y comparación con proveedores.
 
     CREATE FUNCTION PrecioPromedioProductos ()
     RETURNS FLOAT
@@ -82,23 +83,23 @@ Precio Promedio de Productos: Calcula el precio promedio de todos los productos 
         RETURN ISNULL(@Promedio, 0);
     END;
 
-### Pruebas de Inserción y Manipulación de Datos
+-- ### Pruebas de Inserción y Manipulación de Datos
 
-### Inserción Directa de Lote de Datos
+-- ### Inserción Directa de Lote de Datos
 
 INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT)
 VALUES 
 ('Producto A', 100, 10, 200.00, 150.00, 20123456789),
 ('Producto B', 50, 5, 100.00, 75.00, 20345678901);
 
-### Inserción a través de Procedimientos Almacenados
+-- ### Inserción a través de Procedimientos Almacenados
 
-Para comparar la eficiencia en el uso de procedimientos, se realizó la inserción de datos mediante llamadas a `InsertarProducto`, verificando la facilidad de uso y la estructura controlada de datos.
+-- Para comparar la eficiencia en el uso de procedimientos, se realizó la inserción de datos mediante llamadas a `InsertarProducto`, -- --- verificando la facilidad de uso y la estructura controlada de datos.
 
 EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
 EXEC InsertarProducto 'Producto D', 60, 8, 180.00, 130.00, 20567890123;
 
-### Actualización y Eliminación de Datos
+-- ### Actualización y Eliminación de Datos
 
 -- Actualizar un producto
 EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00;
