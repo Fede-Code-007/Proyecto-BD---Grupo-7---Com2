@@ -976,9 +976,9 @@ En resumen:
 
 ## Capítulo VI: BIBLIOGRAFÍA 
 
-https://www.sqlshack.com/es/cual-es-la-diferencia-entre-indices-agrupados-y-no-agrupados-en-sql-server/
+Richardson, B. (2018, May 28). ¿Cuál es la diferencia entre índices agrupados y no agrupados en SQL Server? SQLShack. https://www.sqlshack.com/es/cual-es-la-diferencia-entre-indices-agrupados-y-no-agrupados-en-sql-server/
 
-Unidad 10. Optimización de consultas. Apuntes de BD para DAW, DAM y ASIR. José Juan Sánchez Hernández. Curso 2023/2024.
+José Juan Sánchez Hernández. (2023/ 2024) Optimización de consultas. Apuntes de BD para DAW, DAM y ASIR. Curso 2023/2024.Unidad 10.
 
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
 Grant Fritchey. SQL Server 2022 Query - Performance Tuning, 6ta ed. Apress Media, EEUU, 2022.
