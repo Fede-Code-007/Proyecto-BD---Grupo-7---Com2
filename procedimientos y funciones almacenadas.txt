@@ -39,7 +39,8 @@
         @Codigo_Producto INT
     AS
     BEGIN
-        DELETE FROM Producto
+        UPDATE Producto
+        SET Eliminado = 'SI'
         WHERE Codigo_Producto = @Codigo_Producto;
     END;
 
