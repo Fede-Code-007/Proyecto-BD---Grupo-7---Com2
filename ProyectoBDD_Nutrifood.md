@@ -126,6 +126,19 @@ Los procedimientos almacenados y las funciones almacenadas son metodologías ese
 
 Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
+## Manejo de permisos a nivel de usuarios de base de datos
+
+En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
+
+- Usuarios de base de datos
+Los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
+
+- Roles fijos en bases de datos
+Es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
+
+- Roles de base de datos definidos por el usuario
+Los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
+
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
 ### Descripción de la elaboración del trabajo
