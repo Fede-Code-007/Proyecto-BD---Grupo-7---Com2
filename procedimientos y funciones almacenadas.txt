@@ -9,8 +9,8 @@
         @CUIT BIGINT
     AS
     BEGIN
-        INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT)
-        VALUES (@Descripcion, @Stock, @Stock_Min, @Precio, @Costo, @CUIT);
+        INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo,Eliminado, CUIT)
+        VALUES (@Descripcion, @Stock, @Stock_Min, @Precio, @Costo,'NO', @CUIT);
     END;
 
 -- Procedimiento de Modificación: Permite modificar los detalles de un producto existente, permitiendo la facilidad en la actualización --- de datos y mantenimiento de la información.
@@ -21,7 +21,8 @@
         @Stock INT,
         @Stock_Min INT,
         @Precio FLOAT,
-        @Costo FLOAT
+        @Costo FLOAT,
+        @Eliminado VARCHAR(2)
     AS
     BEGIN
         UPDATE Producto
@@ -30,6 +31,7 @@
             Stock_Min = @Stock_Min,
             Precio = @Precio,
             Costo = @Costo
+            Eliminado = @Eliminado
         WHERE Codigo_Producto = @Codigo_Producto;
     END;
 
