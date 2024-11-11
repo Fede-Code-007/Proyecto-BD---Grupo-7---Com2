@@ -82,6 +82,25 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ## Capítulo II: MARCO CONCEPTUAL
 
+### Manejo de permisos a nivel de usuarios de base de datos
+
+En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
+
+- Usuarios de base de datos
+Los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
+
+- Roles fijos en bases de datos
+Es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
+
+- Roles de base de datos definidos por el usuario
+Los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
+
+### Procedimientos y funciones almacenadas
+
+Los procedimientos almacenados y las funciones almacenadas son metodologías esenciales en el diseño y administración de bases de datos, permitiendo una gestión organizada y eficaz de los datos. Los procedimientos almacenados se utilizan como una metodología estructurada para ejecutar operaciones complejas y repetitivas, gestionando múltiples transacciones y asegurando la consistencia y seguridad de los datos. Esta metodología es ideal para operaciones que requieren la modificación de datos en diferentes tablas o la ejecución de procesos de negocio definidos, garantizando que se sigan los mismos pasos y lógica en cada ejecución.
+
+Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
+
 ### Optimización de consultas a través de índices
 Para optimizar el rendimiento de las consultas en bases de datos, los índices son fundamentales. Sin un índice, buscar un valor en una columna implica recorrer la tabla completa, lo cual es ineficiente en tablas con millones de filas. Los índices funcionan como punteros que agilizan la localización de filas que cumplen condiciones de la cláusula WHERE, mejorando así el tiempo de respuesta.
 
@@ -120,24 +139,6 @@ Contras de las vistas indexadas:
 2.	Requieren mantenimiento adicional de los índices y estadísticas asociados, incrementando el costo en términos de espacio y recursos.
 3.	Restricciones de uso: deben tener un índice único, solo permiten índices no clusterizados después de crear el índice clusterizado, y deben ser determinísticas (una sola salida posible para cada consulta).
 
-### Procedimientos y funciones almacenadas
-
-Los procedimientos almacenados y las funciones almacenadas son metodologías esenciales en el diseño y administración de bases de datos, permitiendo una gestión organizada y eficaz de los datos. Los procedimientos almacenados se utilizan como una metodología estructurada para ejecutar operaciones complejas y repetitivas, gestionando múltiples transacciones y asegurando la consistencia y seguridad de los datos. Esta metodología es ideal para operaciones que requieren la modificación de datos en diferentes tablas o la ejecución de procesos de negocio definidos, garantizando que se sigan los mismos pasos y lógica en cada ejecución.
-
-Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
-
-### Manejo de permisos a nivel de usuarios de base de datos
-
-En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
-
-- Usuarios de base de datos
-Los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
-
-- Roles fijos en bases de datos
-Es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
-
-- Roles de base de datos definidos por el usuario
-Los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
 
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
@@ -705,156 +706,73 @@ CREATE TABLE Detalle_Domicilio
   Direccion(Codigo_Direccion)
 );
 ```
+### Creación y gestión de Permisos:
 
-### Lote de datos:
+- ####Permisos a nivel de usuarios:
 
-```sql
+  1. Crear un usuario en la base de datos: 
+     
+	CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'UsuarioAdmin'; 
+	CREATE LOGIN UsuarioLectura WITH PASSWORD = 'UsuarioLectura';
+	USE proyecto_BDD;
+	CREATE USER UsuarioAdmin FOR LOGIN UsuarioAdmin;
+	CREATE USER UsuarioLectura FOR LOGIN UsuarioLectura;
+
+  2. Asignación de permisos:
+     
+	ALTER ROLE db_owner ADD MEMBER UsuarioAdmin; -- concede permiso como administrador
+
+	ALTER ROLE db_datareader ADD MEMBER UsuarioLectura; -- concede permiso únicamente de lectura a un usuario
+	
+  3. Asignar permiso para el uso de procedimientos almacenados (usuario de solo lectura):
+
+GRANT EXECUTE ON InsertarProducto TO UsuarioLectura;
+
+  4. Realizar carga de datos por parte de los usuarios:
+
+	USE proeyecto_BDD;
+	INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES 
+	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789), 
+	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901), 
+	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012), 
+	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123), 
+	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
+
+	/*
+	Cuando el usuario con permiso de solo lectura quiere realizar un insert este no podrá hacerlo ya que no cuenta con los permisos 	necesarios para hacerlo. Sin embargo, el usuario al cual le fue asignado el permiso como Administrador no debería contar con 		problemas para hacerlo.
+  	*/
+
+  5. Realizar un insert a través del procedimiento almacenado con el usuario con permiso de solo lectura:
+
 USE proyecto_BDD;
+	EXEC InsertarProducto @Descripcion = Jugo Detox, @Stock = 100, @Stock_Min = 15, @Precio = 250.00, @Costo = 180.00, @CUIT = 		20345678901; -- Si el permiso fue otorgado correctamente el usuario podría insertar un producto con éxito.
 
--- LOTE DE DATOS
+- ####Permisos a nivel de roles del DBMS:
 
--- =======================
--- DATOS PARA Tipo_Perfil
--- =======================
-INSERT INTO Tipo_Perfil (Descripcion) VALUES
-('Administrador'),
-('Cliente'),
-('Gerente');
+  1. Creación de usuarios:
 
--- =======================
--- DATOS PARA Categoria
--- =======================
-INSERT INTO Categoria (Descripcion) VALUES
-('Suplementos'),
-('Comida Orgánica'),
-('Bebidas'),
-('Frutas y Verduras'),
-('Snacks Saludables');
+   	CREATE LOGIN UsuarioRolLectura WITH PASSWORD = 'ContraseñaLectura';
+	CREATE LOGIN UsuarioSinRol WITH PASSWORD = 'ContraseñaSinRol';
+	USE proyecto_BDD;
+	CREATE USER UsuarioRolLectura FOR LOGIN UsuarioRolLectura;
+	CREATE USER UsuarioSinPermiso FOR LOGIN UsuarioSinRol;
 
--- =======================
--- DATOS PARA Pais
--- =======================
-INSERT INTO Pais (Nombre) VALUES
-('Argentina'),
-('Brasil'),
-('Chile'),
-('Uruguay');
+  2. Crear rol, otorgar permisos y asignar rol a un usuario:
 
--- =======================
--- DATOS PARA Proveedor
--- =======================
-INSERT INTO Proveedor (CUIT, Correo, Telefono, Nombre) VALUES
-(20123456789, 'proveedor1@nutrifood.com', 123456789, 'Proveedor 1'),
-(20345678901, 'proveedor2@nutrifood.com', 987654321, 'Proveedor 2'),
-(20456789012, 'proveedor3@nutrifood.com', 456789123, 'Proveedor 3'),
-(20567890123, 'proveedor4@nutrifood.com', 789123456, 'Proveedor 4');
+	CREATE ROLE RolSoloLectura;
+	GRANT SELECT ON Producto TO RolSoloLectura;
+	ALTER ROLE RolSoloLectura ADD MEMBER UsuarioRolLectura;
 
--- =======================
--- DATOS PARA Medios_de_Pago
--- =======================
-INSERT INTO Medios_de_Pago (Nombre) VALUES
-('Tarjeta de Crédito'),
-('Transferencia Bancaria'),
-('Efectivo'),
-('Pago en Cuotas');
+  3. Verificacón del comportamiento de ambos usuarios:
 
--- =======================
--- DATOS PARA Producto
--- =======================
-INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Eliminado) VALUES
-('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789, 'NO'),
-('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901, 'NO'),
-('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012, 'NO'),
-('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123, 'NO'),
-('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901, 'NO');
+	-- Para realizar la verificación podemos hacerlo a través de una consulta.
+	USE proyecto_BDD;
+	SELECT * FROM Producto;
 
--- =======================
--- DATOS PARA Usuario
--- =======================
-INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
-(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
-(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
-(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
-
--- =======================
--- DATOS PARA Factura
--- =======================
-INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES
-(1001, 2000.00, '2024-09-30', 23456789),
-(1002, 3700.00, '2024-09-29', 34567890),
-(1003, 4200.00, '2024-09-28', 45678901);
-
--- =======================
--- DATOS PARA Mensajes
--- =======================
-INSERT INTO Mensajes (Asunto, Descripcion, Fecha, DNI) VALUES
-('Consulta sobre envío', '¿Cuándo llegará mi pedido?', '2024-09-29', 23456789),
-('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 34567890),
-('Cambio de dirección', 'Quiero cambiar la dirección de entrega', '2024-09-27', 12345678);
-
--- =======================
--- DATOS PARA Provincia
--- =======================
-INSERT INTO Provincia (Nombre, Codigo_Pais) VALUES
-('Buenos Aires', 1),
-('Río de Janeiro', 2),
-('Santiago', 3),
-('Montevideo', 4);
-
--- =======================
--- DATOS PARA Detalle_Categorias
--- =======================
-
-INSERT INTO Detalle_Categorias (Codigo_Producto, Codigo_Categoria) VALUES
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(1, 3);
-
--- =======================
--- DATOS PARA Detalle_Producto
--- =======================
-INSERT INTO Detalle_Producto (Cantidad, Precio, Numero_Factura, Codigo_Producto) VALUES
-(2, 1500.00, 1001, 1),
-(3, 120.00, 1002, 3),
-(1, 1800.00, 1003, 4);
-
--- =======================
--- DATOS PARA Detalle_Pago
--- =======================
-INSERT INTO Detalle_Pago (Monto_Pagado, Nro_Cuotas, Codigo_MP, Numero_Factura) VALUES
-(2000.00, 1, 1, 1001),
-(3700.00, 2, 4, 1002),
-(4200.00, 1, 3, 1003);
-
--- =======================
--- DATOS PARA Localidad
--- =======================
-INSERT INTO Localidad (Nombre, Codigo_Provincia) VALUES
-('Capital Federal', 1),
-('Niterói', 2),
-('Providencia', 3),
-('Punta Carretas', 4);
-
--- =======================
--- DATOS PARA Direccion
--- =======================
-INSERT INTO Direccion (Calle, Altura, Dpto, Codigo_Localidad) VALUES
-('Av. Siempre Viva', 123, 'A', 1),
-('Rua das Flores', 456, 'B', 2),
-('Calle Falsa', 789, 'C', 3),
-('Av. Libertador', 321, NULL, 4);
-
--- =======================
--- DATOS PARA Detalle_Domicilio
--- =======================
-INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
-(23456789, 1),
-(45678901, 2),
-(12345678, 3);
-```
-
+   
+  	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
+	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
+  */
 ### Procedimientos y Funciones Almacenadas 
 
 #### 1. Procedimientos Almacenados
@@ -941,7 +859,7 @@ Los resultados fueron  los siguientes:
 
 - Consulta sin índice.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 33334, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
@@ -949,11 +867,10 @@ Los resultados fueron  los siguientes:
 	 SQL Server Execution Times:
 	   CPU time = 281 ms,  elapsed time = 4006 ms.
 	
-	*/
 
 - Consulta con el índice solo sobre la columna fecha.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+  	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 4190, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
@@ -961,92 +878,20 @@ Los resultados fueron  los siguientes:
 	 SQL Server Execution Times:
 	   CPU time = 93 ms,  elapsed time = 3901 ms.
   
-	*/
-  
 - Consulta sobre el índice incluyendo varias columnas.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+  	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 4183, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
 	
 	 SQL Server Execution Times:
 	   CPU time = 203 ms,  elapsed time = 3673 ms.
-	
-	*/
   
 En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 33334 lecturas a 4190. Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente el tiempo de ejecución comparado con el primer índice, optimizó el acceso a los datos que se estaban buscando, reduciendo un poco las lecturas lógicas adicionales a 4183.
 
 Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
-
-### Creación y gestión de Permisos:
-
-- ####Permisos a nivel de usuarios:
-
-  1. Crear un usuario en la base de datos: 
-     
-	CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'UsuarioAdmin'; 
-	CREATE LOGIN UsuarioLectura WITH PASSWORD = 'UsuarioLectura';
-	USE proyecto_BDD;
-	CREATE USER UsuarioAdmin FOR LOGIN UsuarioAdmin;
-	CREATE USER UsuarioLectura FOR LOGIN UsuarioLectura;
-
-  2. Asignación de permisos:
-     
-	ALTER ROLE db_owner ADD MEMBER UsuarioAdmin; -- concede permiso como administrador
-
-	ALTER ROLE db_datareader ADD MEMBER UsuarioLectura; -- concede permiso únicamente de lectura a un usuario
-	
-  3. Asignar permiso para el uso de procedimientos almacenados (usuario de solo lectura):
-
-GRANT EXECUTE ON InsertarProducto TO UsuarioLectura;
-
-  4. Realizar carga de datos por parte de los usuarios:
-
-	USE proeyecto_BDD;
-	INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES 
-	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789), 
-	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901), 
-	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012), 
-	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123), 
-	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
-
-	/*
-	Cuando el usuario con permiso de solo lectura quiere realizar un insert este no podrá hacerlo ya que no cuenta con los permisos 	necesarios para hacerlo. Sin embargo, el usuario al cual le fue asignado el permiso como Administrador no debería contar con 		problemas para hacerlo.
-  	*/
-
-  5. Realizar un insert a través del procedimiento almacenado con el usuario con permiso de solo lectura:
-
-USE proyecto_BDD;
-	EXEC InsertarProducto @Descripcion = Jugo Detox, @Stock = 100, @Stock_Min = 15, @Precio = 250.00, @Costo = 180.00, @CUIT = 		20345678901; -- Si el permiso fue otorgado correctamente el usuario podría insertar un producto con éxito.
-
-- ####Permisos a nivel de roles del DBMS:
-
-  1. Creación de usuarios:
-
-   	CREATE LOGIN UsuarioRolLectura WITH PASSWORD = 'ContraseñaLectura';
-	CREATE LOGIN UsuarioSinRol WITH PASSWORD = 'ContraseñaSinRol';
-	USE proyecto_BDD;
-	CREATE USER UsuarioRolLectura FOR LOGIN UsuarioRolLectura;
-	CREATE USER UsuarioSinPermiso FOR LOGIN UsuarioSinRol;
-
-  2. Crear rol, otorgar permisos y asignar rol a un usuario:
-
-	CREATE ROLE RolSoloLectura;
-	GRANT SELECT ON Producto TO RolSoloLectura;
-	ALTER ROLE RolSoloLectura ADD MEMBER UsuarioRolLectura;
-
-  3. Verificacón del comportamiento de abmos usuarios:
-
-	-- Para realizar la verificación podemos hacerlo a través de una consulta.
-	USE proyecto_BDD;
-	SELECT * FROM Producto;
-
-   /*
-  	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
-	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
-  */
 
 ###Vistas y Vistas Indexadas
 En esta sección se desarrolla el impacto de las vistas y vistas indexadas en el rendimiento de las consultas, comparando operaciones CRUD y consultas de agregación sobre grandes volúmenes de datos.
