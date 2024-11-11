@@ -576,7 +576,7 @@ CREATE TABLE Producto
   Precio FLOAT NOT NULL,
   Costo FLOAT NOT NULL,
   CUIT BIGINT NOT NULL,
-  Eliminado VARCHAR(2) NOT NULL,
+  Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   Imagen VARCHAR(100),
   CONSTRAINT PK_producto PRIMARY KEY (Codigo_Producto),
   CONSTRAINT FK_producto_proveedores FOREIGN KEY (CUIT) REFERENCES Proveedor(CUIT)
@@ -838,9 +838,7 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (12345678, 3);
 ```
 
-### Procedimientos y Funciones Almacenadas en la Base de Datos Nutrifood
-
-En este capítulo se presentan los resultados de la implementación de procedimientos y funciones almacenadas dentro del sistema de base de datos para Nutrifood. 
+### Procedimientos y Funciones Almacenadas 
 
 #### 1. Procedimientos Almacenados
 
