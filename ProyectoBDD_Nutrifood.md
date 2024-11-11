@@ -35,6 +35,7 @@
     
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
 
+    - Manejo de permisos a nivel de usuarios de base de datos
     - Optimización de consultas a través de índices
     - Vistas y vistas indexadas
     - Procedimientos y funciones almacenadas
