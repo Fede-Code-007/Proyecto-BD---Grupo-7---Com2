@@ -825,20 +825,21 @@ Table 'Factura'. Scan count 1, logical reads 2, physical reads 1, page server re
 
  SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 54 ms.
 
-##### Función 3: `PrecioPromedioProductos`
+##### Función 3: `hashpass`
 
-- **Objetivo**: Calcular el precio promedio de todos los productos registrados.
-- **Descripción**: Esta función obtiene el promedio de los precios de todos los productos en la base de datos.
+- **Objetivo**: Agilizar el proceso de hasheo de contraseña del usuario.
+- **Descripción**: Esta función recibe la contraseña ingresada por el usuario y le aplica un metodo de hash para aumentar la seguridad.
 - **Ejemplo de Uso**:
   ```sql
-  SELECT dbo.PrecioPromedioProductos();
+  INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contrasena, Eliminado) VALUES
+  (12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, dbo.hashpass('administrador'), 'NO');
   ```
-- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 3 ms.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 56 ms.
 
-(1 row affected)
-Table 'Producto'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Tipo_Perfil'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Usuario'. Scan count 0, logical reads 4, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
 
- SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
+SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 #### 3. Resultados de las Pruebas de Rendimiento
 
