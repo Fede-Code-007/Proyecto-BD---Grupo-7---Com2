@@ -70,7 +70,7 @@ DECLARE @ContrasenaHashCL NVARCHAR(128) = CONVERT(NVARCHAR(128), HASHBYTES('SHA2
 DECLARE @ContrasenaHashSP NVARCHAR(128) = CONVERT(NVARCHAR(128), HASHBYTES('SHA2_256', @Contrasena2), 2);
 DECLARE @ContrasenaHashCJ NVARCHAR(128) = CONVERT(NVARCHAR(128), HASHBYTES('SHA2_256', @Contrasena3), 2);
 
-INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
+INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contrasena, Eliminado) VALUES
 (12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, @ContrasenaHashCL, 'NO'),
 (23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, @ContrasenaHashSP, 'NO'),
 (45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, @ContrasenaHashCJ, 'NO');

@@ -35,6 +35,7 @@
     
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
 
+    - Manejo de permisos a nivel de usuarios de base de datos
     - Optimización de consultas a través de índices
     - Vistas y vistas indexadas
     - Procedimientos y funciones almacenadas
@@ -82,6 +83,25 @@ Diseñar e implementar una base de datos relacional que soporte la aplicación N
 
 ## Capítulo II: MARCO CONCEPTUAL
 
+### Manejo de permisos a nivel de usuarios de base de datos
+
+En la administración de bases de datos, es fundamental garantizar la seguridad y el control de acceso a los datos. Para lograrlo, es necesario establecer una gestión rigurosa de permisos y roles, lo cual permite definir y limitar el acceso de los usuarios de manera adecuada. Estos permisos se gestionan a nivel de servidor mediante inicios de sesión y roles de servidor, y a nivel de base de datos a través de usuarios y roles específicos de la base de datos. Esta estructura de permisos proporciona una capa de protección integral que asegura la integridad y confidencialidad de los datos dentro del sistema.
+
+- Usuarios de base de datos:
+los inicios de sesión permiten acceder a una base de datos mediante la creación de un usuario dentro de dicha base y asignándole el inicio de sesión correspondiente. Por lo general, el nombre del usuario en la base es el mismo con el del inicio de sesión, aunque no es necesario que sea así. Cada usuario de base de datos está vinculado de forma exclusiva a un inicio de sesión, que puede relacionarse con un único usuario dentro de cada base de datos, pero que puede ser usuario en varias bases de datos al mismo tiempo. También se pueden crear usuarios de base de datos que no tengan un nombre de usuario correspondiente. Estos usuarios se denominan usuarios de bases de datos independientes. 
+
+- Roles fijos en bases de datos:
+es posible predefinir roles que agrupan permisos útiles a nivel de base de datos. Se pueden asignar tanto usuarios de base de datos como roles personalizados a estos roles fijos utilizando la instrucción ALTER ROLE ... ADD MEMBER.
+
+- Roles de base de datos definidos por el usuario:
+los usuarios con permiso para crear roles son capaces de crear roles de bases de datos agrupando a los usuarios según los permisos que estos comparten. De esta manera se logra facilitar la asignación o eliminaciones de permisos a un conjunto de usuarios que compartan las mismas características, logrando simplificar la administración de accesos.
+
+### Procedimientos y funciones almacenadas
+
+Los procedimientos almacenados y las funciones almacenadas son metodologías esenciales en el diseño y administración de bases de datos, permitiendo una gestión organizada y eficaz de los datos. Los procedimientos almacenados se utilizan como una metodología estructurada para ejecutar operaciones complejas y repetitivas, gestionando múltiples transacciones y asegurando la consistencia y seguridad de los datos. Esta metodología es ideal para operaciones que requieren la modificación de datos en diferentes tablas o la ejecución de procesos de negocio definidos, garantizando que se sigan los mismos pasos y lógica en cada ejecución.
+
+Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
+
 ### Optimización de consultas a través de índices
 Para optimizar el rendimiento de las consultas en bases de datos, los índices son fundamentales. Sin un índice, buscar un valor en una columna implica recorrer la tabla completa, lo cual es ineficiente en tablas con millones de filas. Los índices funcionan como punteros que agilizan la localización de filas que cumplen condiciones de la cláusula WHERE, mejorando así el tiempo de respuesta.
 
@@ -120,17 +140,30 @@ Contras de las vistas indexadas:
 2.	Requieren mantenimiento adicional de los índices y estadísticas asociados, incrementando el costo en términos de espacio y recursos.
 3.	Restricciones de uso: deben tener un índice único, solo permiten índices no clusterizados después de crear el índice clusterizado, y deben ser determinísticas (una sola salida posible para cada consulta).
 
-### Procedimientos y funciones almacenadas
-
-Los procedimientos almacenados y las funciones almacenadas son metodologías esenciales en el diseño y administración de bases de datos, permitiendo una gestión organizada y eficaz de los datos. Los procedimientos almacenados se utilizan como una metodología estructurada para ejecutar operaciones complejas y repetitivas, gestionando múltiples transacciones y asegurando la consistencia y seguridad de los datos. Esta metodología es ideal para operaciones que requieren la modificación de datos en diferentes tablas o la ejecución de procesos de negocio definidos, garantizando que se sigan los mismos pasos y lógica en cada ejecución.
-
-Las funciones almacenadas, por otra parte, representan una metodología orientada al cálculo y consulta de datos específicos. En lugar de modificar datos, las funciones almacenadas se emplean para realizar cálculos derivados, como obtener totales, promedios o formatos específicos, y retornar un único valor. Esta metodología permite una integración sencilla de operaciones matemáticas o de transformación en consultas, facilitando la obtención de información sin alterar los datos base. Las funciones almacenadas son especialmente útiles para estandarizar estos cálculos en diferentes consultas y asegurar una coherencia en el tratamiento de la información.
 
 ## Capítulo III: METODOLOGÍA SEGUIDA
 
 ### Descripción de la elaboración del trabajo
 
+Para iniciar el desarrollo del proyecto, en primer lugar, se organizó una reunión entre los integrantes del grupo para definir el caso de estudio que abordaríamos a lo largo del trabajo. Una vez establecida la idea central para la primera parte de la entrega, se creó un repositorio en GitHub, donde cada miembro del equipo podría ir subiendo sus aportes conforme desarrollara las actividades asignadas.
+
+Con la idea definida, comenzamos por elaborar el diagrama entidad-relación y su diccionario de datos para, posteriormente, avanzar con el modelo físico y el lote de datos con los que trabajaríamos.
+
+En la segunda parte del proyecto, distribuimos los temas de investigación entre los miembros del equipo a través de un sorteo, quedando asignados de la siguiente manera:
+
+- Díaz, Isaac: Vistas y vistas indexadas.
+- Pérez, Bruno: Manejo de permisos a nivel de usuarios de bases de datos.
+- Pérez, Santiago: Procedimientos y funciones almacenados.
+- Pérez Ruiz, Federico: Optimización de consultas mediante índices.
+Cada integrante desarrolló su tema asignado siguiendo las pautas acordadas, manteniendo además un seguimiento constante de los temas de los demás miembros, realizando correcciones y aportando ideas para mejorar el contenido a presentar.
+
 ### Herramientas 
+
+Las herramientas empleadas para el desarrollo del proyecto fueron:
+
+GitHub: Utilizado como repositorio para almacenar y gestionar los avances del trabajo.
+SQL Server Management Studio 20: Herramienta empleada para el desarrollo del script y las pruebas correspondientes.
+ERDPlus: Utilizado para la elaboración del diagrama entidad-relación.
 
 ## Capítulo IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS
 
@@ -559,9 +592,11 @@ CREATE TABLE Proveedor
   Correo VARCHAR(100) NOT NULL,
   Telefono BIGINT,
   Nombre VARCHAR(100) NOT NULL,
+  Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   CONSTRAINT PK_proveedores PRIMARY KEY (CUIT),
   CONSTRAINT UQ_proveedores_correo UNIQUE (Correo),
-  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono)
+  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono),
+  CONSTRAINT CK_proveedores_eliminado CHECK (Eliminado = 'SI' OR Eliminado = 'NO')
 );
 
 CREATE TABLE Medios_de_Pago
@@ -694,59 +729,66 @@ CREATE TABLE Detalle_Domicilio
   Direccion(Codigo_Direccion)
 );
 ```
+### Creación y gestión de Permisos:
 
-### Lote de datos:
+- ####Permisos a nivel de usuarios:
 
-```sql
+  1. Crear un usuario en la base de datos: 
+     
+	CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'UsuarioAdmin'; 
+	CREATE LOGIN UsuarioLectura WITH PASSWORD = 'UsuarioLectura';
+	USE proyecto_BDD;
+	CREATE USER UsuarioAdmin FOR LOGIN UsuarioAdmin;
+	CREATE USER UsuarioLectura FOR LOGIN UsuarioLectura;
+
+  2. Asignación de permisos:
+     
+	ALTER ROLE db_owner ADD MEMBER UsuarioAdmin; -- concede permiso como administrador
+
+	ALTER ROLE db_datareader ADD MEMBER UsuarioLectura; -- concede permiso únicamente de lectura a un usuario
+	
+  3. Asignar permiso para el uso de procedimientos almacenados (usuario de solo lectura):
+
+GRANT EXECUTE ON InsertarProducto TO UsuarioLectura;
+
+  4. Realizar carga de datos por parte de los usuarios:
+
+	USE proeyecto_BDD;
+	INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES 
+	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789), 
+	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901), 
+	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012), 
+	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123), 
+	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
+
+	/*
+	Cuando el usuario con permiso de solo lectura quiere realizar un insert este no podrá hacerlo ya que no cuenta con los permisos 	necesarios para hacerlo. Sin embargo, el usuario al cual le fue asignado el permiso como Administrador no debería contar con 		problemas para hacerlo.
+  	*/
+
+  5. Realizar un insert a través del procedimiento almacenado con el usuario con permiso de solo lectura:
+
 USE proyecto_BDD;
+	EXEC InsertarProducto @Descripcion = Jugo Detox, @Stock = 100, @Stock_Min = 15, @Precio = 250.00, @Costo = 180.00, @CUIT = 		20345678901; -- Si el permiso fue otorgado correctamente el usuario podría insertar un producto con éxito.
 
--- LOTE DE DATOS
+- ####Permisos a nivel de roles del DBMS:
 
--- =======================
--- DATOS PARA Tipo_Perfil
--- =======================
-INSERT INTO Tipo_Perfil (Descripcion) VALUES
-('Administrador'),
-('Cliente'),
-('Gerente');
+  1. Creación de usuarios:
 
--- =======================
--- DATOS PARA Categoria
--- =======================
-INSERT INTO Categoria (Descripcion) VALUES
-('Suplementos'),
-('Comida Orgánica'),
-('Bebidas'),
-('Frutas y Verduras'),
-('Snacks Saludables');
+   	CREATE LOGIN UsuarioRolLectura WITH PASSWORD = 'ContraseñaLectura';
+	CREATE LOGIN UsuarioSinRol WITH PASSWORD = 'ContraseñaSinRol';
+	USE proyecto_BDD;
+	CREATE USER UsuarioRolLectura FOR LOGIN UsuarioRolLectura;
+	CREATE USER UsuarioSinPermiso FOR LOGIN UsuarioSinRol;
 
--- =======================
--- DATOS PARA Pais
--- =======================
-INSERT INTO Pais (Nombre) VALUES
-('Argentina'),
-('Brasil'),
-('Chile'),
-('Uruguay');
+  2. Crear rol, otorgar permisos y asignar rol a un usuario:
 
--- =======================
--- DATOS PARA Proveedor
--- =======================
-INSERT INTO Proveedor (CUIT, Correo, Telefono, Nombre) VALUES
-(20123456789, 'proveedor1@nutrifood.com', 123456789, 'Proveedor 1'),
-(20345678901, 'proveedor2@nutrifood.com', 987654321, 'Proveedor 2'),
-(20456789012, 'proveedor3@nutrifood.com', 456789123, 'Proveedor 3'),
-(20567890123, 'proveedor4@nutrifood.com', 789123456, 'Proveedor 4');
+	CREATE ROLE RolSoloLectura;
+	GRANT SELECT ON Producto TO RolSoloLectura;
+	ALTER ROLE RolSoloLectura ADD MEMBER UsuarioRolLectura;
 
--- =======================
--- DATOS PARA Medios_de_Pago
--- =======================
-INSERT INTO Medios_de_Pago (Nombre) VALUES
-('Tarjeta de Crédito'),
-('Transferencia Bancaria'),
-('Efectivo'),
-('Pago en Cuotas');
+  3. Verificacón del comportamiento de ambos usuarios:
 
+<<<<<<< HEAD
 -- =======================
 -- DATOS PARA Producto
 -- =======================
@@ -843,7 +885,16 @@ INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
 (45678901, 2),
 (12345678, 3);
 ```
+=======
+	-- Para realizar la verificación podemos hacerlo a través de una consulta.
+	USE proyecto_BDD;
+	SELECT * FROM Producto;
+>>>>>>> fcc14a67c43dba8d595cf462fd08bbf1b92ee452
 
+   
+  	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
+	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
+  */
 ### Procedimientos y Funciones Almacenadas 
 
 #### 1. Procedimientos Almacenados
@@ -858,7 +909,12 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC InsertarProducto 'Producto C', 30, 5, 120.00, 90.00, 20456789012;
   ```
-- **Resultado Esperado**: Simplificación del proceso de ingreso de datos, reduciendo errores de inserción.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 2 ms.
+
+Table 'Proveedor'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times: CPU time = 16 ms,  elapsed time = 294 ms.
 
 ##### Procedimiento 2: `ModificarProducto`
 
@@ -868,7 +924,11 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC ModificarProducto 1, 'Producto Modificado', 120, 15, 220.00, 180.00,'SI';
   ```
-- **Resultado Esperado**: Actualización eficiente de productos y mejora en el mantenimiento de la información.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 2 ms.
+
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 1 ms.
 
 ##### Procedimiento 3: `EliminarProducto`
 
@@ -878,7 +938,11 @@ Los procedimientos almacenados que se desarrollaron para esta base de datos fuer
   ```sql
   EXEC EliminarProducto 2;
   ```
-- **Resultado Esperado**: Mantenimiento limpio y actualizado de los productos en la base de datos.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 16 ms.
+
+Table 'Producto'. Scan count 0, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 #### 2. Funciones Almacenadas
 
@@ -892,7 +956,11 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.CalcularEdad('1980-05-15');
   ```
-- **Resultado Esperado**: Proporciona la edad actual del usuario.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 0 ms.
+
+(1 row affected)
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 ##### Función 2: `TotalFacturasPorUsuario`
 
@@ -902,7 +970,12 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.TotalFacturasPorUsuario(12345678);
   ```
-- **Resultado Esperado**: Generación de datos acumulativos de ventas por cliente.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 13 ms, elapsed time = 13 ms.
+
+(1 row affected)
+Table 'Factura'. Scan count 1, logical reads 2, physical reads 1, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 54 ms.
 
 ##### Función 3: `PrecioPromedioProductos`
 
@@ -912,7 +985,12 @@ Las funciones almacenadas permiten realizar cálculos y obtener reportes especí
   ```sql
   SELECT dbo.PrecioPromedioProductos();
   ```
-- **Resultado Esperado**: Facilita la evaluación del precio promedio de productos para comparar con precios de mercado.
+- **Resultado Obtenido**: SQL Server parse and compile time: CPU time = 0 ms, elapsed time = 3 ms.
+
+(1 row affected)
+Table 'Producto'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+
+ SQL Server Execution Times: CPU time = 0 ms,  elapsed time = 0 ms.
 
 #### 3. Resultados de las Pruebas de Rendimiento
 
@@ -930,7 +1008,7 @@ Los resultados fueron  los siguientes:
 
 - Consulta sin índice.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 33334, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
@@ -938,11 +1016,10 @@ Los resultados fueron  los siguientes:
 	 SQL Server Execution Times:
 	   CPU time = 281 ms,  elapsed time = 4006 ms.
 	
-	*/
 
 - Consulta con el índice solo sobre la columna fecha.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+  	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 4190, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
@@ -950,24 +1027,50 @@ Los resultados fueron  los siguientes:
 	 SQL Server Execution Times:
 	   CPU time = 93 ms,  elapsed time = 3901 ms.
   
-	*/
-  
 - Consulta sobre el índice incluyendo varias columnas.
   
-	/* Plan de ejecucion y tiempos de respuesta:
+  	Plan de ejecucion y tiempos de respuesta:
 	
 	(121549 rows affected)
 	Table 'Usuario'. Scan count 1, logical reads 4183, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
 	
 	 SQL Server Execution Times:
 	   CPU time = 203 ms,  elapsed time = 3673 ms.
-	
-	*/
   
 En base a los resultados obtenidos nos dimos cuenta que la creación de un índice agrupado en la columna `Fecha_nacimiento` redujo significativamente el número de lecturas lógicas necesarias para la consulta, pasando de 33334 lecturas a 4190. Por otro lado la inclusión de otras columnas en un índice agrupado adicional, si bien no redujo drásticamente el tiempo de ejecución comparado con el primer índice, optimizó el acceso a los datos que se estaban buscando, reduciendo un poco las lecturas lógicas adicionales a 4183.
 
 Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
+
+###Vistas y Vistas Indexadas
+En esta sección se desarrolla el impacto de las vistas y vistas indexadas en el rendimiento de las consultas, comparando operaciones CRUD y consultas de agregación sobre grandes volúmenes de datos.
+Primeramente, se trabajó con operaciones CRUD, buscando cumplir con las tareas asignadas al tema, comparando con operaciones usando una vista y directamente trabajando sobre la tabla Producto. Usando statistics se obtuvo que no hubo una diferencia notable entre trabajar con una vista y usar directamente la tabla Producto. Además usar una vista con solo algunos de los campos de la tabla obligó a modificar la estructura para que aceptara valores null.
+Luego para saber el id, nombre, unidades vendidas y monto acumulado de un producto por su descripción se trabajó con un vista indexada, que contenía el id, nombre, unidades vendidas y monto acumulado de un producto. Se trabajó con 100.000 registros en Factura y 951.720 en Detalle_Producto, estos son los resultados usando statistics:
+  Usando la vista:
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Producto'. Scan count 1, logical reads 3
+•	CPU time = 110 ms,  elapsed time = 110 ms
+  Usando combinaciones: 
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Producto'. Scan count 1, logical reads 3
+•	CPU time = 94 ms,  elapsed time = 86 ms.
+  Para obtener un listado con la información anterior y el cociente entre el monto acumulado y las unidades vendidas:
+  Usando la vista:
+•	Table 'Worktable'. Scan count 0, logical reads 0
+•	Table 'Producto'. Scan count 0, logical reads 200
+•	Table 'Workfile'. Scan count 0, logical reads 0
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	CPU time = 484 ms,  elapsed time = 577 ms.
+  Usando combinaciones: 
+•	Table 'Worktable'. Scan count 0, logical reads 0
+•	Table 'Producto'. Scan count 0, logical reads 200
+•	Table 'Workfile'. Scan count 0, logical reads 0
+•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+•	Table 'Factura'. Scan count 1, logical reads 349
+•	CPU time = 453 ms,  elapsed time = 492 ms.
 
 
 ## Capítulo V: CONCLUSIONES 
@@ -975,6 +1078,7 @@ Referente al trabajo se pueden obtener múltiples conclusiones:
 
 - En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
 - En lo que compete al uso de indices para optimizar las consultas, podemos concluir que el uso de índices agrupados puede reducir de manera significativa la cantidad de lecturas necesarias y optimizar el tiempo de respuesta de las consultas, especialmente en columnas que se utilizan frecuentemente  en las cláusulas `WHERE`. Sin embargo, la elección de las columnas para un índice debe ser cuidadosa, ya que la inclusión de múltiples columnas puede no siempre traducirse en mejoras adicionales sustanciales.
+- En cuanto al manejo de permisos a nivel de usuarios de base de datos podemos concluir que, la gestión de permisos y roles en bases de datos es fundamental para garantizar la seguridad y el control de acceso. A través de la asignación roles y permisos de forma adecuada, los administradores pueden definir quién accede a qué datos y que hace con ellos, asegurandose así de no alterar la integridad y confidencialidad de la información. La utilización de roles predefinidos y personalizados facilita la administración de permisos, permitiendo asignar autorizaciones comunes a grupos de usuarios y simplificando el mantenimiento en entornos complejos.
 
 En resumen:
 
@@ -989,4 +1093,4 @@ José Juan Sánchez Hernández. (2023/ 2024) Optimización de consultas. Apuntes
 Elizabeth Pulido Romero, Óscar Escobar Dominguez, José Ángel Núñez Pérez. Base de Datos, 1ra ed. PATRIA, México, 2019.
 Grant Fritchey. SQL Server 2022 Query - Performance Tuning, 6ta ed. Apress Media, EEUU, 2022.
 
-
+https://learn.microsoft.com/es-es/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16

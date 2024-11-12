@@ -42,7 +42,7 @@ DECLARE @i INT = 1;
 -- Bucle para insertar registros de forma masiva
 WHILE @i <= 1000000
 BEGIN
-    INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado)
+    INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contrasena, Eliminado)
     VALUES (
         @i, -- DNI (simplemente usa el contador para tener valores únicos)
         CONCAT('correo', @i, '@ejemplo.com'), -- Correo electrónico único

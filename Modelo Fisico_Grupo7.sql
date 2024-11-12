@@ -29,9 +29,11 @@ CREATE TABLE Proveedor
   Correo VARCHAR(100) NOT NULL,
   Telefono BIGINT,
   Nombre VARCHAR(100) NOT NULL,
+  Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   CONSTRAINT PK_proveedores PRIMARY KEY (CUIT),
   CONSTRAINT UQ_proveedores_correo UNIQUE (Correo),
-  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono)
+  CONSTRAINT UQ_proveedores_telefono UNIQUE (Telefono),
+  CONSTRAINT CK_proveedores_eliminado CHECK (Eliminado = 'SI' OR Eliminado = 'NO')
 );
 
 CREATE TABLE Medios_de_Pago
