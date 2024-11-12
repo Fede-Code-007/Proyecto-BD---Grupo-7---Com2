@@ -735,13 +735,14 @@ CREATE TABLE Detalle_Domicilio
 ```
 ### Creación y gestión de Permisos:
 
-#### Permisos a nivel de usuarios:
+#### Permisos a nivel de usuarios
 
-    Para este tema se configuraron permisos en SQL Server para gestionar el acceso a los datos de forma segura y eficiente. Primero, se crearon dos usuarios con permisos distintos a nivel de usuario: uno con permisos de administrador se le otorgó acceso completo mediante el rol db_owner, capaz de realizar todas las operaciones (CRUD), y otro con permisos de solo lectura con el rol db_datareader y acceso a un procedimiento almacenado específico, "InsertarProducto". Esto permitió verificar 
+ Para este tema se configuraron permisos en SQL Server para gestionar el acceso a los datos de forma segura y eficiente. Primero, se crearon dos usuarios con permisos distintos a nivel de usuario: uno con permisos de administrador se le otorgó acceso completo mediante el rol db_owner, capaz de realizar todas las operaciones (CRUD), y otro con permisos de solo lectura con el rol db_datareader y acceso a un procedimiento almacenado específico, "InsertarProducto". Esto permitió verificar 
   que el usuario con permisos limitados solo pudiera insertar datos mediante el procedimiento, mientras que el usuario administrador tenía acceso completo.
 #### Permisos a nivel de roles del DBMS
-    Luego, a nivel de roles, se crearon dos usuarios adicionales y se definió un rol de solo lectura en la base de datos. Este rol se aplicó a uno de los usuarios, permitiéndole acceder a los datos de 
-  la tabla Producto solo en modo lectura, mientras que el otro usuario, sin este rol, no tenía acceso.
+
+ Luego, a nivel de roles, se crearon dos usuarios adicionales y se definió un rol de solo lectura en la base de datos. Este rol se aplicó a uno de los usuarios, permitiéndole acceder a los datos de la tabla Producto solo en modo lectura, mientras que el otro usuario, sin este rol, no tenía acceso.
+ 
 ### Procedimientos y Funciones Almacenadas 
 
 #### 1. Procedimientos Almacenados
