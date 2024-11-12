@@ -80,7 +80,7 @@ INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Per
 -- =======================
 INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES
 (1001, 2000.00, '2024-09-30', 23456789),
-(1002, 3700.00, '2024-09-29', 34567890),
+(1002, 3700.00, '2024-09-29', 12345678),
 (1003, 4200.00, '2024-09-28', 45678901);
 
 -- =======================
@@ -88,7 +88,7 @@ INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES
 -- =======================
 INSERT INTO Mensajes (Asunto, Descripcion, Fecha, DNI) VALUES
 ('Consulta sobre envío', '¿Cuándo llegará mi pedido?', '2024-09-29', 23456789),
-('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 34567890),
+('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 45678901),
 ('Cambio de dirección', 'Quiero cambiar la dirección de entrega', '2024-09-27', 12345678);
 
 -- =======================
@@ -118,6 +118,8 @@ INSERT INTO Detalle_Producto (Cantidad, Precio, Numero_Factura, Codigo_Producto)
 (2, 1500.00, 1001, 1),
 (3, 120.00, 1002, 3),
 (1, 1800.00, 1003, 4);
+
+Select * from Factura;
 
 -- =======================
 -- DATOS PARA Detalle_Pago
