@@ -74,16 +74,15 @@ use proyecto_BDD
         RETURN ISNULL(@Total, 0);
     END;
 
--- Precio Promedio de Productos: Calcula el precio promedio de todos los productos registrados en la base de datos, sirve para el 
--- análisis de precios y comparación con proveedores.
+-- Función para aplicar hash a la contraseña ingresada por el usuario.
 
-    CREATE FUNCTION PrecioPromedioProductos ()
-    RETURNS FLOAT
+    CREATE FUNCTION dbo.HashPass(@pass NVARCHAR(MAX))
+    RETURNS NVARCHAR(128)
     AS
     BEGIN
-        DECLARE @Promedio FLOAT;
-        SELECT @Promedio = AVG(Precio) FROM Producto;
-        RETURN ISNULL(@Promedio, 0);
+        DECLARE @hashedPass NVARCHAR(128);
+        SET @hashedPass = CONVERT(NVARCHAR(128), HASHBYTES('SHA2_256', @pass), 2);   
+        RETURN @hashedPass;
     END;
 
 -- ### Pruebas de Inserción y Manipulación de Datos
