@@ -895,10 +895,10 @@ En esta sección se desarrolla el impacto de las vistas y vistas indexadas en el
 Primeramente, se trabajó con operaciones CRUD, buscando cumplir con las tareas asignadas al tema, comparando con operaciones usando una vista y directamente trabajando sobre la tabla Producto. Usando statistics se obtuvo que no hubo una diferencia notable entre trabajar con una vista y usar directamente la tabla Producto. Además usar una vista con solo algunos de los campos de la tabla obligó a modificar la estructura para que aceptara valores null.
 Luego para saber el id, nombre, unidades vendidas y monto acumulado de un producto por su descripción se trabajó con un vista indexada, que contenía el id, nombre, unidades vendidas y monto acumulado de un producto. Se trabajó con 100.000 registros en Factura y 951.720 en Detalle_Producto, estos son los resultados usando statistics:
   Usando la vista:
-•	Table 'Factura'. Scan count 1, logical reads 349
-•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
-•	Table 'Producto'. Scan count 1, logical reads 3
-•	CPU time = 110 ms,  elapsed time = 110 ms
+- Table 'Factura'. Scan count 1, logical reads 349
+- Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+- Table 'Producto'. Scan count 1, logical reads 3
+- CPU time = 110 ms,  elapsed time = 110 ms
   Usando combinaciones: 
 •	Table 'Factura'. Scan count 1, logical reads 349
 •	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
