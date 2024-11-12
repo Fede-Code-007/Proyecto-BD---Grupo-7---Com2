@@ -108,7 +108,3 @@ Permisos a nivel de roles del DBMS:
    /*
 	el manejo de roles simplifica la gestión de permisos en nuestro servidor, ya que nos permite asignar funciones a determinados usuarios permitiendo así tener 	mayor control en caso de tener múltiples usuarios en nuestro sistema. 
    */
-
-
-
- En cuanto al manejo de permisos a nivel de usuarios de base de datos podemos concluir que, la gestión de permisos y roles en bases de datos es fundamental para garantizar la seguridad y el control de acceso. A través de la asignación roles y permisos de forma adecuada, los administradores pueden definir quién accede a qué datos y que hace con ellos, asegurandose así de no alterar la integridad y confidencialidad de la información. La utilización de roles predefinidos y personalizados facilita la administración de permisos, permitiendo asignar autorizaciones comunes a grupos de usuarios y simplificando el mantenimiento en entornos complejos.
