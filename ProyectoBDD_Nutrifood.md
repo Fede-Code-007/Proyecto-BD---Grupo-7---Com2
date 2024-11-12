@@ -737,69 +737,12 @@ CREATE TABLE Detalle_Domicilio
 
 - ####Permisos a nivel de usuarios:
 
-  1. Crear un usuario en la base de datos: 
-     
-	CREATE LOGIN UsuarioAdmin WITH PASSWORD = 'UsuarioAdmin'; 
-	CREATE LOGIN UsuarioLectura WITH PASSWORD = 'UsuarioLectura';
-	USE proyecto_BDD;
-	CREATE USER UsuarioAdmin FOR LOGIN UsuarioAdmin;
-	CREATE USER UsuarioLectura FOR LOGIN UsuarioLectura;
-
-  2. Asignación de permisos:
-     
-	ALTER ROLE db_owner ADD MEMBER UsuarioAdmin; -- concede permiso como administrador
-
-	ALTER ROLE db_datareader ADD MEMBER UsuarioLectura; -- concede permiso únicamente de lectura a un usuario
-	
-  3. Asignar permiso para el uso de procedimientos almacenados (usuario de solo lectura):
-
-GRANT EXECUTE ON InsertarProducto TO UsuarioLectura;
-
-  4. Realizar carga de datos por parte de los usuarios:
-
-	USE proeyecto_BDD;
-	INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT) VALUES 
-	('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789), 
-	('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901), 
-	('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012), 
-	('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123), 
-	('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901);
-
-	/*
-	Cuando el usuario con permiso de solo lectura quiere realizar un insert este no podrá hacerlo ya que no cuenta con los permisos 	necesarios para hacerlo. Sin embargo, el usuario al cual le fue asignado el permiso como Administrador no debería contar con 		problemas para hacerlo.
-  	*/
-
-  5. Realizar un insert a través del procedimiento almacenado con el usuario con permiso de solo lectura:
-
-USE proyecto_BDD;
-	EXEC InsertarProducto @Descripcion = Jugo Detox, @Stock = 100, @Stock_Min = 15, @Precio = 250.00, @Costo = 180.00, @CUIT = 		20345678901; -- Si el permiso fue otorgado correctamente el usuario podría insertar un producto con éxito.
-
-- ####Permisos a nivel de roles del DBMS:
-
-  1. Creación de usuarios:
-
-   	CREATE LOGIN UsuarioRolLectura WITH PASSWORD = 'ContraseñaLectura';
-	CREATE LOGIN UsuarioSinRol WITH PASSWORD = 'ContraseñaSinRol';
-	USE proyecto_BDD;
-	CREATE USER UsuarioRolLectura FOR LOGIN UsuarioRolLectura;
-	CREATE USER UsuarioSinPermiso FOR LOGIN UsuarioSinRol;
-
-  2. Crear rol, otorgar permisos y asignar rol a un usuario:
-
-	CREATE ROLE RolSoloLectura;
-	GRANT SELECT ON Producto TO RolSoloLectura;
-	ALTER ROLE RolSoloLectura ADD MEMBER UsuarioRolLectura;
-
-  3. Verificacón del comportamiento de ambos usuarios:
-
-	-- Para realizar la verificación podemos hacerlo a través de una consulta.
-	USE proyecto_BDD;
-	SELECT * FROM Producto;
-
-   
-  	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
-	Si lo hacemos desde el “UsuarioSinRol” debería recibir un mensaje de error de permisos, ya que no cuenta con los permisos 		necesarios para poder realizar la consulta. 
-  */
+    Para este tema se configuraron permisos en SQL Server para gestionar el acceso a los datos de forma segura y eficiente. Primero, se crearon dos usuarios con permisos distintos a nivel de usuario: 
+  uno con permisos de administrador se le otorgó acceso completo mediante el rol db_owner, capaz de realizar todas las operaciones (CRUD), y otro con permisos de solo lectura con el rol db_datareader y acceso a un procedimiento almacenado específico, "InsertarProducto". Esto permitió verificar 
+  que el usuario con permisos limitados solo pudiera insertar datos mediante el procedimiento, mientras que el usuario administrador tenía acceso completo.
+- ####Permisos a nivel de roles del DBMS
+    Luego, a nivel de roles, se crearon dos usuarios adicionales y se definió un rol de solo lectura en la base de datos. Este rol se aplicó a uno de los usuarios, permitiéndole acceder a los datos de 
+  la tabla Producto solo en modo lectura, mientras que el otro usuario, sin este rol, no tenía acceso.
 ### Procedimientos y Funciones Almacenadas 
 
 #### 1. Procedimientos Almacenados

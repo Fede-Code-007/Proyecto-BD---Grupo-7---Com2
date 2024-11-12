@@ -1,5 +1,5 @@
 -- Procedimiento de Inserción: Permite añadir un nuevo producto en la base de datos, capturando todos los detalles necesarios para su ----- administración, como descripción, stock y precio.
-
+use proyecto_BDD
     CREATE PROCEDURE InsertarProducto
         @Descripcion VARCHAR(100),
         @Stock INT,
@@ -30,7 +30,7 @@
             Stock = @Stock,
             Stock_Min = @Stock_Min,
             Precio = @Precio,
-            Costo = @Costo
+            Costo = @Costo,
             Eliminado = @Eliminado
         WHERE Codigo_Producto = @Codigo_Producto;
     END;
