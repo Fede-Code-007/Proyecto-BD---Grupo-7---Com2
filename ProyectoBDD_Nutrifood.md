@@ -36,9 +36,9 @@
 [Capítulo II: Marco Conceptual](#capítulo-ii-marco-conceptual)
 
     - Manejo de permisos a nivel de usuarios de base de datos
+    - Procedimientos y funciones almacenadas
     - Optimización de consultas a través de índices
     - Vistas y vistas indexadas
-    - Procedimientos y funciones almacenadas
 
 [Capítulo III: Metodología Seguida](#capítulo-iii-metodología-seguida)
 
@@ -48,6 +48,10 @@
     - Diccionario de Datos
     - Modelo Físico
     - Lote de datos
+    - Manejo de permisos a nivel de usuarios de base de datos
+    - Procedimientos y funciones almacenadas
+    - Optimización de consultas a través de índices
+    - Vistas y vistas indexadas
     
 [Capítulo V: Conclusiones](#capítulo-v-conclusiones)
 
@@ -788,108 +792,9 @@ USE proyecto_BDD;
 
   3. Verificacón del comportamiento de ambos usuarios:
 
-<<<<<<< HEAD
--- =======================
--- DATOS PARA Producto
--- =======================
-INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Eliminado) VALUES
-('Proteína Whey', 50, 10, 1500.00, 1200.00, 20123456789, 'NO'),
-('Aceite de Coco Orgánico', 30, 5, 500.00, 300.00, 20345678901, 'NO'),
-('Barras Energéticas', 80, 20, 120.00, 80.00, 20456789012, 'NO'),
-('Batido Proteico', 60, 10, 1800.00, 1400.00, 20567890123, 'NO'),
-('Jugo Detox', 100, 15, 250.00, 180.00, 20345678901, 'NO');
-
--- =======================
--- DATOS PARA Usuario
--- =======================
-INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contrasena, Eliminado) VALUES
-(12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
-(23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
-(45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');
-
--- =======================
--- DATOS PARA Factura
--- =======================
-INSERT INTO Factura (Numero_Factura, Total, Fecha, DNI) VALUES
-(1001, 2000.00, '2024-09-30', 23456789),
-(1002, 3700.00, '2024-09-29', 34567890),
-(1003, 4200.00, '2024-09-28', 45678901);
-
--- =======================
--- DATOS PARA Mensajes
--- =======================
-INSERT INTO Mensajes (Asunto, Descripcion, Fecha, DNI) VALUES
-('Consulta sobre envío', '¿Cuándo llegará mi pedido?', '2024-09-29', 23456789),
-('Problema con el pago', 'No pude completar el pago con tarjeta', '2024-09-28', 34567890),
-('Cambio de dirección', 'Quiero cambiar la dirección de entrega', '2024-09-27', 12345678);
-
--- =======================
--- DATOS PARA Provincia
--- =======================
-INSERT INTO Provincia (Nombre, Codigo_Pais) VALUES
-('Buenos Aires', 1),
-('Río de Janeiro', 2),
-('Santiago', 3),
-('Montevideo', 4);
-
--- =======================
--- DATOS PARA Detalle_Categorias
--- =======================
-
-INSERT INTO Detalle_Categorias (Codigo_Producto, Codigo_Categoria) VALUES
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(1, 3);
-
--- =======================
--- DATOS PARA Detalle_Producto
--- =======================
-INSERT INTO Detalle_Producto (Cantidad, Precio, Numero_Factura, Codigo_Producto) VALUES
-(2, 1500.00, 1001, 1),
-(3, 120.00, 1002, 3),
-(1, 1800.00, 1003, 4);
-
--- =======================
--- DATOS PARA Detalle_Pago
--- =======================
-INSERT INTO Detalle_Pago (Monto_Pagado, Nro_Cuotas, Codigo_MP, Numero_Factura) VALUES
-(2000.00, 1, 1, 1001),
-(3700.00, 2, 4, 1002),
-(4200.00, 1, 3, 1003);
-
--- =======================
--- DATOS PARA Localidad
--- =======================
-INSERT INTO Localidad (Nombre, Codigo_Provincia) VALUES
-('Capital Federal', 1),
-('Niterói', 2),
-('Providencia', 3),
-('Punta Carretas', 4);
-
--- =======================
--- DATOS PARA Direccion
--- =======================
-INSERT INTO Direccion (Calle, Altura, Dpto, Codigo_Localidad) VALUES
-('Av. Siempre Viva', 123, 'A', 1),
-('Rua das Flores', 456, 'B', 2),
-('Calle Falsa', 789, 'C', 3),
-('Av. Libertador', 321, NULL, 4);
-
--- =======================
--- DATOS PARA Detalle_Domicilio
--- =======================
-INSERT INTO Detalle_Domicilio (DNI, Codigo_Direccion) VALUES
-(23456789, 1),
-(45678901, 2),
-(12345678, 3);
-```
-=======
 	-- Para realizar la verificación podemos hacerlo a través de una consulta.
 	USE proyecto_BDD;
 	SELECT * FROM Producto;
->>>>>>> fcc14a67c43dba8d595cf462fd08bbf1b92ee452
 
    
   	Al hacerlo desde el usuario “UsuarioRolLectura” este no tendría inconvenientes para realizar la consulta ya que cuenta con los 		permisos necesarios para realizarlo.
@@ -1042,7 +947,7 @@ En base a los resultados obtenidos nos dimos cuenta que la creación de un índi
 Además se observó una mejora en el tiempo de CPU después de agregar los índices, de 281 ms a 93 ms en la primera prueba con el índice agrupado simple. 
 El índice agrupado extendido mostró un tiempo de CPU de 203 ms, lo cual fue una mejora sobre la consulta sin índice, pero no tan optimizada como el primer índice.
 
-###Vistas y Vistas Indexadas
+### Vistas y Vistas Indexadas
 En esta sección se desarrolla el impacto de las vistas y vistas indexadas en el rendimiento de las consultas, comparando operaciones CRUD y consultas de agregación sobre grandes volúmenes de datos.
 Primeramente, se trabajó con operaciones CRUD, buscando cumplir con las tareas asignadas al tema, comparando con operaciones usando una vista y directamente trabajando sobre la tabla Producto. Usando statistics se obtuvo que no hubo una diferencia notable entre trabajar con una vista y usar directamente la tabla Producto. Además usar una vista con solo algunos de los campos de la tabla obligó a modificar la estructura para que aceptara valores null.
 Luego para saber el id, nombre, unidades vendidas y monto acumulado de un producto por su descripción se trabajó con un vista indexada, que contenía el id, nombre, unidades vendidas y monto acumulado de un producto. Se trabajó con 100.000 registros en Factura y 951.720 en Detalle_Producto, estos son los resultados usando statistics:
@@ -1076,9 +981,11 @@ Luego para saber el id, nombre, unidades vendidas y monto acumulado de un produc
 ## Capítulo V: CONCLUSIONES 
 Referente al trabajo se pueden obtener múltiples conclusiones:
 
+- En cuanto al manejo de permisos a nivel de usuarios de base de datos podemos concluir que, la gestión de permisos y roles en bases de datos es fundamental para garantizar la seguridad y el control de acceso. A través de la asignación roles y permisos de forma adecuada, los administradores pueden definir quién accede a qué datos y que hace con ellos, asegurandose así de no alterar la integridad y confidencialidad de la información. La utilización de roles predefinidos y personalizados facilita la administración de permisos, permitiendo asignar autorizaciones comunes a grupos de usuarios y simplificando el mantenimiento en entornos complejos.
 - En cuanto a los procedimientos y las funciones almacenadas, ambas metodologías se aplican en diferentes contextos dentro de la administración de bases de datos: los procedimientos almacenados son preferibles para realizar una serie de operaciones complejas de manipulación de datos que pueden involucrar múltiples tablas y procesos de negocio, como agregar registros en diferentes tablas o ejecutar transacciones completas. En cambio, las funciones almacenadas son adecuadas cuando se necesita obtener un único valor como resultado de un cálculo específico, como una edad, una suma o un promedio, que pueda integrarse directamente en una consulta de selección sin modificar los datos. Estas metodologías permiten a los sistemas de bases de datos gestionar los datos de forma eficaz, optimizar la precisión, el acceso y manipulación de la información.
 - En lo que compete al uso de indices para optimizar las consultas, podemos concluir que el uso de índices agrupados puede reducir de manera significativa la cantidad de lecturas necesarias y optimizar el tiempo de respuesta de las consultas, especialmente en columnas que se utilizan frecuentemente  en las cláusulas `WHERE`. Sin embargo, la elección de las columnas para un índice debe ser cuidadosa, ya que la inclusión de múltiples columnas puede no siempre traducirse en mejoras adicionales sustanciales.
-- En cuanto al manejo de permisos a nivel de usuarios de base de datos podemos concluir que, la gestión de permisos y roles en bases de datos es fundamental para garantizar la seguridad y el control de acceso. A través de la asignación roles y permisos de forma adecuada, los administradores pueden definir quién accede a qué datos y que hace con ellos, asegurandose así de no alterar la integridad y confidencialidad de la información. La utilización de roles predefinidos y personalizados facilita la administración de permisos, permitiendo asignar autorizaciones comunes a grupos de usuarios y simplificando el mantenimiento en entornos complejos.
+-Sobre el uso de vistas en las operaciones CRUD, no se observó una diferencia notable en el rendimiento entre trabajar directamente sobre la tabla Producto y utilizar una vista. Esto indica que, en operaciones de manipulación de datos (inserción, actualización y eliminación), las vistas sin indexar no aportaron mejoras significativas en términos de eficiencia. Además, el uso de una vista que contiene solo algunos campos de la tabla Producto obligó a modificar la estructura de la tabla para aceptar valores NULL, lo cual podría ser una limitación en términos de diseño.
+También las vistas indexadas tuvieron diferencias marginales en la organización de consultas de agregación (como unidades vendidas y monto acumulado) en grandes volúmenes de datos. Aunque las vistas indexadas sí ofrecieron una estructura optimizada para consultas repetitivas en reportes de ventas y análisis histórico. Viendo que las vistas indexadas pueden mejorar el rendimiento en consultas de lectura intensiva, su mantenimiento puede ser costoso, especialmente cuando los datos en las tablas subyacentes cambian con frecuencia, ya que cada modificación debe reflejarse en la vista. Pero ya que las diferencias no han sido considerables consideramos que el uso de vistas indexadas podría no ser ideal debido al sobrecosto en términos de recursos de mantenimiento.
 
 En resumen:
 
