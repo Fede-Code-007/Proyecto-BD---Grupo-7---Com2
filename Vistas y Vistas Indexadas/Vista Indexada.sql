@@ -20,6 +20,9 @@ CREATE UNIQUE CLUSTERED INDEX IDX_Ventas_30Dias ON Vista_Ventas (Codigo_Producto
 --Comparaciones entre el uso de la vista y el uso directo de las tablas (previamente habiendo realizado las inserciones que se encuentran en esta misma carpeta)
 --Para mostrar los resultados de un producto en específico:
 
+SET STATISTICS TIME ON;
+SET STATISTICS IO ON;
+
 select * from Vista_Ventas
 where Descripcion = 'Producto 72';
 

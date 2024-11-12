@@ -7,7 +7,7 @@ FROM Producto;
 INSERT INTO Vista_Producto (Descripcion, Precio, Stock)
 VALUES ('Arándanos', 1000.00, 50), ('Barrita protéica', 2000.00, 100), ('Cacao', 3000.00, 50);
 
---Error 1: not null
+--Error: not null
 ALTER TABLE Producto
 ALTER COLUMN Stock_Min INT NULL;
 

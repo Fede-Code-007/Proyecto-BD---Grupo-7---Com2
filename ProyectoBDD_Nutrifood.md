@@ -151,7 +151,7 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 | Numero_Factura  | INT    |      | Indica el número de la factura             |
 | Fecha           | DATE   |      | Indica la fecha en que se realizó la venta |
 | Total           | FLOAT  |      | Indica el monto total de la factura        |
-| DNI             | INT    |      | DNI de un usuario                         |
+| DNI             | INT    |      | DNI de un usuario tipo cliente             |
 
 #### Restricciones
 | Campo           | Tipo restricción |
@@ -187,7 +187,7 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 | Campo           | Tipo restricción |
 |-----------------|------------------|
 | Codigo_Producto | PRIMARY KEY      |
-| Eliminado	  |   	CHECK	     |
+| Eliminado	      | CHECK	           |
 
 #### Claves Foráneas
 | Campo | Entidad asociada |
@@ -235,13 +235,15 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 | Correo        | VARCHAR  | 100  | Correo del proveedor   |
 | Telefono      | BIGINT   |      | Teléfono del proveedor |
 | Nombre        | VARCHAR  | 100  | Nombre del proveedor   |
+| Eliminado     | VARCHAR  | 2    | Estado del proveedor   |
 
 #### Restricciones
 | Campo     | Tipo restricción |
 |-----------|------------------|
-| CUIT      | PRIMARY KEY       |
-| Correo    | UNIQUE            |
-| Telefono  | UNIQUE, OPTIONAL  |
+| CUIT      | PRIMARY KEY      |
+| Correo    | UNIQUE           |
+| Telefono  | UNIQUE           |
+| Eliminado | CHECK            |
 
 ---
 
@@ -258,8 +260,9 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 | Nombre          | VARCHAR  | 100  | Nombre del usuario                |
 | Apellido        | VARCHAR  | 100  | Apellido del usuario              |
 | Fecha_Nacimiento| DATE     |      | Fecha de nacimiento del usuario   |
-| Contraseña	  | VARCHAR  | 300  | Contraseña del usuario		|
+| Contrasena	    | VARCHAR  | 300  | Contraseña del usuario	        	|
 | Codigo_Perfil   | INT      |      | Código identificador del perfil   |
+| Eliminado       | VARCHAR  | 2    | Estado de la cuenta               |
 
 #### Restricciones
 | Campo  | Tipo restricción |
@@ -445,8 +448,7 @@ Las funciones almacenadas, por otra parte, representan una metodología orientad
 #### Restricciones
 | Campo            | Tipo restricción |
 |------------------|------------------|
-| Codigo_Direccion | PRIMARY KEY       |
-| Dpto             | OPTIONAL          |
+| Codigo_Direccion | PRIMARY KEY      |
 
 #### Claves Foráneas
 | Campo            | Entidad asociada |
@@ -593,7 +595,7 @@ CREATE TABLE Usuario
   Apellido CHAR(100) NOT NULL,
   Fecha_nacimiento DATE NOT NULL,
   Codigo_Perfil INT NOT NULL,
-  Contraseña VARCHAR(300) NOT NULL,
+  Contrasena VARCHAR(300) NOT NULL,
   Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   CONSTRAINT PK_usuario PRIMARY KEY (DNI),
   CONSTRAINT FK_usuario_perfil FOREIGN KEY (Codigo_Perfil) REFERENCES Tipo_Perfil(Codigo_Perfil),
@@ -758,7 +760,7 @@ INSERT INTO Producto (Descripcion, Stock, Stock_Min, Precio, Costo, CUIT, Elimin
 -- =======================
 -- DATOS PARA Usuario
 -- =======================
-INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contraseña, Eliminado) VALUES
+INSERT INTO Usuario (DNI, Correo, Nombre, Apellido, Fecha_nacimiento, Codigo_Perfil, Contrasena, Eliminado) VALUES
 (12345678, 'admin@nutrifood.com', 'Juan', 'Pérez', '1980-05-15', 1, 0xC1C9D24A508B1D75EA4EF101E5F78DD151222906AA14548FE321163ECFEF9DFE47127131FFA18EBC9089DBF60D9104BB405D93A9B85B681CD50F7000E2C41276, 'NO'),
 (23456789, 'cliente@nutrifood.com', 'Ana', 'García', '1990-07-22', 2, 0x35552F4774526B5634694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO'),
 (45678901, 'gerente@nutrifood.com', 'María', 'Martínez', '1978-12-05', 3, 0x35552F4774526B52e234694B36595A5A3065686E72754E2B6D5566307252714F466F4E3757522F762B2F61413D, 'NO');

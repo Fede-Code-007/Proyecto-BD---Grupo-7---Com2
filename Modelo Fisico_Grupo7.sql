@@ -65,7 +65,7 @@ CREATE TABLE Usuario
   Apellido CHAR(100) NOT NULL,
   Fecha_nacimiento DATE NOT NULL,
   Codigo_Perfil INT NOT NULL,
-  Contraseña VARCHAR(300) NOT NULL,
+  Contrasena VARCHAR(300) NOT NULL,
   Eliminado VARCHAR(2) DEFAULT 'NO' NOT NULL,
   CONSTRAINT PK_usuario PRIMARY KEY (DNI),
   CONSTRAINT FK_usuario_perfil FOREIGN KEY (Codigo_Perfil) REFERENCES Tipo_Perfil(Codigo_Perfil),
