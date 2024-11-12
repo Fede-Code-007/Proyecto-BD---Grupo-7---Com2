@@ -900,25 +900,25 @@ Luego para saber el id, nombre, unidades vendidas y monto acumulado de un produc
 - Table 'Producto'. Scan count 1, logical reads 3
 - CPU time = 110 ms,  elapsed time = 110 ms
   Usando combinaciones: 
-•	Table 'Factura'. Scan count 1, logical reads 349
-•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
-•	Table 'Producto'. Scan count 1, logical reads 3
-•	CPU time = 94 ms,  elapsed time = 86 ms.
+- Table 'Factura'. Scan count 1, logical reads 349
+- Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+- Table 'Producto'. Scan count 1, logical reads 3
+- CPU time = 94 ms,  elapsed time = 86 ms.
   Para obtener un listado con la información anterior y el cociente entre el monto acumulado y las unidades vendidas:
   Usando la vista:
-•	Table 'Worktable'. Scan count 0, logical reads 0
-•	Table 'Producto'. Scan count 0, logical reads 200
-•	Table 'Workfile'. Scan count 0, logical reads 0
-•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
-•	Table 'Factura'. Scan count 1, logical reads 349
-•	CPU time = 484 ms,  elapsed time = 577 ms.
+- Table 'Worktable'. Scan count 0, logical reads 0
+- Table 'Producto'. Scan count 0, logical reads 200
+- Table 'Workfile'. Scan count 0, logical reads 0
+- Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+- Table 'Factura'. Scan count 1, logical reads 349
+- CPU time = 484 ms,  elapsed time = 577 ms.
   Usando combinaciones: 
-•	Table 'Worktable'. Scan count 0, logical reads 0
-•	Table 'Producto'. Scan count 0, logical reads 200
-•	Table 'Workfile'. Scan count 0, logical reads 0
-•	Table 'Detalle_Producto'. Scan count 1, logical reads 4736
-•	Table 'Factura'. Scan count 1, logical reads 349
-•	CPU time = 453 ms,  elapsed time = 492 ms.
+- Table 'Worktable'. Scan count 0, logical reads 0
+- Table 'Producto'. Scan count 0, logical reads 200
+- Table 'Workfile'. Scan count 0, logical reads 0
+- Table 'Detalle_Producto'. Scan count 1, logical reads 4736
+- Table 'Factura'. Scan count 1, logical reads 349
+- CPU time = 453 ms,  elapsed time = 492 ms.
 
 
 ## Capítulo V: CONCLUSIONES 
