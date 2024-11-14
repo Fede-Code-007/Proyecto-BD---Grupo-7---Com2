@@ -42,7 +42,7 @@ GROUP BY p.Codigo_Producto, p.Descripcion;
 
 select *,
 	(MontoAcumulado / UnidadesVendidas) as Promedio
-from Vista_Ventas_30Dias
+from Vista_Ventas
 order by Promedio;
 
 SELECT 
